@@ -1,0 +1,41 @@
+This repository contains a variety of content, including contributions developed by the International Actuarial Association (IAA) Task Force on Artificial Intelligence (“IAA Content”) and material sourced from third parties. Third-party content is distributed under the respective licenses provided by the original authors.
+
+THE IAA CONTENT IS LICENSED AS FOLLOWS:
+
+1. **Textual, Graphical, and Documentation Materials**
+
+   All articles, case studies, and multimedia content (i.e., documents, presentations, images, etc.) developed in this repository are provided under the Creative Commons Attribution 4.0 International License (“CC BY 4.0”).  
+   You may obtain a copy of the CC BY 4.0 license here:  
+   [https://creativecommons.org/licenses/by/4.0/](https://creativecommons.org/licenses/by/4.0/)
+
+2. **Software and Code**
+
+   All code (including scripts, Jupyter notebooks, and other software resources) developed in this repository is provided under the MIT License. The full text of the MIT License is reproduced below.
+
+   ------- MIT License Start -------
+   
+   MIT License
+
+   Copyright (c) 2025 International Actuarial Association
+
+   Permission is hereby granted, free of charge, to any person obtaining a copy
+   of this software and associated documentation files (the "Software"), to deal
+   in the Software without restriction, including without limitation the rights
+   to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+   copies of the Software, and to permit persons to whom the Software is
+   furnished to do so, subject to the following conditions:
+
+   The above copyright notice and this permission notice shall be included in all
+   copies or substantial portions of the Software.
+
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
+
+   ------- MIT License End -------
+
+For any questions or clarifications regarding the licensing of any materials in this repository, please refer to the individual license notices provided or contact the maintainers.
