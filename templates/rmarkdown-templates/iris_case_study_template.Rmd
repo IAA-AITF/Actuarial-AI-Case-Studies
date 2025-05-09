@@ -1,0 +1,87 @@
+---
+title: "Iris Dataset Case Study"
+author: "Your Name"
+date: "YYYY-MM-DD"
+last_updated: "YYYY-MM-DD"
+output:
+  github_document:
+    toc: true
+    toc_depth: 3
+    number_sections: true
+---
+
+# Introduction  
+This RMarkdown provides a minimal case study on the Iris dataset.  
+We'll cover loading the data, exploratory visualization, building a simple classifier, and referencing external resources.
+
+# Data Loading & Preview  
+Below we load the Iris dataset, convert it to a data frame, and preview the first five rows.
+
+```{r data-loading, echo=TRUE, message=FALSE}
+# Load necessary libraries
+library(datasets)
+library(dplyr)
+
+# Load the iris dataset
+df <- as_tibble(iris)
+
+# Display the first 5 rows
+head(df, 5)
+```
+
+The code above:  
+- Loads the built‑in `iris` dataset.  
+- Converts it to a tibble for convenient printing.  
+- Shows the first five rows of the data frame.
+
+# Exploratory Visualization  
+We create a simple scatter plot of two features to visualize class separation.
+
+```{r exploratory-plot, echo=TRUE, message=FALSE}
+library(ggplot2)
+
+# Scatter plot of Sepal Length vs. Sepal Width
+ggplot(df, aes(x = Sepal.Length, y = Sepal.Width, color = Species)) +
+  geom_point() +
+  labs(
+    title = "Sepal Length vs. Sepal Width",
+    x = "Sepal Length (cm)",
+    y = "Sepal Width (cm)"
+  )
+```
+
+The plot above shows the relationship between sepal length and width, colored by species.
+
+# Minimal Working ML Example  
+We'll split the data into training and testing sets, train a multinomial logistic regression classifier, and evaluate its performance.
+
+```{r ml-example, echo=TRUE, message=FALSE}
+library(caret)
+library(nnet)
+
+set.seed(42)
+# Split into train/test
+train_index <- createDataPartition(df$Species, p = 0.8, list = FALSE)
+train <- df[train_index, ]
+test  <- df[-train_index, ]
+
+# Train a multinomial logistic regression model
+model <- multinom(Species ~ ., data = train)
+
+# Predict and evaluate
+pred <- predict(model, test)
+conf_mat <- confusionMatrix(pred, test$Species)
+
+# Show results
+print(conf_mat)
+```
+
+We chose a multinomial logistic regression (`nnet::multinom`) for its simplicity in handling multi‑class problems.  
+The confusion matrix above summarizes the model's performance.
+
+# How‑To Examples  
+- [Go to Minimal Working ML Example](#minimal-working-ml-example)  
+- To learn more about R’s built‑in datasets, see the [iris documentation](https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/iris.html).
+
+# External Resources  
+Further reading: [Scikit‑learn Iris dataset documentation](https://scikit-learn.org/stable/modules/generated/sklearn.datasets.load_iris.html)
