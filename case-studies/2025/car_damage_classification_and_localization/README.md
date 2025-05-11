@@ -19,6 +19,7 @@ Alternatively, open the `.ipynb` directly in Colab after uploading `requirements
 ### Contents  
 - **`car_damage_classification_and_localization.ipynb`** — Jupyter notebook with code, narrative, and visualizations  
 - **`car_damage_classification_and_localization.html`** — Rendered HTML version of the notebook  
+- **`requirements.txt`** — List of required packages with version specifications  
 > _Dataset is loaded automatically from Kaggle within the notebook; no manual download needed._
 
 ### Table of Contents  
