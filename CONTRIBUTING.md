@@ -11,7 +11,7 @@ Thank you for your interest in contributing to the **Actuarial AI Case Studies**
 
 ### 2. Choosing Your Contribution
 
-You can contribute in two main ways:
+You can contribute in two main ways:asgagsdgsg
 - **Case Studies:** Submit detailed case studies that explore various applications of AI in areas like risk modeling, pricing, forecasting, claims analysis, and more.
 - **Templates:** Suggest updates or improvements to the case study templates to help future contributors. If you have a new idea for structuring content, please propose it via an issue or direct contact.
 
