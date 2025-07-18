@@ -3,8 +3,8 @@
 
 - **Title:** Car Damage Classification and Localization with Fine-Tuned Vision-Enabled LLMs  
   - **Author:** Simon Hatzesberger, Iris Nonneman  
-  - **Date:** 2025-06-25  
-  - **Resources:** [Article](https://arxiv.org/abs/2506.18942), [Code](https://github.com/IAA-AITF/Actuarial-AI-Case-Studies/tree/main/case-studies/2025/car_damage_classification_and_localization)  
+  - **Date:** 2025-06-22  
+  - **Resources:** [Article](https://arxiv.org/abs/2506.18942), [Notebook](https://github.com/IAA-AITF/Actuarial-AI-Case-Studies/tree/main/case-studies/2025/car_damage_classification_and_localization)  
   - **Type:** Case Study  
   - **Level:** 🟨🟨⬜ Advanced  
   - **Primary Topics:** `Large Language Models`, `Fine-Tuning`  
@@ -117,7 +117,7 @@
 - **Title:** SHAP for Actuaries: Explain Any Model  
   - **Author:** Michael Mayer, Daniel Meier, and Mario V. Wüthrich  
   - **Date:** 2023-03-21  
-  - **Resources:** [Article](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4389797), [Notebook](https://github.com/actuarial-data-science/Tutorials/tree/master/14%20-%20SHAP)  
+  - **Resources:** [Article](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4389797), [Notebooks](https://github.com/actuarial-data-science/Tutorials/tree/master/14%20-%20SHAP)  
   - **Type:** Educational  
   - **Level:** 🟨🟨⬜ Advanced  
   - **Primary Topics:** `Explainable AI`, `Interpretable ML`  
