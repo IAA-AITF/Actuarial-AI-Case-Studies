@@ -46,13 +46,23 @@ You can fork a repo and submit new work via Pull Request as above, but the follo
     - At the top right you will see a pencil icon - Click this or the drop down to "Edit in place"
     - Add the relevant info following the same syntax you see for other list items - entries in the table are pipe ("|") -delimited; hyperlinks use the syntax `[Text to display](url)`, etc.
     - This is known as [Markdown syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) with plenty of content available online if you need
-  - When done adding or editing content, changes must be committed.
+  - When done adding or editing content, changes must be committed to your feature branch.
     - Top right of editor > "Commit changes"
     - Keep the commit message short yet descriptive. The default commit message may be "Update README.md" - you might add "Add case study by Wilson et. al. to table" in the extended description.
     - "Commit directly to the [branch_name]" is correct assuming you have first created a new branch off dev; if not, choosing the second option would both create the new branch now and add this commit to it.
     - "Commit Changes" (green button) to finalize the commit
-  - If submitting template improvements or suggestions, add your changes or new files in the `templates/` folder
-- **Testing Your Contribution:** Review your changes locally (or on the new branch) to ensure they display correctly and that all content aligns with our style guidelines
+- ** Merge your changes to `dev`
+    - Now your feature branch will be 1 or more commits ahead of `dev` - your changes must be merged to dev
+    - When using the GitHUB GUI the only way to merge branches is to first open a PR and then complete the merge, closing the PR
+    - On the repo home page, with your feature branch selected, click "Compare & Pull Request" or "Contribute" > "Open Pull Request"
+    - Title the PR and briefly describe what is new
+    - Click "Create Pull Request" (green button)
+    - Select the type of Merge to perform
+      - Generally, Squash & Merge will work in all cases and is preferred - this reduces multiple commits from the "source" branch (your feature branch) to a single commit which will be placed on the target branch (`dev`)
+      - "Create a Merge Commit" will bring all of the commits from the source branch onto the target branch, plus an additional "Merge commit". This maintains the full history of changes committed to your feature branch on the target branch - this is almost always too verbose for the target branch. 10 commits created in the course of developing a single new feature should be reduced to a single commit with a more concise message describing the newly added feature.
+        - If you only created a single new commit on your feature branch, then the "Merge Commit" option will add 2 commits to the target branch - again, only 1 is necessary. This option is used by developer teams to preserve a full history of actions including the fact that a merge was performed. Using a Squash Merge does not preserve in history that a merge event occurred. Our workflow is designed such that every commit on the dev branch implies that a merge took place, as no work is performed directly on `dev` but instead is performed on feature branches.
+  - Click the green button to execute the merge and close the PR
+    - The new work created on your feature branch will now be visible in the file directory of the `dev` branch
 
 ##### b. Command Line
 
