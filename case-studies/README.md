@@ -16,6 +16,23 @@
   - **Abstract/Summary:**  
     This case study explores how Large Language Models can improve both the classification and contextual understanding of car damage from images – an important task in automotive insurance, particularly for claims processing and risk assessment. Traditional computer vision methods, such as Convolutional Neural Networks (CNNs), have demonstrated strong performance in static image classification. However, these models often struggle to additionally incorporate contextual information that is valueable for insurance applications, such as precisely localizing damage, evaluating its severity, and accounting for external factors such as lighting and weather conditions at the time of capture. To address these limitations, we employ OpenAI’s GPT-4o, a vision-enabled Large Language Model that integrates image recognition with natural language understanding. By fine-tuning this model on a domain-specific dataset of labeled car damage images, we achieve classification performance that is comparable to traditional models while also providing richer contextual insights. This enhanced capability allows the model to distinguish, for example, between minor glass damage on a side window and a fully shattered windshield. Beyond car damage analysis, this approach demonstrates broad applicability across various visual tasks in insurance. Its flexibility extends to medical image analysis, fraud detection in claims and invoices, and roof damage assessment in household and commercial property insurance, among others.
 
+- **Title:** GLM for Brazilian Motor Insurance  
+  - **Author:** Giulia Lolliri  
+  - **Date:** 2025-03-16  
+  - **Resources:** [Code](https://github.com/GiuliaLolliri/glm_motor_insurance)  
+  - **Type:** Case Study  
+  - **Level:** 🟨🟨⬜ Advanced  
+  - **Field:** P&C  
+  - **Market/Geography:** Brazil  
+  - **Primary Topics:** `Motor Insurance`  
+  - **Secondary Topics:** `Claim Frequency`, `Claim Severity`  
+  - **Language(s):** English  
+  - **Programming Language(s):** R  
+  - **Methods and/or Models:** Generalized Linear Model  
+  - **Notes:** For the severity analysis, a Generalized Linear Model (GLM) from the Gamma family was developed with a log link function.  
+  - **Abstract/Summary:**  
+    The objective of this project is to understand the factors that influenced the claims performance of the insurance portfolio, particularly regarding claim frequency and severity, and the consequent determination of insurance premiums using common pricing techniques.
+
 
 2024
 ---
