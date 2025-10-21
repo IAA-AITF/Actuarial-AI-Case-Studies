@@ -18,6 +18,22 @@
     Dynamic insurance premium pricing is a complex problem that requires balancing financial sustainability, customer retention, and fairness. Traditional actuarial models rely on static risk assessments, which often fail to adapt to evolving policyholder behaviors. This paper proposes RL-Insure, a reinforcement learning-based framework for optimizing insurance premium pricing through dynamic policy adaptation. The model formulates the pricing task as a Markov Decision Process (MDP) and employs a Deep Q-Network (DQN) to learn optimal pricing strategies over time. Experiments on two publicly available insurance datasets demonstrate the effectiveness of RL-Insure in optimizing pricing strategies while maintaining fairness. The proposed model achieves a cumulative reward of 10432.91 on Dataset A and 10123.45 on Dataset B, outperforming traditional reinforcement learning baselines. Furthermore, RL-Insure improves customer retention rates (CRR) to 89.3% and 88.2%, demonstrating its capability to offer competitive premiums while maximizing long-term revenue. The model also ensures pricing fairness, achieving a Policy Fairness Index (PFI) of 0.08 and 0.09 across datasets, thereby mitigating demographic-based biases in premium pricing. The scientific value of RL-Insure lies in its integration of fairness-aware learning, customer satisfaction modeling, and real-time deployment feasibility—extending prior reinforcement learning applications to more ethically aligned and computationally practical pricing systems. We further analyze the impact of hyperparameter tuning and confirm the significance of fairness constraints and experience replay in improving model robustness and convergence. Additionally, RL-Insure exhibits superior computational efficiency, achieving an inference time of 5.8 milliseconds and a memory footprint of 230 MB, making it suitable for real-time deployment.
 <br>
 
+### Data Analysis Multi-Agent System  
+- **Author:** Simon Hatzesberger, Iris Nonneman  
+- **Date:** 2025-06-22  
+- **Resources:** [Article](https://arxiv.org/abs/2506.18942), [Notebook](https://github.com/IAA-AITF/Actuarial-AI-Case-Studies/tree/main/case-studies/2025/data_analysis_multi-agent_system)  
+- **Type:** Case Study  
+- **Level:** 🟨🟨⬜ Advanced  
+- **Primary Topics:** `Multi-Agent Systems`, `LLM Orchestration`  
+- **Secondary Topics:** `EDA Automation`, `LangGraph`, `Reporting`  
+- **Language(s):** English  
+- **Programming Language(s):** Python  
+- **Methods and/or Models:** Three specialized agents orchestrated via LangGraph—Data Analysis Agent (GPT-4.1 with code execution & plotting), Report Generation Agent (o1 with web lookup & structured report), Supervisor (GPT-4.1-mini) coordinating handoffs and completion.  
+- **Notes:** Evaluated on *Medical Costs* (1,338 rows) and *Diabetes Readmission* (101,766 rows) datasets; produced coherent Markdown reports with boxplots and bar charts, requiring no manual corrections; highlights modularity, guardrails, and oversight (incl. Model Context Protocol).  
+- **Abstract/Summary (AI generated):**  
+    A minimal yet functional MAS automates EDA and reporting: one agent computes stats and visuals from a CSV, a second turns them into a narrative report, and a supervisor manages the workflow. On two public datasets, the system completed the full pipeline reliably, generated correct plots and structured write-ups, and illustrated how agentic AI can decompose actuarial workflows into swappable, well-governed components.
+<br>
+
 ### Car Damage Classification and Localization with Fine-Tuned Vision-Enabled LLMs  
 - **Author:** Simon Hatzesberger, Iris Nonneman  
 - **Date:** 2025-06-22  
@@ -34,21 +50,53 @@
     This case study explores how Large Language Models can improve both the classification and contextual understanding of car damage from images – an important task in automotive insurance, particularly for claims processing and risk assessment. Traditional computer vision methods, such as Convolutional Neural Networks (CNNs), have demonstrated strong performance in static image classification. However, these models often struggle to additionally incorporate contextual information that is valueable for insurance applications, such as precisely localizing damage, evaluating its severity, and accounting for external factors such as lighting and weather conditions at the time of capture. To address these limitations, we employ OpenAI’s GPT-4o, a vision-enabled Large Language Model that integrates image recognition with natural language understanding. By fine-tuning this model on a domain-specific dataset of labeled car damage images, we achieve classification performance that is comparable to traditional models while also providing richer contextual insights. This enhanced capability allows the model to distinguish, for example, between minor glass damage on a side window and a fully shattered windshield. Beyond car damage analysis, this approach demonstrates broad applicability across various visual tasks in insurance. Its flexibility extends to medical image analysis, fraud detection in claims and invoices, and roof damage assessment in household and commercial property insurance, among others.
 <br>
 
-- **Title:** GLM for Brazilian Motor Insurance  
-  - **Author:** Giulia Lolliri  
-  - **Date:** 2025-03-16  
-  - **Resources:** [Code](https://github.com/GiuliaLolliri/glm_motor_insurance)  
-  - **Type:** Case Study  
-  - **Level:** 🟨🟨⬜ Advanced  
-  - **Field:** P&C  
-  - **Market/Geography:** Brazil  
-  - **Primary Topics:** `Motor Insurance`  
-  - **Secondary Topics:** `Claim Frequency`, `Claim Severity`  
-  - **Language(s):** English  
-  - **Programming Language(s):** R  
-  - **Methods and/or Models:** Generalized Linear Model  
-  - **Notes:** For the severity analysis, a Generalized Linear Model (GLM) from the Gamma family was developed with a log link function.  
-  - **Abstract/Summary:**  
+### GenAI-Driven Market Comparison  
+- **Author:** Simon Hatzesberger, Iris Nonneman  
+- **Date:** 2025-06-22  
+- **Resources:** [Article](https://arxiv.org/abs/2506.18942), [Notebook](https://github.com/IAA-AITF/Actuarial-AI-Case-Studies/tree/main/case-studies/2025/GenAI-driven_market_comparison)  
+- **Type:** Case Study  
+- **Level:** 🟨🟨⬜ Advanced  
+- **Primary Topics:** `Retrieval-Augmented Generation (RAG)`, `Structured Outputs`  
+- **Secondary Topics:** `Annual Reports`, `Solvency II/SST Capital Ratios`, `Discount Rates`, `Cyber Risk`  
+- **Language(s):** English  
+- **Programming Language(s):** Python  
+- **Methods and/or Models:** 3-stage pipeline—Preprocessing (PDF→text, chunking, embeddings), Prompt-Augmenting (cosine-similarity retrieval), Response Generation (LLM with strict schema/JSON outputs); discussion of GraphRAG, PathRAG, and agentic RAG extensions.  
+- **Notes:** Demonstrated on large European insurers’ annual reports (e.g., AXA, Generali, Zurich); correctly extracts single values (capital ratios), lists/tables (term-structure discount rates), and bullet lists (cyber-risk controls); repeated runs were identical on quantitative fields.  
+- **Abstract/Summary (AI generated):**  
+    Generative AI is used to automate market comparisons from unstructured annual reports. Documents are chunked and embedded; relevant passages are retrieved to augment prompts; and outputs are constrained to predefined schemas for machine-readable results. The system produced accurate, reproducible extractions for numeric targets (e.g., solvency ratios, discount curves) and stable textual summaries of cyber-risk practices, enabling downstream comparative analytics with minimal manual effort.  
+<br>
+
+### Improving Claim Cost Prediction with LLM-Extracted Features from Unstructured Data  
+- **Author:** Simon Hatzesberger, Iris Nonneman  
+- **Date:** 2025-06-22  
+- **Resources:** [Article](https://arxiv.org/abs/2506.18942), [Notebook](https://github.com/IAA-AITF/Actuarial-AI-Case-Studies/tree/main/case-studies/2025/claim_cost_prediction_with_LLM-extracted_features), [Dataset (Kaggle Competition)](https://www.kaggle.com/competitions/actuarial-loss-estimation)  
+- **Type:** Case Study  
+- **Level:** 🟨🟨⬜ Advanced  
+- **Primary Topics:** `Large Language Models`, `Feature Engineering`, `Claims Severity`  
+- **Secondary Topics:** `Information Extraction`, `Workers’ Compensation`, `Gradient Boosting`  
+- **Language(s):** English  
+- **Programming Language(s):** Python  
+- **Methods and/or Models:** Gradient Boosting Regressor; prompt-based LLM feature extraction (number of body parts injured, main body part injured, cause of injury); grouping of LLM outputs (8 body-part classes, 13 cause classes); log-transform of target; grid-search cross-validation; feature-importance analysis.  
+- **Notes:** Synthetic workers’ comp dataset (3,000 claims) combining tabular covariates with free-text descriptions; adding LLM-derived features reduced RMSE by 18.1% and raised R² from 0.267 → 0.508; MAE improved 23.88%.  
+- **Abstract/Summary (AI generated):**  
+    This case study shows how to turn unstructured claim descriptions into predictive signals for ultimate incurred cost. An LLM extracts structured fields—injured body-part, causal action verb, and count of injured parts—which are then grouped and appended to a gradient-boosting baseline trained on tabular data. After a log transform on the target and hyperparameter tuning, the enhanced model outperforms the baseline across all metrics (e.g., RMSE −18.1%, R² 0.267→0.508). Feature importance indicates that both traditional variables (e.g., weekly wages, age) and LLM-derived features (e.g., body-part, cause, count) materially drive costs.  
+<br>
+
+### GLM for Brazilian Motor Insurance  
+- **Author:** Giulia Lolliri  
+- **Date:** 2025-03-16  
+- **Resources:** [Code](https://github.com/GiuliaLolliri/glm_motor_insurance)  
+- **Type:** Case Study  
+- **Level:** 🟨🟨⬜ Advanced  
+- **Field:** P&C  
+- **Market/Geography:** Brazil  
+- **Primary Topics:** `Motor Insurance`  
+- **Secondary Topics:** `Claim Frequency`, `Claim Severity`  
+- **Language(s):** English  
+- **Programming Language(s):** R  
+- **Methods and/or Models:** Generalized Linear Model  
+- **Notes:** For the severity analysis, a Generalized Linear Model (GLM) from the Gamma family was developed with a log link function.  
+- **Abstract/Summary:**  
     The objective of this project is to understand the factors that influenced the claims performance of the insurance portfolio, particularly regarding claim frequency and severity, and the consequent determination of insurance premiums using common pricing techniques.
 <br>
 
@@ -281,7 +329,7 @@
 - **Author:** Florian Böhm, Silvio Dorrighi  
 - **Date:** 2020-05-14  
 - **Resources:** [Description (GitHub)](https://github.com/smalldatascience/FRAUD-Detection-with-Neural-Networks)  
-- **Type:** Case Study  
+- **Type:** Case Study, Conceptual, Educational   
 - **Level:** 🟩⬜⬜ Beginner  
 - **Market/Geography:** –
 - **Primary Topics:** `Fraud Detection`, `Neural Networks`  
