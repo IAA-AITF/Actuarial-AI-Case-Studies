@@ -277,6 +277,23 @@
 ---
 <br>
 
+### Fraud detection with Neural Networks  
+- **Author:** Florian Böhm, Silvio Dorrighi  
+- **Date:** 2020-05-14  
+- **Resources:** [Description (GitHub)](https://github.com/smalldatascience/FRAUD-Detection-with-Neural-Networks)  
+- **Type:** Case Study  
+- **Level:** 🟩⬜⬜ Beginner  
+- **Market/Geography:** –
+- **Primary Topics:** `Fraud Detection`, `Neural Networks`  
+- **Secondary Topics:** `Imbalanced Data`, `Model Tuning`  
+- **Language(s):** English  
+- **Programming Language(s):** –  
+- **Methods and/or Models:** Artificial Neural Networks  
+- **Notes:** Real world data used for training and evaluation of the model. Data not publicly available
+- **Abstract/Summary:**  
+    Fraudulent claims pose not only a significant financial risk to insurance companies but can also create threats to their reputation and operations. The idea of this use case is to show, how a neural network can be trained with historic data to achieve a better deduction rate. The real-world data used is based on motor hull-car insurance claims over an observation period of 3,5 years and contains more than 300k observations. With less than 1% of the data set marked as fraudulent the training must account for that imbalance. The theoretical background as well as the prediction results obtained, using artificial neural networks (NN), are discussed.
+<br>
+
 ### Compendium of Use Cases: Practical Illustrations of the Model AI Governance Framework  
 - **Author:** Personal Data Protection Commission  
 - **Date:** 2020  
