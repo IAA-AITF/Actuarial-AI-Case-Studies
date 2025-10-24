@@ -2,6 +2,22 @@
 ---
 <br>
 
+### AI Tools for Actuaries
+- **Author:** Mario V. Wüthrich, Ronald Richman, Benjamin Avanzi, Mathias Lindholm, Marco Maggi, Michael Mayer, Jürg Schelldorfer, Salvatore Scognamiglio  
+- **Date:** 2025-08-08  
+- **Resources:** [Book (SSRN)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5162304), [Website (slides, notebooks, code, exercises)](https://aitools4actuaries.com)  
+- **Type:** Educational  
+- **Level:** 🟨🟨⬜ Advanced  
+- **Primary Topics:** `Generalized Linear Models`, `Tree-Based Methods`, `Gradient Boosting Machines`, `Deep Learning`, `Transformers & LLMs`, `Explainable AI`, `Unsupervised Learning`, `Deep Generative Models`, `Model Validation & Calibration`  
+- **Secondary Topics:** `Exponential Dispersion Family`, `Strictly Consistent Loss / Deviance`, `Regularization (Ridge/LASSO/Elastic Net)`, `Covariate Pre-processing`, `Regression Trees`, `Random Forests`, `XGBoost/LightGBM`, `FNNs`, `LocalGLMnet`, `CANN`, `Entity Embeddings`, `CNN`, `RNN`, `Attention`, `Credibility Transformer`, `PDP`, `ALE`, `ICE`, `SHAP`, `Gini`, `Lift`, `Murphy Decomposition`, `Autoencoders`, `Clustering`, `PCA`, `t-SNE/UMAP`, `Synthetic Data`, `Actuarial Mortality Forecasting`  
+- **Language(s):** English  
+- **Programming Language(s):** R, Python  
+- **Methods and/or Models:** GLM within EDF; loss selection & deviance; regularization (Ridge/LASSO/Elastic Net); trees & forests; GBMs (incl. modern libraries); feed-forward neural nets; LocalGLMnet; CANN (GLM + FNN); deep learning for tensors and unstructured data (entity embeddings, CNNs, RNNs, attention/transformers for sequences & tabular); credibility transformer; explainability (variable importance, PDP, ALE, ICE, SHAP, global surrogates); unsupervised learning (autoencoders, clustering, dimensionality reduction & visualization); deep generative models (VAE, GAN, diffusion); applied notebooks (e.g., mortality forecasting).  
+- **Notes:** Companion site provides slides, notebooks, Jupyter & R scripts, datasets, and weights; actively updated and used in teaching (e.g., summer schools).  
+- **Abstract/Summary (AI generated):**  
+    A comprehensive, practice-oriented curriculum that takes actuaries from GLM foundations through modern machine learning and AI. The lecture notes (book) are paired with hands-on notebooks, slides, and exercises in both R and Python. Coverage spans tabular modeling (trees, GBMs, neural nets), modeling for unstructured/tensor data (embeddings, CNNs, RNNs, transformers), calibrated/validated modeling (Gini, lift, Murphy decomposition), explainability (PDP, ALE, ICE, SHAP, surrogates), unsupervised learning, and deep generative models. The final chapters introduce transformers for actuarial tasks and a concise treatment of LLMs, with applied examples such as mortality forecasting and specialized architectures like the credibility transformer.  
+<br>
+
 ### RL-Insure: A Reinforcement Learning-Based Framework for Dynamic Insurance Premium Optimization  
 - **Author:** Md Tohidul Islam, Abu Sadat Mohammad Shaker, Hritika Barua, Uland Rozario, M. F. Mridha, Md. Jakir Hossen, Jungpil Shin  
 - **Date:** 2025-07-22  
