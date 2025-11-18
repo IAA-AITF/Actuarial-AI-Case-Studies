@@ -273,7 +273,7 @@
 - **Date:** 2023-10-24
 - **Resources:** [GitHub Repository](https://github.com/katrienantonio/hands-on-machine-learning-R-module-1)
 - **Type:** Educational (Workshop)
-- **Level:** 🟨⬜⬜ Beginner (in ML, assumes basic R knowledge)
+- **Level:** 🟩⬜⬜ Beginner (in ML, assumes basic R knowledge)
 - **Primary Topics:** `Machine Learning Foundations`, `Regression Models`, `Resampling Methods`, `Feature Pre-processing`, `Regularization`
 - **Secondary Topics:** `Model Accuracy`, `Loss Functions`, `Overfitting`, `Bias-Variance Trade-off`, `Data Splitting`, `caret`, `rsample`, `recipes`, `glmnet`, `mgcv`
 - **Language(s):** English
