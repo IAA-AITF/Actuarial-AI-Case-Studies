@@ -69,7 +69,7 @@
 ### GenAI-Driven Market Comparison  
 - **Author:** Simon Hatzesberger, Iris Nonneman  
 - **Date:** 2025-06-22  
-- **Resources:** [Article](https://arxiv.org/abs/2506.18942), [Notebook](https://github.com/IAA-AITF/Actuarial-AI-Case-Studies/tree/main/case-studies/2025/GenAI-driven_market_comparison)  
+- **Resources:** [Article](https://arxiv.org/abs/2506.18942), [Notebook](2025/GenAI-driven_market_comparison)  
 - **Type:** Case Study  
 - **Level:** 🟨🟨⬜ Advanced  
 - **Primary Topics:** `Retrieval-Augmented Generation (RAG)`, `Structured Outputs`  
