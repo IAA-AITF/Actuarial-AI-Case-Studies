@@ -1,5 +1,12 @@
 2025
 ---
+### Repository: Society of Actuaries Research Institute Repository
+- **Date:** 2025-11-11
+- **Resources:** [About the Institute](https://www.soa.org/research/research-institute/), [Repository](https://github.com/Society-of-actuaries-research-institute)  
+- **Primary Topics:** Various, including AI
+- **Language(s):** English
+- **Abstract/Summary:** This appears to be the GitHub repository for SOA Research Institute's work, including case studies on AI.
+
 <br>
 
 ### AI Tools for Actuaries
