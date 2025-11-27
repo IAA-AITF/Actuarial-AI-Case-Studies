@@ -2,6 +2,11 @@
 ---
 <br>
 
+### Artificial Intelligence in Investment and Retirement
+- **Author:** Kailan Shang, SOA Research Institute  
+- **Date:** 2025-07-31
+<br>
+
 ### AI Tools for Actuaries
 - **Author:** Mario V. Wüthrich, Ronald Richman, Benjamin Avanzi, Mathias Lindholm, Marco Maggi, Michael Mayer, Jürg Schelldorfer, Salvatore Scognamiglio  
 - **Date:** 2025-08-08  
