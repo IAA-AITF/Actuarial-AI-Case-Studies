@@ -12,9 +12,11 @@
 - **Secondary Topics:**
 - **Language(s):** English  
 - **Programming Language(s):** Python
-- **Notes:** Companion site provides slides, notebooks, Jupyter & R scripts, datasets, and weights; actively updated and used in teaching (e.g., summer schools).
-- **Abstract/Summary ([Research Institute Link](https://www.soa.org/resources/research-reports/2025/ai-investment-retirement-risks)):**
-- <br>
+- **Methods and/or Models:** Recurrent Neural Networks; Reinforced Learning with Human Feedback (RLHF); Retrieval-Augmented Generation (RAG); GPT-4o
+- **Notes:**  GitHub site provides Jupyter notebook examples of RLHF and RAG
+- **Abstract/Summary ([Research Institute Link](https://www.soa.org/resources/research-reports/2025/ai-investment-retirement-risks)):**  
+    Artificial intelligence (AI) is increasingly shaping the fields of investment and retirement planning by enhancing data-driven decision-making, improving efficiency, and automating complex processes. With advancements in reinforcement learning and large language models, AI applications are expanding in portfolio management, sentiment analysis, risk assessment, and personalized financial planning. However, as AI adoption grows, it is important to consider both its benefits and challenges to support responsible and effective implementation. This report provides an overview of AI applications in the investment and retirement sectors, offering insights for professionals exploring ways to leverage AI while managing associated risks.
+<br>
 
 ### AI Tools for Actuaries
 - **Author:** Mario V. Wüthrich, Ronald Richman, Benjamin Avanzi, Mathias Lindholm, Marco Maggi, Michael Mayer, Jürg Schelldorfer, Salvatore Scognamiglio  
