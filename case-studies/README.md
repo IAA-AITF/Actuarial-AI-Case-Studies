@@ -5,11 +5,11 @@
 ### Artificial Intelligence in Investment and Retirement
 - **Author:** Kailan Shang, sponsored by SOA Research Institute  
 - **Date:** 2025-07-31
-- **Resources:** [Report](https://www.soa.org/4a3adf/globalassets/assets/files/resources/research-report/2025/ai-investment-retirement-risks.pdf),[GitHub Site](https://github.com/Society-of-actuaries-research-institute/FP208-Artificial-Intelligence-in-Investment-and-Retirement)
+- **Resources:** [Report](https://www.soa.org/4a3adf/globalassets/assets/files/resources/research-report/2025/ai-investment-retirement-risks.pdf), [GitHub Site](https://github.com/Society-of-actuaries-research-institute/FP208-Artificial-Intelligence-in-Investment-and-Retirement)
 - **Type:** Educational  
 - **Level:** 🟨🟨⬜ Advanced
-- **Primary Topics:** `Generalized Linear Models`,
-- **Secondary Topics:**
+- **Primary Topics:** `Natural Language Processing`, `LLMs`, `Deep Learning`, `Reinforced Learning`
+- **Secondary Topics:** `Fund Selection`, `Portfolio Management`, `Risk Hedging`, `Retirement Planning`, `Retirement Investment and Consumption Strategy`, `Behavior Analyzing`
 - **Language(s):** English  
 - **Programming Language(s):** Python
 - **Methods and/or Models:** Recurrent Neural Networks; Reinforced Learning with Human Feedback (RLHF); Retrieval-Augmented Generation (RAG); GPT-4o
