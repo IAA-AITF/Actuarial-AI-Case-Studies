@@ -342,7 +342,7 @@
 <br>
 
 ### Fraud detection with Neural Networks  
-- **Author:** Florian Böhm, Silvio Dorrighi  
+- **Author:** Florian Böhm, Silvio Dorrighi, and Fabian Pribahsnik  
 - **Date:** 2020-05-14  
 - **Resources:** [Description (GitHub)](https://github.com/smalldatascience/FRAUD-Detection-with-Neural-Networks)  
 - **Type:** Case Study, Conceptual, Educational   
