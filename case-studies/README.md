@@ -1,5 +1,96 @@
+2026
+---
+<br>
+
+### Reinforcement Learning for Micro-Level Claims Reserving  
+- **Author:** Benjamin Avanzi, Ronald Richman, Bernard Wong, Mario V. Wüthrich, Yagebu Xie  
+- **Date:** 2026-01-13  
+- **Resources:** [Article (arXiv)](https://arxiv.org/abs/2601.07637)  
+- **Type:** Case Study  
+- **Level:** 🟥🟥🟥 Expert  
+- **Field:** P&C  
+- **Primary Topics:** `Reinforcement Learning`, `Claims Reserving`  
+- **Secondary Topics:** `Soft Actor-Critic`, `Micro-Level Models`, `Sequential Decision-Making`, `SPLICE Simulator`  
+- **Language(s):** English  
+- **Programming Language(s):** –  
+- **Methods and/or Models:** Micro-level claims reserving formulated as a Markov Decision Process with continuous actions; Soft Actor-Critic (SAC) agent updates outstanding claim liabilities over development; symmetric MAPE-based reward balancing terminal accuracy and stability of reserve revisions; rolling settlement validation for hyperparameter tuning; importance-weighted rewards to mitigate systematic underestimation of rare large claims; benchmarks against Chain Ladder and feed-forward neural networks on CAS and SPLICE synthetic datasets.  
+- **Notes:** Focuses on RBNS/IBNER micro-reserving; shows RL can learn from open claims and deliver competitive portfolio-level accuracy, particularly for immature cohorts that drive most of the liability.  
+- **Abstract:**  
+    Outstanding claim liabilities are revised repeatedly as claims develop, yet most modern reserving models are trained as one-shot predictors and typically learn only from settled claims. We formulate individual claims reserving as a claim-level Markov decision process in which an agent sequentially updates outstanding claim liability (OCL) estimates over development, using continuous actions and a reward design that balances accuracy with stable reserve revisions. A key advantage of this reinforcement learning (RL) approach is that it can learn from all observed claim trajectories, including claims that remain open at valuation, thereby avoiding the reduced sample size and selection effects inherent in supervised methods trained on ultimate outcomes only. We also introduce practical components needed for actuarial use – initialisation of new claims, temporally consistent tuning via a rolling-settlement scheme, and an importance-weighting mechanism to mitigate portfolio-level underestimation driven by the rarity of large claims. On CAS and SPLICE synthetic general insurance datasets, the proposed Soft Actor-Critic implementation delivers competitive claim-level accuracy and strong aggregate OCL performance, particularly for the immature claim segments that drive most of the liability.  
+<br>
+
+### On the Use of Case Estimate and Transactional Payment Data in Neural Networks for Individual Loss Reserving  
+- **Author:** Benjamin Avanzi, Matthew Lambrianidis, Greg Taylor, Bernard Wong  
+- **Date:** 2026-01-12  
+- **Resources:** [Article (arXiv)](https://arxiv.org/abs/2601.05274), [Code](https://github.com/agi-lab/reserving-RNN)  
+- **Type:** Case Study  
+- **Level:** 🟥🟥🟥 Expert  
+- **Field:** P&C  
+- **Primary Topics:** `Neural Networks`, `Claims Reserving`  
+- **Secondary Topics:** `Recurrent Neural Networks`, `Case Estimates`, `SPLICE Simulator`, `RBNS Reserves`  
+- **Language(s):** English  
+- **Programming Language(s):** Python, R  
+- **Methods and/or Models:** Feed-forward neural network on summary statistics of transactional payments vs. LSTM-based recurrent neural network on full payment and case-estimate time series; deterministic log-ultimate prediction with Duan bias correction; SPLICE-simulated portfolios at high complexity for benchmarking; extensive train/validation/test protocol with calendar-time splits to avoid leakage; comparison of model variants with and without case estimates.  
+- **Notes:** GitHub repository provides full reproducible pipeline (R for SynthETIC/SPLICE data generation, Python for modeling and evaluation), including multiple data complexities and ablation of inputs.  
+- **Abstract:**  
+    The use of neural networks trained on individual claims data has become increasingly popular in the actuarial reserving literature. We consider how to best input historical payment data in neural network models. Additionally, case estimates are also available in the format of a time series, and we extend our analysis to assessing their predictive power. In this paper, we compare a feed-forward neural network trained on summarised transactions to a recurrent neural network equipped to analyse a claim's entire payment history and/or case estimate development history. We draw conclusions from training and comparing the performance of the models on multiple, comparable highly complex datasets simulated from SPLICE (Avanzi, Taylor and Wang, 2023). We find evidence that case estimates will improve predictions significantly, but that equipping the neural network with memory only leads to meagre improvements. Although the case estimation process and quality will vary significantly between insurers, we provide a standardised methodology for assessing their value.  
+<br>
+
+
 2025
 ---
+<br>
+
+### Fine-Grained Mortality Forecasting with Deep Learning (MortFCNet)  
+- **Author:** Huiling Zheng, Hai Wang, Rui Zhu, Jing-Hao Xue  
+- **Date:** 2025-12-12  
+- **Resources:** [Article (Annals of Actuarial Science)](https://doi.org/10.1017/S1748499525100171), [Code](https://github.com/Icecream-maker/MortFCNet)  
+- **Type:** Case Study  
+- **Level:** 🟥🟥🟥 Expert  
+- **Field:** Life  
+- **Market/Geography:** France, Italy, Switzerland (NUTS-3 regions)  
+- **Primary Topics:** `Mortality Forecasting`, `Deep Learning`  
+- **Secondary Topics:** `Climate Risk`, `Multiple Populations`, `Time Series`, `XGBoost Benchmark`  
+- **Language(s):** English  
+- **Programming Language(s):** Python  
+- **Methods and/or Models:** MortFCNet architecture combining gated recurrent units (GRU) with fully connected layers to forecast weekly death rates using regional weather covariates; benchmarks against a Serfling-type seasonal baseline and XGBoost; experiments over 200+ NUTS-3 regions with train/validation/test splits; ablation studies removing feature engineering to test automatic representation learning.  
+- **Notes:** GitHub repository provides Python code to reproduce experiments, including data processing, model training, and evaluation scripts; suitable as a template for actuaries integrating environmental covariates into mortality projections.  
+- **Abstract:**  
+    Fine-grained mortality forecasting has gained momentum in actuarial research due to its ability to capture localized, short-term fluctuations in death rates. This paper introduces MortFCNet, a deep-learning method that predicts weekly death rates using region-specific weather inputs. Unlike traditional Serfling-based methods and gradient-boosting models that rely on predefined fixed Fourier terms and manual feature engineering, MortFCNet automatically learns patterns from raw time-series data without needing explicitly defined Fourier terms or manual feature engineering. Extensive experiments across over 200 NUTS-3 regions in France, Italy, and Switzerland demonstrate that MortFCNet consistently outperforms both a standard Serfling-type baseline and XGBoost in terms of predictive accuracy. Our ablation studies further confirm its ability to uncover complex relationships in the data without feature engineering. Moreover, this work underscores a new perspective on exploring deep learning for advancing fine-grained mortality forecasting.  
+<br>
+
+### Transformers-Based Least Square Monte Carlo for Solvency Calculation in Life Insurance  
+- **Author:** Francesca Perla, Salvatore Scognamiglio, Andrea Spadaro, Paolo Zanetti  
+- **Date:** 2025-09-30  
+- **Resources:** [Article (Insurance: Mathematics and Economics)](https://doi.org/10.1016/j.insmatheco.2025.103163)  
+- **Type:** Case Study  
+- **Level:** 🟥🟥🟥 Expert  
+- **Field:** Life  
+- **Primary Topics:** `Transformers`, `Solvency II`, `Least Squares Monte Carlo (LSMC)`  
+- **Secondary Topics:** `Solvency Capital Requirement (SCR)`, `Proxy Modelling`, `Explainable AI (SHAP)`  
+- **Language(s):** English  
+- **Programming Language(s):** –  
+- **Methods and/or Models:** Extension of the Least Squares Monte Carlo proxy approach for SCR to use transformer-based sequence models as the regression engine relating economic/scenario drivers to present value of future profits; comparison of transformer proxies to traditional polynomial bases on two life insurance portfolios; SHAP value analysis to interpret driver importance and satisfy regulatory expectations on explainability.  
+- **Notes:** Builds on prior work on LSMC-based internal model proxies, but replaces ad-hoc basis selection with learned representations from transformers; no official code link is provided in the paper.  
+- **Abstract:**  
+    The Solvency Capital Requirement (SCR), mandated by Solvency II, represents the capital insurers must hold to ensure solvency, calculated as the Value-at-Risk of the Net Asset Value at a 99.5% confidence level over a one-year period. While Nested Monte Carlo simulations are the gold standard for SCR calculation, they are highly resource-intensive. The Least Squares Monte Carlo (LSMC) method provides a more efficient alternative but faces challenges with high-dimensional data due to the curse of dimensionality. We introduce a novel extension of LSMC, incorporating advanced deep learning models, specifically Transformer models, which enhance traditional machine learning methods. This approach significantly improves the accuracy of approximating the complex relationship between insurance liabilities and risk factors, leading to a more accurate SCR calculation. Our extensive experiments on two insurance portfolios demonstrate the effectiveness of this transformer-based LSMC approach. Additionally, we show that Shapley values can be applied to achieve model explainability, which is crucial for regulatory compliance and for fostering the adoption of deep learning in the highly regulated insurance sector.  
+<br>
+
+### An Interpretable Deep Learning Model for General Insurance Pricing (Actuarial NAM)  
+- **Author:** Patrick J. Laub, Duc Tu Pho, Bernard Wong  
+- **Date:** 2025-09-10  
+- **Resources:** [Article (arXiv)](https://arxiv.org/abs/2509.08467)  
+- **Type:** Case Study  
+- **Level:** 🟥🟥🟥 Expert  
+- **Field:** P&C  
+- **Primary Topics:** `Interpretable Deep Learning`, `Pricing Models`  
+- **Secondary Topics:** `Neural Additive Models`, `Explainable AI`, `Monotonicity`, `Variable Selection`  
+- **Language(s):** English  
+- **Programming Language(s):** –  
+- **Methods and/or Models:** Actuarial Neural Additive Model (ANAM), an extension of Neural Additive Models tailored to pricing: separate subnetworks or monotone lattices per covariate and interaction; hard monotonicity constraints for selected rating factors; roughness penalties for smoothness; three-stage variable and interaction selection; marginal clarity penalties for identifiability between main and interaction effects; evaluation on synthetic data and a Belgian motor third-party liability portfolio against GLM/GAM, EBMs, LocalGLMnet, GBMs, and generic neural nets.  
+- **Notes:** Designed to meet actuarial interpretability requirements (transparent main/interaction effects, sparsity, monotonicity) while matching or exceeding black-box ML models on NLL, RMSE, and MAE; provides a concrete mathematical framework for “interpretable pricing models”.  
+- **Abstract:**  
+    This paper introduces the Actuarial Neural Additive Model, an inherently interpretable deep learning model for general insurance pricing that offers fully transparent and interpretable results while retaining the strong predictive power of neural networks. This model assigns a dedicated neural network (or subnetwork) to each individual covariate and pairwise interaction term to independently learn its impact on the modeled output while implementing various architectural constraints to allow for essential interpretability (e.g. sparsity) and practical requirements (e.g. smoothness, monotonicity) in insurance applications. The development of our model is grounded in a solid foundation, where we establish a concrete definition of interpretability within the insurance context, complemented by a rigorous mathematical framework. Comparisons in terms of prediction accuracy are made with traditional actuarial and state-of-the-art machine learning methods using both synthetic and real insurance datasets. The results show that the proposed model outperforms other methods in most cases while offering complete transparency in its internal logic, underscoring the strong interpretability and predictive capability.
 <br>
 
 ### AI Tools for Actuaries
@@ -96,6 +187,23 @@
 - **Notes:** Synthetic workers’ comp dataset (3,000 claims) combining tabular covariates with free-text descriptions; adding LLM-derived features reduced RMSE by 18.1% and raised R² from 0.267 → 0.508; MAE improved 23.88%.  
 - **Abstract/Summary (AI generated):**  
     This case study shows how to turn unstructured claim descriptions into predictive signals for ultimate incurred cost. An LLM extracts structured fields—injured body-part, causal action verb, and count of injured parts—which are then grouped and appended to a gradient-boosting baseline trained on tabular data. After a log transform on the target and hyperparameter tuning, the enhanced model outperforms the baseline across all metrics (e.g., RMSE −18.1%, R² 0.267→0.508). Feature importance indicates that both traditional variables (e.g., weekly wages, age) and LLM-derived features (e.g., body-part, cause, count) materially drive costs.  
+<br>
+
+### Adaptive Insurance Reserving with CVaR-Constrained Reinforcement Learning under Macroeconomic Regimes  
+- **Author:** Stella C. Dong, James R. Finlay  
+- **Date:** 2025-04-15  
+- **Resources:** [Article (arXiv)](https://arxiv.org/abs/2504.09396)  
+- **Type:** Case Study  
+- **Level:** 🟥🟥🟥 Expert  
+- **Field:** P&C (Reserving / Capital Management)  
+- **Primary Topics:** `Reinforcement Learning`, `Tail Risk`, `Solvency II`  
+- **Secondary Topics:** `Conditional Value-at-Risk (CVaR)`, `Proximal Policy Optimization (PPO)`, `Curriculum Learning`, `ORSA`  
+- **Language(s):** English  
+- **Programming Language(s):** Python  
+- **Methods and/or Models:** Custom Gymnasium environment for line-of-business reserving with normalized reserves, incurred losses, volatility indicators, macro-shock factors, and a solvency-violation memory trace; PPO agent trained under a four-level macroeconomic curriculum (Calm→Recession); CVaR-based penalty term estimated online from shortfall buffers; evaluation on CAS Workers’ Compensation and Other Liability triangles with metrics for reserve adequacy, CVaR₀.₉₅, capital efficiency, and solvency-violation rate.  
+- **Notes:** Implementation stack explicitly described (Python 3.11, Gymnasium, Stable-Baselines3), but no public code repository is referenced; the paper nonetheless gives enough detail to reimplement the environment and training loop.  
+- **Abstract:**  
+    This paper proposes a reinforcement learning (RL) framework for insurance reserving that integrates tail-risk sensitivity, macroeconomic regime modeling, and regulatory compliance. The reserving problem is formulated as a finite-horizon Markov Decision Process (MDP), in which reserve adjustments are optimized using Proximal Policy Optimization (PPO) subject to Conditional Value-at-Risk (CVaR) constraints. To enhance policy robustness across varying economic conditions, the agent is trained using a regime-aware curriculum that progressively increases volatility exposure. The reward structure penalizes reserve shortfall, capital inefficiency, and solvency floor violations, with design elements informed by Solvency II and Own Risk and Solvency Assessment (ORSA) frameworks. Empirical evaluations on two industry datasets--Workers' Compensation, and Other Liability--demonstrate that the RL-CVaR agent achieves superior performance relative to classical reserving methods across multiple criteria, including tail-risk control (CVaR), capital efficiency, and regulatory violation rate. The framework also accommodates fixed-shock stress testing and regime-stratified analysis, providing a principled and extensible approach to reserving under uncertainty.  
 <br>
 
 ### GLM for Brazilian Motor Insurance  
