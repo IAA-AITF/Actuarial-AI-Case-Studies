@@ -160,7 +160,7 @@
 ### GenAI-Driven Market Comparison  
 - **Author:** Simon Hatzesberger, Iris Nonneman  
 - **Date:** 2025-06-22  
-- **Resources:** [Article](https://arxiv.org/abs/2506.18942), [Notebook](https://github.com/IAA-AITF/Actuarial-AI-Case-Studies/tree/main/case-studies/2025/GenAI-driven_market_comparison)  
+- **Resources:** [Article](https://arxiv.org/abs/2506.18942), [Notebook](2025/GenAI-driven_market_comparison)  
 - **Type:** Case Study  
 - **Level:** 🟨🟨⬜ Advanced  
 - **Primary Topics:** `Retrieval-Augmented Generation (RAG)`, `Structured Outputs`  
@@ -374,6 +374,22 @@
 - **Notes:** Based on 6,051 trucks' 5-year extended warranty policies with 2,385 claims  
 - **Abstract/Summary:**  
     It is challenging to incorporate textual information from insurance datasets for predictive modeling. We propose a framework for claim frequency and loss severity modeling based on a new natural language processing (NLP) technique, named BERT to extract textual descriptive information from claim records. Predictions are obtained using artificial neural networks (NN) for regression. Additionally, the shape of the predictive distribution is estimated and outlier treatment with corresponding data analysis is discussed. This research shows that BERT-based NN model provides a great possibility to outperform other models without using textual information in accuracy and stability when suitable textual data are available for modeling. This research outlines an automated procedure of BERT-based frequency-severity predictions for insurance claims.
+<br>
+
+### Hands-on Machine Learning in R (Module 1)
+- **Author:** Katrien Antonio, Jonas Crevecoeur, Roel Henckaerts
+- **Date:** 2023-10-24
+- **Resources:** [GitHub Repository](https://github.com/katrienantonio/hands-on-machine-learning-R-module-1)
+- **Type:** Educational (Workshop)
+- **Level:** 🟩⬜⬜ Beginner (in ML, assumes basic R knowledge)
+- **Primary Topics:** `Machine Learning Foundations`, `Regression Models`, `Resampling Methods`, `Feature Pre-processing`, `Regularization`
+- **Secondary Topics:** `Model Accuracy`, `Loss Functions`, `Overfitting`, `Bias-Variance Trade-off`, `Data Splitting`, `caret`, `rsample`, `recipes`, `glmnet`, `mgcv`
+- **Language(s):** English
+- **Programming Language(s):** R
+- **Methods and/or Models:** Linear Models (`lm()`); Generalized Linear Models (`glm()`); Regularized GLMs (Ridge/LASSO via `glmnet()`); Generalized Additive Models (`mgcv()`); data splitting and resampling (using `caret` and `rsample`); feature pre-processing (using `recipes`).
+- **Notes:** This is Module 1 (of 3) from a workshop held in Oct-Nov 2023, organized by Actuarieel Instituut. It is designed to be hands-on, providing lecture sheets, R scripts, and R solutions, with a recommendation to use a provided Posit Cloud workspace.
+- **Abstract/Summary (AI generated):**
+    This repository contains the course materials for the first module of a hands-on workshop on machine learning in R. This introductory module focuses on establishing the core foundations of machine learning, covering essential concepts such as model accuracy, loss functions, the bias-variance trade-off, and data splitting. It then provides practical, hands-on applications for building and evaluating various regression models, including standard linear models (`lm`), Generalized Linear Models (`glm`), Generalized Additive Models (`mgcv`), and regularized models using `glmnet`. The module heavily utilizes modern R packages, emphasizing a `recipes`-based workflow for feature pre-processing and `rsample`/`caret` for resampling.
 <br>
 
 ### Actuarial Applications of Natural Language Processing Using Transformers: Case Studies for Using Text Features in an Actuarial Context  
