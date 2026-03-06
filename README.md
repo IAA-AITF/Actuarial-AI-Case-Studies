@@ -1,29 +1,68 @@
 # Actuarial AI Case Studies
 
-Welcome to the **Actuarial AI Case Studies** repository, created as part of the International Actuarial Association's (IAA) Task Force on Artificial Intelligence. This repository supports the Task Force's objective to curate and share practical applications of AI in actuarial work.
+[![License: MIT](https://img.shields.io/badge/Code-MIT-blue.svg)](LICENSE)
+[![License: CC BY 4.0](https://img.shields.io/badge/Content-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
+[![Contributions Welcome](https://img.shields.io/badge/Contributions-Welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-## 🎯 Purpose
+A curated collection of actuarial AI case studies, created by the [International Actuarial Association's (IAA)](https://www.actuaries.org) AI Task Force. This repository demonstrates how AI — encompassing machine learning, generative AI, agentic AI, and more — can be applied to real-world actuarial problems.
 
-The goal of this repository is to provide actuaries with practical insights through case studies that demonstrate how AI—encompassing machine learning, generative AI, agentic AI, and more—can be integrated into actuarial science practices. By showcasing these applications, we aim to support actuaries in adopting AI-driven solutions in their professional practice.
+---
 
-## 📁 Repository Structure
+## Featured Case Studies
 
-- **case-studies/**  
-  A collection of case studies illustrating AI case studies in actuarial contexts, including topics such as risk modeling, pricing, forecasting, and claims analysis.
+| Case Study | Topics | Level |
+|:-----------|:-------|:-----:|
+| [Car Damage Classification and Localization](case-studies/2025/car_damage_classification_and_localization/) | Fine-Tuning, Vision Models, Structured Outputs | Advanced |
+| [Data Analysis Multi-Agent System](case-studies/2025/data_analysis_multi-agent_system/) | Multi-Agent Systems, Agent Orchestration, Automated Reporting | Advanced |
+| [GenAI-Driven Market Comparison](case-studies/2025/GenAI-driven_market_comparison/) | RAG Pipelines, Structured Outputs, Document Analysis | Advanced |
+| [Claim Cost Prediction with LLM-Extracted Features](case-studies/2025/claim_cost_prediction_with_LLM-extracted_features/) | LLMs, Feature Engineering, Claims Severity | Advanced |
 
-- **templates/**  
-  Templates for creating new AI case studies. Detailed instructions on how to hand in your case study contributions are provided in the [CONTRIBUTING.md](CONTRIBUTING.md) file.
+Browse the full catalog of case studies (including external references) in the [Case Studies Directory](case-studies/).
 
-## 🤝 Contributing
+---
 
-We welcome contributions from actuaries, data scientists, and AI practitioners. Please review the [CONTRIBUTING.md](CONTRIBUTING.md) file for details on how to submit your case studies. Alternatively, you can also [contact us via email](mailto:simon.hatzesberger@gmail.com) for any questions or suggestions.
+## Repository Structure
 
-## ⚖️ License
+```
+Actuarial-AI-Case-Studies/
+├── case-studies/          # Case studies organized by year
+│   └── 2025/              # Notebooks, data, and documentation
+├── templates/             # Templates for new case study submissions
+├── CONTRIBUTING.md        # Contribution guidelines
+└── LICENSE                # MIT (code) + CC BY 4.0 (content)
+```
 
-This repository contains both original content and references to third-party materials.
+---
 
-- Textual materials (such as case studies, articles, and documentation) developed by the IAA Task Force on Artificial Intelligence are licensed under the [Creative Commons Attribution 4.0 International License (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/).
-- Software and code (including scripts and Jupyter notebooks) developed within this repository are licensed under the [MIT License](LICENSE).
-- Third-party materials are distributed under their respective licenses, as indicated.
+## Getting Started
 
-For questions or suggestions, feel free to open an issue or [contact us via email](mailto:simon.hatzesberger@gmail.com).
+Each case study is self-contained in its own directory with a `README.md`, a Jupyter notebook (`.ipynb`), and a `requirements.txt`. To run a case study locally:
+
+```bash
+git clone https://github.com/IAA-AITF/Actuarial-AI-Case-Studies.git
+cd Actuarial-AI-Case-Studies/case-studies/2025/<case-study-name>
+pip install -r requirements.txt
+jupyter notebook <notebook-name>.ipynb
+```
+
+Alternatively, open the `.ipynb` files directly in [Google Colab](https://colab.research.google.com/) or [Kaggle](https://www.kaggle.com/).
+
+---
+
+## Contributing
+
+We welcome contributions from actuaries, data scientists, and AI practitioners. Please review the [CONTRIBUTING.md](CONTRIBUTING.md) for submission guidelines, or use one of the provided [templates](templates/) to get started.
+
+---
+
+## License
+
+- **Content** (case studies, articles, documentation): [Creative Commons Attribution 4.0 (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/)
+- **Code** (scripts, Jupyter notebooks): [MIT License](LICENSE)
+- **Third-party materials**: Distributed under their respective licenses, as indicated.
+
+---
+
+## Contact
+
+For questions or suggestions, [open an issue](https://github.com/IAA-AITF/Actuarial-AI-Case-Studies/issues) or [contact us via email](mailto:simon.hatzesberger@gmail.com).

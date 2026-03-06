@@ -1,5 +1,31 @@
-2026
+# Case Study Catalog
+
+A curated and continuously growing collection of AI case studies relevant to actuarial science. Entries include both hosted notebooks (with direct links to code) and references to external publications and resources.
+
+**Jump to:** [2026](#2026) | [2025](#2025) | [2024](#2024) | [2023](#2023) | [2022](#2022) | [2021 and earlier](#2021-and-earlier)
+
+<details>
+<summary><strong>Legend — Metadata Fields</strong></summary>
+
+<br>
+
+| Field | Description |
+|:------|:------------|
+| **Author** | Original author(s) of the case study or publication. |
+| **Date** | Publication or release date (ISO 8601: `YYYY-MM-DD`). |
+| **Resources** | Direct links to articles, code repositories, datasets, etc. |
+| **Type** | Case Study, Tutorial, White Paper, or Educational material. |
+| **Level** | Difficulty: &#x1F7E9;&#x1F7E9;&#x2B1C; Beginner &#x2022; &#x1F7E8;&#x1F7E8;&#x2B1C; Advanced &#x2022; &#x1F7E5;&#x1F7E5;&#x1F7E5; Expert |
+| **Field** | Actuarial domain: Life, P&C (Property & Casualty), Health, General, etc. |
+| **Primary / Secondary Topics** | Key themes and methods covered. |
+| **Programming Language(s)** | Python, R, or other languages used. |
+| **Methods and/or Models** | Specific algorithms, architectures, or frameworks applied. |
+
+</details>
+
 ---
+
+## 2026
 <br>
 
 ### Reinforcement Learning for Micro-Level Claims Reserving  
@@ -37,8 +63,9 @@
 <br>
 
 
-2025
 ---
+
+## 2025
 <br>
 
 ### Fine-Grained Mortality Forecasting with Deep Learning (MortFCNet)  
@@ -224,8 +251,9 @@
     The objective of this project is to understand the factors that influenced the claims performance of the insurance portfolio, particularly regarding claim frequency and severity, and the consequent determination of insurance premiums using common pricing techniques.
 <br>
 
-2024
 ---
+
+## 2024
 <br>
 
 ### Case Study 1: Parsing Claims Descriptions  
@@ -356,8 +384,9 @@
     What added value can machine learning methods offer for insurance pricing? To answer this question, we model claim frequencies using a large French auto liability insurance dataset and then compare the forecast results. In addition to the methods used in the first version of this case study—generalized linear models (GLM), deep neural networks, and decision tree-based model ensembles (eXtreme Gradient Boosting, "XGBoost")—we have included regularized generalized linear models (LASSO and Ridge), generalized additive models (GAM), and two other modern representatives from the class of decision tree-based model ensembles ("LightGBM" and "CatBoost"). We also incorporate the integration of classical models into neural networks as shown by Schelldorfer and Wüthrich (2019), along with a preceding dimensionality reduction. Additionally, we explore issues related to tariff structure and model stability, perform cross-validation, and address the interpretability of complex decision tree-based methods using SHAP. The findings reveal that both deep neural networks and decision tree-based model ensembles can at least enhance classical models. Among the classical models, the generalized additive model proves superior but does not reach the predictive capabilities of the decision tree-based model ensembles. Moreover, the decision tree-based model ensembles "XGBoost" and "LightGBM" show themselves to be vastly superior predictive models even when considering the tariff structure in the examined dataset.
 <br>
 
-2023
 ---
+
+## 2023
 <br>
 
 ### Framework of BERT-Based NLP Models for Frequency and Severity in Insurance Claims  
@@ -408,8 +437,9 @@
     This tutorial gives an overview of SHAP (SHapley Additive exPlanation), one of the most commonly used techniques for examining a black-box machine learning (ML) model. Besides providing the necessary game theoretic background, we show how typical SHAP analyses are performed and used to gain insights about the model. The methods are illustrated on a simulated insurance data set of car claim frequencies using different ML models and different SHAP algorithms.
 <br>
 
-2022
 ---
+
+## 2022
 <br>
 
 ### Avoiding Unfair Bias in Insurance Applications of AI Models  
@@ -445,8 +475,9 @@
     This document is one of a suite of documents published as an output of the Monetary Authority of Singapore (MAS) Veritas Phase 2 project. Its purpose is to illustrate implementation of the Fairness, Ethics, Accountability and Transparency (FEAT) Principles Assessment Methodology for Financial Institutions on selected use cases and it fits alongside the published documents as highlighted in the diagram below.
 <br>
 
-2021 and earlier
 ---
+
+## 2021 and earlier
 <br>
 
 ### Fraud detection with Neural Networks  
@@ -499,6 +530,6 @@
     This tutorial studies unsupervised learning methods. Unsupervised learning methods are techniques that aim at reducing the dimension of data (covariables, features), cluster cases with similar features, and graphically illustrate high dimensional data. These techniques do not consider response variables, but they are solely based on the features themselves by studying incorporated similarities. For this reason, these methods belong to the field of unsupervised learning methods. The methods studied in this tutorial comprise principal components analysis (PCA) and bottleneck neural networks (BNNs) for dimension reduction, K-means clustering, K-medoids clustering, partitioning around medoids (PAM) algorithm and clustering with Gaussian mixture models (GMMs) for clustering, and variational autoencoder (VAE), t-distributed stochastic neighbor embedding (t-SNE), uniform manifold approximation and projection (UMAP), self-organizing maps (SOM) and Kohonen maps for visualizing high dimensional data.
 <br>
 
-*Notes:*
-- *The dates are formatted in ISO 8601 standard (*`YYYY-MM-DD`*).*
-- *The "Resource(s)" column provides direct links to articles, code repositories, etc.*
+---
+
+*Want to add a case study to this catalog? See the [Contribution Guidelines](../CONTRIBUTING.md).*

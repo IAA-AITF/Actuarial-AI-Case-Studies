@@ -1,101 +1,259 @@
 # Contributing to Actuarial AI Case Studies
 
-Thank you for your interest in contributing to the **Actuarial AI Case Studies** repository! We welcome contributions from actuaries, data scientists, AI practitioners, and anyone interested in showcasing how Artificial Intelligence can be applied to actuarial work.
+Thank you for your interest in contributing! This guide walks you through the entire process step by step. **No prior GitHub experience is required** — just follow the instructions below.
 
-## How to Contribute
-
-### 1. Familiarize Yourself with the Repository
-
-- **Review the README:** This repository curates real-world case studies that highlight the use of AI in actuarial science.
-- **Templates:** Before you start, please review the [templates](./templates/) provided. They are designed to help structure your submission and ensure consistency across contributions.
-
-### 2. Choosing Your Contribution
-
-You can contribute in two main ways:
-- **Case Studies:** Submit detailed case studies that explore various applications of AI in areas like risk modeling, pricing, forecasting, claims analysis, and more.
-- **Templates:** Suggest updates or improvements to the case study templates to help future contributors. If you have a new idea for structuring content, please propose it via an issue or direct contact.
-
-### 3. Making a Submission
-
-#### i. As a Member of the Broader Actuarial Community
-
-- **Fork & Clone:** Fork this repository and clone it to your local machine.
-- **Create a Branch:** Create a new branch off `dev` for your contribution. We recommend using a descriptive/unique branch name (e.g. `case_study_wilson` for adding a case study written from some author Wilson).
-- **Add Your Contribution:** 
-  - Place your case study in the `case-studies/` folder. Ensure your submission follows the guidelines and the template provided.
-  - If submitting template improvements or suggestions, add your changes or new files in the `templates/` folder.
-- **Testing Your Contribution:** Review your changes locally to ensure they display correctly and that all content aligns with our style guidelines.
-
-#### ii. As a Member of the Workstream Core Group
-
-You can fork a repo and submit new work via Pull Request as above, but the following workflow should be simpler as it allows you to add to the official code base directly rather than forking & opening PRs.
-
-##### a. Directly in GitHub GUI
-
-- **Branch from `dev`:** Create a new branch from the GUI by
-  - Navigating from the branch dropdown > "View all branches" > (green button) "New Branch"
-  - Choose `dev` as the source and assign a descriptive branch name
-  - Click "Create new branch"
-- **Ensure you are on the new branch:** After creating the new branch you should see it in the list of all branches. Click on it to return to the home page/README for the new branch. The content will be identical to the version on `dev`. You can also switch between branches from this page by using the branch selector drop down (top left) - ensure that it shows you are currently viewing your new branch.
-- **Add Your Contribution:** 
-  - Navigate the file directory by clicking on any sub-directory
-  - Files can be uploaded through the web GUI from the top right: Add file > Upload files
-  - Place your case study in the `case-studies/` folder. Ensure your submission follows the guidelines and the template provided
-  - You can also edit the README.md to add your case study to the list:
-    - Click on README.md
-    - At the top right you will see a pencil icon - Click this or the drop down to "Edit in place"
-    - Add the relevant info following the same syntax you see for other list items - entries in the table are pipe ("|") -delimited; hyperlinks use the syntax `[Text to display](url)`, etc.
-    - This is known as [Markdown syntax](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) with plenty of content available online if you need
-- **Commit your Work (to your `feature_branch`)**
-    - Changes must be committed to the git repo - this is like saving your work.
-    - Top right of editor > "Commit changes"
-    - Keep the commit message short yet descriptive. The default commit message may be "Update README.md" - you might add "Add case study by Wilson et. al. to table" in the extended description.
-    - "Commit directly to the [`feature_branch`]" is correct assuming you have first created a new branch off dev; if not, choosing the second option would both create the new branch now and add this commit to it.
-    - "Commit Changes" (green button) to finalize the commit to your `feature_branch`
-- **Merge `feature_branch` to `dev`**
-    - Now your feature branch will be 1 or more commits ahead of `dev` - when you have completed all work on your new feature/updates, your committed work must be merged to `dev`
-    - When using the GitHUB GUI the only way to merge branches is to first open a PR and then complete the merge, closing the PR
-    - On the repo home page, with your feature branch selected, click "Compare & Pull Request" or "Contribute" > "Open Pull Request"
-    - Title the PR and briefly describe what is new
-    - Click "Create Pull Request" (green button)
-    - Select the type of Merge to perform
-      - Generally, Squash & Merge will work in all cases and is preferred - this reduces multiple commits from the "source" branch (`feature_branch`) to a single commit which will be placed on the "target branch" (`dev`)
-      - "Create a Merge Commit" will bring all of the commits from the source branch onto the target branch, plus an additional "Merge commit". This maintains the full history of changes committed to your feature branch on the target branch - this is almost always too verbose for the target branch log. 10 commits created in the course of developing a single new feature should be reduced to a single commit with a more concise message describing the newly added feature.
-        - If you only created a single new commit on your feature branch, then the "Merge Commit" option will add 2 commits to the target branch - again, only 1 is necessary. This option is used by developer teams to preserve a full history of actions including the fact that a merge was performed. Using a Squash Merge does not preserve in history that a merge event occurred. Our workflow is designed such that every commit on the dev branch implies that a merge took place, as no work is performed directly on `dev` but instead is performed on feature branches.
-  - Click the green button to execute the merge and close the PR
-    - This adds a single commit to the `dev` branch
-    - The new work first committed to `feature_branch` will now be visible in the file directory of the `dev` branch
-
-##### b. Command Line
-
-### 4. Submit a Pull Request
-
-- **Write a Clear Description:** In your pull request, provide a brief explanation of your changes and the rationale behind them.
-- **Reference Issues:** If your contribution addresses an open issue, please reference it in your pull request comments.
-- **Review Process:** Once submitted, a maintainer will review your contribution. They may request changes or provide feedback to ensure the submission fits with the repository's goals.
-
-### 5. Merge your branch back into `dev`
-
-- After opening the pull request, you will likely see there are no merge conflicts to resolve. This means nobody has added commits onto the `dev` branch since you merged your feature branch off it.
-- Click the green button "Merge pull request"
-- Choose "Squash and merge" - this will reduce possible multiple commits added on your feature branch down to one commit merged into the `dev` branch
-- Your commit message will summarize the changes made over any new commits on the feature branch. For example, if you "Added case study document", "Updated README", "Fixed bug found in one/of/the/files.R", and "Minor grammar edits" over 4 separate commits, we do not need to preserve this full commit history in the log for dev. Your single squash-merge commit message will more concisely log that you "Added Wilson Case Study with README updates".
-
-## Guidelines for Submissions
-
-- **Clarity & Accuracy:** Ensure all case studies are clear, well-documented, and accurate. Provide data sources and references when applicable.
-- **Reproducibility:** Where possible, include code snippets, detailed methodologies, and steps to reproduce the results presented in your case study.
-- **Formatting:** Follow the Markdown style and structure outlined in the provided templates to maintain consistency.
-- **Licensing:** By contributing, you agree that your submissions will be made available under the [MIT License](./LICENSE).
-
-## Additional Help
-
-If you have questions or need assistance with your contribution, feel free to:
-- **Open an Issue:** Use the GitHub issue tracker to ask questions or seek guidance.
-- **Contact Directly:** You can also reach out via [email](mailto:simon.hatzesberger@gmail.com).
-
-Thank you for your contribution and for helping us advance the application of AI in actuarial science!
+> [!NOTE]
+> **What is GitHub?** GitHub is a platform for collaboratively managing and sharing files — similar to a shared drive, but with built-in version control. Every change is tracked, so nothing is ever lost. This repository uses GitHub to collect and publish actuarial AI case studies.
 
 ---
 
-*This document may be updated as needed. Please refer to it regularly to ensure compliance with the latest guidelines.*
+## Prerequisites
+
+Before you begin, make sure you have:
+
+1. **A GitHub account** — Sign up for free at [github.com](https://github.com/signup) if you do not have one yet.
+2. **Write access** to this repository — If you are part of the IAA AI Task Force, request access from a maintainer by [sending an email](mailto:simon.hatzesberger@gmail.com). Your access is tied to your GitHub account.
+
+> [!IMPORTANT]
+> You must be **logged in** to your GitHub account to create branches and edit files. If you do not see editing options (e.g., the **"New branch"** button), you are either not logged in or your access has not been set up yet.
+
+---
+
+## What You Can Contribute
+
+- **Catalog entries** — Add references to published papers, articles, or code repositories to the [Case Study Catalog](./case-studies/). This is the most common contribution and is covered in detail in **Part A** below.
+- **Full case studies** — Submit a complete, self-contained case study with a Jupyter notebook, data, and documentation. See **Part B** below.
+- **Templates** — Propose improvements to the [case study templates](./templates/). Open an [issue](https://github.com/IAA-AITF/Actuarial-AI-Case-Studies/issues) or [contact us](mailto:simon.hatzesberger@gmail.com) with your suggestion.
+
+---
+
+## Part A — Adding a Case Study Entry to the Catalog
+
+This is the most common workflow. You will add an entry to the catalog file (`case-studies/README.md`) that describes a case study and links to its resources (article, code, dataset, etc.).
+
+### Step 1: Open the Repository
+
+1. **Navigate** to the repository: [github.com/IAA-AITF/Actuarial-AI-Case-Studies](https://github.com/IAA-AITF/Actuarial-AI-Case-Studies)
+2. **Confirm you are logged in** — your profile picture should be visible in the top-right corner of the page. If you see a **"Sign in"** button instead, log in first.
+3. You will see the repository's main page with a file listing and a README displayed below it. At the top-left, a dropdown shows the current branch (likely **main**).
+
+### Step 2: Create Your Working Branch
+
+You will create a personal copy of the `dev` branch to work on. This keeps your changes separate until they are ready to be merged.
+
+> [!NOTE]
+> **What is a branch?** Think of a branch as your own private workspace. You can make changes freely without affecting anyone else's work. Once you are done, you merge your changes back into the shared `dev` branch.
+
+1. **Click** the branch dropdown (top-left of the page, it likely says **"main"**).
+2. **Click** **"View all branches"** at the bottom of the dropdown.
+3. On the Branches page, **click** the green **"New branch"** button.
+4. A dialog will appear:
+   - **New branch name** — Choose a short, descriptive name with no spaces. Use your name or initials so others can identify it (e.g., `entries_wilson`, `catalog_smith`).
+   - **Source** — Make sure **`dev`** is selected as the source.
+5. **Click** **"Create new branch"**.
+
+> [!IMPORTANT]
+> Always select **`dev`** as the source — not `main`. The `dev` branch contains the latest working version. The `main` branch is only updated by maintainers.
+
+> [!TIP]
+> You will see your new branch listed on the Branches page. You can always return to this page to find or switch between branches.
+
+### Step 3: Switch to Your Branch
+
+1. **Navigate** back to the repository's main page by clicking the repository name (**"Actuarial-AI-Case-Studies"**) at the top.
+2. **Click** the branch dropdown (top-left). It might still show **main**.
+3. **Select** your newly created branch from the list.
+4. **Verify** that the branch dropdown now displays your branch name.
+
+> [!WARNING]
+> **Always confirm you are on your own branch before making any edits.** If the branch dropdown shows `main` or `dev`, you are not on your branch. Any changes made directly to `dev` or `main` will affect everyone. Switch to your branch first.
+
+### Step 4: Open the Catalog File for Editing
+
+1. **Click** the **`case-studies/`** folder in the file listing.
+2. **Click** the **`README.md`** file inside that folder. This is the catalog file — it contains all case study entries, organized by year.
+3. **Click** the **pencil icon** (top-right of the file content area) to enter edit mode. You can also click the dropdown arrow next to the pencil and select **"Edit in place"**.
+
+You are now in the file editor. You will see two tabs at the top: **Edit** and **Preview**.
+
+> [!NOTE]
+> **What is this file?** The `case-studies/README.md` is the catalog of all case studies in this repository. Each entry describes a case study and links to its resources. Entries are grouped by year, with the most recent year at the top.
+
+### Step 5: Add Your Entry
+
+1. **Scroll** to the correct year section in the file (e.g., the `## 2026` section). Entries within a year should be ordered by date (most recent first).
+2. **Copy** the template below and **paste** it at the appropriate position in the file.
+3. **Fill in** each field with the details of your case study.
+
+**Entry template** — copy and paste this, then replace the placeholder values:
+
+````markdown
+### Title of the Case Study
+- **Author:** Author Name(s)
+- **Date:** YYYY-MM-DD
+- **Resources:** [Article](https://link-to-article), [Code](https://link-to-code)
+- **Type:** Case Study
+- **Level:** 🟩🟩⬜ Beginner
+- **Field:** P&C
+- **Primary Topics:** `Topic 1`, `Topic 2`
+- **Secondary Topics:** `Topic 1`, `Topic 2`
+- **Language(s):** English
+- **Programming Language(s):** Python
+- **Methods and/or Models:** Brief description of the methods used.
+- **Notes:** Additional context, or – if none.
+- **Abstract/Summary:**
+    Paste the abstract or a brief summary here.
+<br>
+````
+
+> [!TIP]
+> **How to format links:** Use the syntax `[Display Text](https://url)`. For example: `[Article (arXiv)](https://arxiv.org/abs/1234.56789)`. Multiple resources are separated by commas.
+
+> [!TIP]
+> **Check your formatting** by switching to the **Preview** tab at the top of the editor. This shows you exactly how the entry will look on the published page. Switch back to **Edit** to continue making changes.
+
+**Field reference:**
+
+| Field | Accepted values |
+|:------|:----------------|
+| **Type** | `Case Study`, `Tutorial`, `White Paper`, `Educational` |
+| **Level** | `🟩🟩⬜ Beginner`, `🟨🟨⬜ Advanced`, `🟥🟥🟥 Expert` |
+| **Field** | `Life`, `P&C`, `Health`, `General` |
+| **Date** | ISO 8601 format: `YYYY-MM-DD` (e.g., `2025-06-22`) |
+| **Programming Language(s)** | `Python`, `R`, or `–` if not applicable |
+
+> [!TIP]
+> **When in doubt, look at existing entries** in the same file. They show the exact syntax and formatting for every field.
+
+### Step 6: Save Your Work (Commit)
+
+Once you have added or edited your entry:
+
+1. **Click** the green **"Commit changes..."** button (top-right of the editor).
+2. A dialog will appear:
+   - **Commit message** — Write a short description of what you changed (e.g., "Add Smith et al. reinforcement learning entry").
+   - **Extended description** — Optional. You can add more detail if needed.
+   - **Commit directly to `[your-branch-name]`** — This option should already be selected. Confirm it shows your branch name.
+3. **Click** the green **"Commit changes"** button in the dialog.
+
+> [!NOTE]
+> **What is a commit?** A commit is like saving your work. Each commit creates a snapshot of your changes. You can make multiple commits — for example, one for each entry you add.
+
+> [!IMPORTANT]
+> Make sure the dialog says **"Commit directly to `[your-branch-name]`"**, not to `dev` or `main`. If it shows the wrong branch, cancel and switch to your branch first (see Step 3).
+
+> [!TIP]
+> **Save often.** You can commit after each entry you add. If something goes wrong, you can always go back to a previous commit.
+
+### Step 7: Review Your Changes
+
+1. After committing, you are returned to the file view. **Click** the **Preview** view to review how your entries will appear.
+2. **Check** that all links work by clicking them.
+3. **Verify** that the formatting looks correct — bold text, bullet points, and headings should all render properly.
+
+If you spot errors, repeat Steps 4–6 to make corrections.
+
+### Step 8: Create a Pull Request
+
+When you are satisfied with your changes, you need to propose merging them into the shared `dev` branch. This is done through a **pull request**.
+
+> [!NOTE]
+> **What is a pull request?** A pull request (PR) is a formal proposal to merge your changes into another branch. It lets others review what you changed before the changes go live.
+
+1. **Navigate** to the repository's main page.
+2. If you recently pushed commits, GitHub will show a yellow banner at the top saying **"[your-branch] had recent pushes"** with a **"Compare & pull request"** button. **Click** it.
+   - If you do not see this banner: **click** the **"Pull requests"** tab at the top of the page, then **click** the green **"New pull request"** button. Select `dev` as the **base** branch and your branch as the **compare** branch.
+3. On the pull request form:
+   - **Title** — Write a short title (e.g., "Add 3 new case study entries").
+   - **Description** — Briefly describe what you added or changed.
+   - **Base branch** — Confirm it says **`dev`** (not `main`).
+4. **Click** the green **"Create pull request"** button.
+
+### Step 9: Merge the Pull Request
+
+After creating the pull request, you can merge it yourself if there are no conflicts.
+
+1. On the pull request page, **scroll down**. You should see a green message: **"This branch has no conflicts with the base branch."**
+2. **Click** the green **"Merge pull request"** button.
+3. **Click** **"Confirm merge"**.
+4. You should see a success message: **"Pull request successfully merged and closed."**
+
+> [!WARNING]
+> If you see a message about **merge conflicts**, do not force the merge. This means someone else has edited the same part of the file. Contact a maintainer for help resolving the conflict.
+
+> [!TIP]
+> After merging, GitHub may offer to **delete your branch**. You can safely delete it — the branch is no longer needed once its changes have been merged.
+
+### Step 10: Verify Your Contribution
+
+1. **Navigate** back to the repository's main page.
+2. **Switch** to the **`dev`** branch using the branch dropdown.
+3. **Open** the `case-studies/` folder and click `README.md`.
+4. **Confirm** that your entries appear in the catalog.
+
+Your contribution is now part of the shared `dev` branch. A maintainer will periodically transfer approved changes from `dev` to `main`.
+
+---
+
+## Part B — Submitting a Full Case Study (with Notebook and Files)
+
+If you are contributing a complete, runnable case study (not just a catalog entry), follow the same branch workflow as Part A, with these additional steps:
+
+### Preparing Your Files
+
+Your case study directory should include:
+
+| File | Description |
+|:-----|:------------|
+| `your_case_study.ipynb` | Jupyter notebook with code, narrative, and visualizations |
+| `your_case_study.html` | Rendered HTML export of the notebook |
+| `requirements.txt` | Python dependencies with version numbers |
+| `README.md` | Description, getting started instructions, and key takeaways |
+| Any additional data files | Datasets, models, or configuration files |
+
+> [!TIP]
+> Use the provided [templates](./templates/) as a starting point. They include the recommended structure and formatting for both Jupyter Notebook and RMarkdown case studies.
+
+### Uploading Your Files
+
+1. **Create a branch** from `dev` (see Part A, Steps 2–3).
+2. **Navigate** to the `case-studies/` folder, then into the appropriate year folder (e.g., `2025/`).
+3. **Click** **"Add file"** (top-right) and then **"Upload files"**.
+4. **Drag and drop** your case study folder or select files from your computer.
+5. **Commit** the uploaded files to your branch (see Part A, Step 6).
+6. **Add a catalog entry** to `case-studies/README.md` following the instructions in Part A, Steps 4–6.
+7. **Create a pull request** and **merge** (Part A, Steps 8–9).
+
+---
+
+## Quick Reference: Markdown Syntax
+
+The catalog file uses [Markdown](https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax), a simple formatting language. Here are the patterns you will need:
+
+| What you type | What it produces |
+|:--------------|:-----------------|
+| `**bold text**` | **bold text** |
+| `` `code` `` | `code` |
+| `[Link Text](https://url)` | [Link Text](https://url) |
+| `### Heading` | A heading (level 3) |
+| `- List item` | A bullet point |
+
+---
+
+## Guidelines for Submissions
+
+- **Clarity & Accuracy** — Ensure case studies are well-documented with data sources and references where applicable.
+- **Reproducibility** — Include code, detailed methodologies, and steps to reproduce results.
+- **Formatting** — Follow the Markdown structure outlined in the provided [templates](./templates/) and existing catalog entries.
+- **Licensing** — By contributing, you agree that your submissions will be available under the [MIT License](./LICENSE) (code) and [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) (content).
+
+---
+
+## Need Help?
+
+- [Open an issue](https://github.com/IAA-AITF/Actuarial-AI-Case-Studies/issues) on the GitHub issue tracker
+- [Contact us via email](mailto:simon.hatzesberger@gmail.com)
+
+---
+
+*This document may be updated. Please refer to it before each submission.*
