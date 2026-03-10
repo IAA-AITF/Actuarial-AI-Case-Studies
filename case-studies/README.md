@@ -216,6 +216,23 @@ A curated and continuously growing collection of AI case studies relevant to act
     This case study shows how to turn unstructured claim descriptions into predictive signals for ultimate incurred cost. An LLM extracts structured fields—injured body-part, causal action verb, and count of injured parts—which are then grouped and appended to a gradient-boosting baseline trained on tabular data. After a log transform on the target and hyperparameter tuning, the enhanced model outperforms the baseline across all metrics (e.g., RMSE −18.1%, R² 0.267→0.508). Feature importance indicates that both traditional variables (e.g., weekly wages, age) and LLM-derived features (e.g., body-part, cause, count) materially drive costs.  
 <br>
 
+### A Machine Learning Approach Based on Survival Analysis for IBNR Frequencies in Non-Life Reserving (ReSurv)  
+- **Author:** Munir Hiabu, Emil Hofman, Gabriele Pittarello  
+- **Date:** 2025-04-21  
+- **Resources:** [Article (arXiv)](https://arxiv.org/abs/2312.14549), [Article (CAS E-Forum)](https://eforum.casact.org/article/131925-claim-counts-prediction-using-individual-data-with-resurv), [Code (GitHub)](https://github.com/edhofman/ReSurv), [R Package (CRAN)](https://cran.r-project.org/package=ReSurv), [Replication Vignette](https://cran.rstudio.com/web/packages/ReSurv/vignettes/Manuscript_replication_material.html)  
+- **Type:** Case Study  
+- **Level:** 🟥🟥🟥 Expert  
+- **Field:** P&C (Reserving)  
+- **Primary Topics:** `Claims Reserving`, `IBNR`, `Survival Analysis`  
+- **Secondary Topics:** `Neural Networks`, `XGBoost`, `Cox Proportional Hazards`, `Chain Ladder`, `Individual Claims Data`  
+- **Language(s):** English  
+- **Programming Language(s):** R  
+- **Methods and/or Models:** Machine learning models (neural networks, XGBoost, Cox proportional hazard) applied to individual claim reporting delay data within a survival analysis framework; conversion of individual-level hazard predictions into traditional development factors compatible with the chain-ladder method; cross-validation using the Strictly Consistent Ranked Probability Score (SCRPS); full manuscript replication vignettes on both real and simulated datasets; published as an R package on CRAN.  
+- **Notes:** Claims reserving is arguably the most critical actuarial function, and this case study uniquely bridges modern ML models with the chain-ladder development factors that reserving actuaries rely on daily. The CRAN publication ensures code quality, documentation, and reproducibility. The package includes vignettes that serve as fully self-contained case studies with step-by-step instructions.  
+- **Abstract:**  
+    We introduce new approaches for forecasting IBNR (Incurred But Not Reported) frequencies by leveraging individual claims data, which includes accident date, reporting delay, and possibly additional features for every reported claim. A key element of our proposal involves computing development factors, which may be influenced by both the accident date and other features. These development factors serve as the basis for predictions. While we assume close to continuous observations of accident date and reporting delay, the development factors can be expressed at any level of granularity, such as months, quarters, or year and predictions across different granularity levels exhibit coherence. The calculation of development factors relies on the estimation of a hazard function in reverse development time, and we present three distinct methods for estimating this function: the Cox proportional hazard model, a feed-forward neural network, and eXtreme gradient boosting. In all three cases, estimation is based on the same partial likelihood that accommodates left truncation and ties in the data. While the first case is a semi-parametric model that assumes in parts a log linear structure, the two machine learning approaches only assume that the baseline and the other factors are multiplicatively separable. Through an extensive simulation study and real-world data application, our approach demonstrates promising results.  
+<br>
+
 ### Adaptive Insurance Reserving with CVaR-Constrained Reinforcement Learning under Macroeconomic Regimes  
 - **Author:** Stella C. Dong, James R. Finlay  
 - **Date:** 2025-04-15  
@@ -336,6 +353,24 @@ A curated and continuously growing collection of AI case studies relevant to act
     Currently, there is a lot of research in the field of neural networks for non-life insurance pricing. The usual goal is to improve the predictive power via neural networks while building upon the generalized linear model, which is the current industry standard. Our paper contributes to this current journey via novel methods to enhance actuarial non-life models with transformer models for tabular data. We build here upon the foundation laid out by the combined actuarial neural network as well as the localGLMnet and enhance those models via the feature tokenizer transformer. The manuscript demonstrates the performance of the proposed methods on a real-world claim frequency dataset and compares them with several benchmark models such as generalized linear models, feed-forward neural networks, combined actuarial neural networks, LocalGLMnet, and pure feature tokenizer transformer. The paper shows that the new methods can achieve better results than the benchmark models while preserving certain generalized linear model advantages. The paper also discusses the practical implications and challenges of applying transformer models in actuarial settings.
 <br>
 
+### Insurance, Biases, Discrimination and Fairness (InsurFair)  
+- **Author:** Arthur Charpentier  
+- **Date:** 2024-05-14  
+- **Resources:** [Book (Springer)](https://link.springer.com/book/10.1007/978-3-031-49783-4), [Code](https://github.com/freakonometrics/InsurFair), [Related Paper (arXiv)](https://arxiv.org/abs/2202.12008)  
+- **Type:** Educational  
+- **Level:** 🟨🟨⬜ Advanced  
+- **Field:** P&C, General  
+- **Primary Topics:** `Algorithmic Fairness`, `Bias Detection`, `Discrimination-Free Pricing`  
+- **Secondary Topics:** `Causal Inference`, `Proxy Discrimination`, `Adversarial Debiasing`, `Insurance Regulation`, `Ethics`  
+- **Language(s):** English  
+- **Programming Language(s):** R  
+- **Methods and/or Models:** Fairness metrics (demographic parity, equalized odds, calibration); proxy discrimination detection and mitigation; group fairness axioms and impossibility results; discrimination-free pricing via unawareness, awareness, and causal approaches; adversarial debiasing techniques; causal inference methods (counterfactual fairness, path-specific effects); applied to French motor third-party liability and other insurance datasets.  
+- **Notes:** Code and data repository accompanying Arthur Charpentier's Springer textbook *Insurance, Biases, Discrimination and Fairness* (ISBN 978-3-031-49782-7). Algorithmic fairness is the most urgent regulatory topic in insurance AI today, with the EU AI Act, US state-level regulations, and NAIC guidelines all demanding bias testing. The R code includes worked examples on real French motor insurance data with utility functions for computing fair metrics.  
+- **Abstract:**  
+    This book offers an introduction to the technical foundations of discrimination and equity issues in insurance models, catering to undergraduates, postgraduates, and practitioners. It is a self-contained resource, accessible to those with a basic understanding of probability and statistics. Designed as both a reference guide and a means to develop fairer models, the book acknowledges the complexity and ambiguity surrounding the question of discrimination in insurance. In insurance, proposing differentiated premiums that accurately reflect policyholders' true risk—termed "actuarial fairness" or "legitimate discrimination"—is economically and ethically motivated. However, such segmentation can appear discriminatory from a legal perspective. By intertwining real-life examples with academic models, the book incorporates diverse perspectives from philosophy, social sciences, economics, mathematics, and computer science. Although discrimination has long been a subject of inquiry in economics and philosophy, it has gained renewed prominence in the context of "big data," with an abundance of proxy variables capturing sensitive attributes, and "artificial intelligence" or specifically "machine learning" techniques, which often involve less interpretable black box algorithms.
+The book distinguishes between models and data to enhance our comprehension of why a model may appear unfair. It reminds us that while a model may not be inherently good or bad, it is never neutral and often represents a formalization of a world seen through potentially biased data. Furthermore, the book equips actuaries with technical tools to quantify and mitigate potential discrimination, featuring dedicated chapters that delve into these methods.  
+<br>
+
 ### Neural Networks for Insurance Pricing with Frequency and Severity Data: A Benchmark Study from Data Preprocessing to Technical Tariff  
 - **Author:** Freek Holvoet, Katrien Antonio, Roel Henckaerts
 - **Date:** 2024-04-04  
@@ -350,6 +385,23 @@ A curated and continuously growing collection of AI case studies relevant to act
 - **Notes:** Includes four insurance datasets with comprehensive benchmarking  
 - **Abstract/Summary:**  
     Insurers usually turn to generalized linear models for modeling claim frequency and severity data. Due to their success in other fields, machine learning techniques are gaining popularity within the actuarial toolbox. Our article contributes to the literature on frequency–severity insurance pricing with machine learning via deep learning structures. We present a benchmark study on four insurance datasets with frequency and severity targets in the presence of multiple types of input features. We compare in detail the performance of a generalized linear model on binned input data, a gradient-boosted tree model, a feed-forward neural network (FFNN), and the combined actuarial neural network (CANN). The CANNs combine a baseline prediction established with a generalized linear model (GLM) and gradient boosting model (GMB), respectively, with a neural network correction. We explain the data preprocessing steps with specific focus on the multiple types of input features typically present in tabular insurance datasets, such as postal codes and numeric and categorical covariates. Autoencoders are used to embed the categorical variables into the neural network, and we explore their potential advantages in a frequency–severity setting. Model performance is evaluated not only on out-of-sample deviance but also using statistical and calibration performance criteria and managerial tools to get more nuanced insights. Finally, we construct global surrogate models for the neural nets’ frequency and severity models. These surrogates enable the translation of the essential insights captured by the FFNNs or CANNs to GLMs. As such, a technical tariff table results that can easily be deployed in practice.
+<br>
+
+### Advancing Loss Reserving: A Hybrid Neural Network Approach for Individual Claim Development Prediction  
+- **Author:** Brandon Schwab, Judith C. Schneider  
+- **Date:** 2024-03-22  
+- **Resources:** [Article (PDF)](https://www.insurance.uni-hannover.de/fileadmin/house-of-insurance/Publications/2024/Advancing_Loss_Reserving.pdf), [Code](https://github.com/brandonschwab/advancing_loss_reserving)  
+- **Type:** Case Study  
+- **Level:** 🟥🟥🟥 Expert  
+- **Field:** P&C (Reserving)  
+- **Primary Topics:** `Claims Reserving`, `Neural Networks`  
+- **Secondary Topics:** `RBNS Reserves`, `LSTM`, `Attention Mechanism`, `Multi-Task Learning`, `Chain Ladder`, `Industrial Insurance`  
+- **Language(s):** English  
+- **Programming Language(s):** Python  
+- **Methods and/or Models:** Multi-task deep learning architecture combining classification (claim open/closed) and regression (incurred loss prediction) heads; LSTM-based sequence processing with attention mechanism for dynamic claim features; incurred losses (payments + case reserves) as targets; benchmarks against chain ladder, expert forecasts, and other ML models; evaluation on both portfolio-level percentage error and granular-level MAE/RMSE/balanced accuracy per development period; demonstration on synthetic data from Chaoubi et al. (2021).  
+- **Notes:** Tested on two proprietary portfolios from a large industrial insurer (Property: 66,208 claims; Liability: 403,461 claims). The neural network model achieves reserve estimation errors of −1.37% (Property) and −1.18% (Liability), dramatically outperforming chain ladder (−14.36% / −16.32%) and expert forecasts (−13.66% / −12.83%). The GitHub repository provides a complete Python pipeline (`model_pipeline.py`, `helpers.py`, `train_functions.py`) with synthetic data for demonstration. Complements the ReSurv entry (which tackles IBNR frequencies via survival analysis in R) by addressing RBNS severity via multi-task sequence modeling in Python.  
+- **Abstract:**  
+    The accurate estimation of loss reserves is critical for the financial health of insurance companies and informs numerous operational decisions, from pricing to strategic planning. We add to the literature by a proposing a novel neural network architecture that enhances the prediction of incurred loss amounts for reported but not settled (RBNS) claims. Moreover, in contrast to most other studies, we test our model on proprietary data sets from a large industrial insurer. Our analyses reveal the model’s superiority in estimating reserves more accurately across different lines of business than standard benchmark models, like the chain ladder approach. Particularly, it exhibits nuanced performance at the branch level, reflecting its capacity to integrate individual claim characteristics effectively. Our findings underscore the potential of machine learning in enhancing actuarial forecasting and suggest a shift towards more granular data applications in the insurance industry.  
 <br>
 
 ### Binary Classification: Credit Scoring  
@@ -478,6 +530,23 @@ A curated and continuously growing collection of AI case studies relevant to act
 ---
 
 ## 2021 and earlier
+<br>
+
+### Insurance Fraud Detection with Unsupervised Deep Learning  
+- **Author:** Chamal Gomes, Zhuo Jin, Hailiang Yang  
+- **Date:** 2021  
+- **Resources:** [Article (DOI)](https://doi.org/10.1111/jori.12359), [Article (EconPapers)](https://econpapers.repec.org/article/blajrinsu/v_3a88_3ay_3a2021_3ai_3a3_3ap_3a591-624.htm), [Dataset (Mendeley, CC BY 4.0)](https://data.mendeley.com/datasets/g3vxppc8k4/2), [Code (GitHub, dataset companion)](https://github.com/sebalp1987/outlier_model)  
+- **Type:** Case Study  
+- **Level:** 🟨🟨⬜ Advanced  
+- **Field:** P&C (Fraud / Claims Operations)  
+- **Primary Topics:** `Fraud Detection`, `Unsupervised Learning`, `Anomaly Detection`  
+- **Secondary Topics:** `Autoencoders`, `Variational Autoencoders`, `Variable Importance`, `Reconstruction Error`  
+- **Language(s):** English  
+- **Programming Language(s):** Python  
+- **Methods and/or Models:** Autoencoder (AE) and Variational Autoencoder (VAE) trained to learn normal claim patterns; reconstruction-error-based anomaly/outlier scoring; unsupervised variable importance derivation to identify fraud drivers without labeled data; regularization via batch normalization, early stopping, and dropout; evaluation on three datasets including a real Spanish insurance claims dataset (D3: 272,858 claims, 2,379 confirmed fraud cases).  
+- **Notes:** Published in the *Journal of Risk and Insurance* (Vol. 88, No. 3). The key contribution is framing fraud detection as unsupervised anomaly detection, avoiding the typical problem of unreliable or unavailable fraud labels. The D3 insurance dataset is openly available on Mendeley Data under CC BY 4.0 (features are fully masked for privacy). The accompanying GitHub repository (`sebalp1987/outlier_model`) provides working Python code (main.py, models/, utils/) that operates on this dataset. Note: the code repo accompanies the *dataset* rather than replicating the paper's exact AE/VAE architecture, but it provides a functional starting point for experimentation on the same data.  
+- **Abstract:**  
+    The objective of this paper is to propose a novel deep learning methodology to gain pragmatic insights into the behavior of an insured person using unsupervised variable importance. It lays the groundwork for understanding how insights can be gained into the fraudulent behavior of an insured person with minimum effort. Starting with a preliminary investigation of the limitations of the existing fraud detection models, we propose a new variable importance methodology incorporated with two prominent unsupervised deep learning models, namely, the autoencoder and the variational autoencoder. Each model's dynamics is discussed to inform the reader on how models can be adapted for fraud detection and how results can be perceived appropriately. Both qualitative and quantitative performance evaluations are conducted, although a greater emphasis is placed on qualitative evaluation. To broaden the scope of reference of fraud detection setting, various metrics are used in the qualitative evaluation.  
 <br>
 
 ### Fraud detection with Neural Networks  
