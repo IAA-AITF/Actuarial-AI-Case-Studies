@@ -28,6 +28,23 @@ A curated and continuously growing collection of AI case studies relevant to act
 ## 2026
 <br>
 
+### Catastrophe Duration and Loss Prediction via Natural Language Processing  
+- **Author:** Han Wang, Wen Wang, Feng Li, Yanfei Kang, Han Li  
+- **Date:** 2025-04-02  
+- **Resources:** [Article (Variance)](https://variancejournal.org/article/133589-catastrophe-duration-and-loss-prediction-via-natural-language-processing), [Code](https://github.com/casact/catastrophe-loss-prediction-with-NLP)  
+- **Type:** Case Study  
+- **Level:** 🟥🟥🟥 Expert  
+- **Field:** P&C (Catastrophe Modeling)  
+- **Primary Topics:** `Natural Language Processing`, `Catastrophe Modeling`  
+- **Secondary Topics:** `BERT`, `Word2Vec`, `TF-IDF`, `Topic Modeling`, `LightGBM`, `Ensemble Methods`  
+- **Language(s):** English  
+- **Programming Language(s):** Python  
+- **Methods and/or Models:** Word2Vec and BERT embeddings to extract features from news articles covering wildfire and hurricane events; TF-IDF and Latent Dirichlet Allocation for topic modeling; LightGBM and voting ensemble regressors/classifiers for predicting catastrophe duration and insured losses; comparison of text-only, structured-only, and combined feature sets.  
+- **Notes:** Sponsored by the CAS 2022 Individual Grant Competition. The GitHub repository (hosted under the CAS organization) contains Jupyter notebooks with the full reproducible pipeline, including data collection, text preprocessing, embedding extraction, and model training/evaluation.  
+- **Abstract:**  
+    Textual information from online news is more timely than insurance claim data during catastrophes, and there is value in using this information to achieve earlier damage estimates. This research used text-based information to predict the duration and severity of catastrophes. We constructed text vectors using Word2Vec and BERT models, then used Random Forest, LightGBM, and XGBoost as learners, all of which showed more satisfactory prediction results. This new approach provides timely warnings of catastrophe severity, which can aid decision making and support appropriate responses.  
+<br>
+
 ### Reinforcement Learning for Micro-Level Claims Reserving  
 - **Author:** Benjamin Avanzi, Ronald Richman, Bernard Wong, Mario V. Wüthrich, Yagebu Xie  
 - **Date:** 2026-01-13  
