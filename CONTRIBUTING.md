@@ -12,10 +12,11 @@ Thank you for your interest in contributing! This guide walks you through the en
 Before you begin, make sure you have:
 
 1. **A GitHub account** — Sign up for free at [github.com](https://github.com/signup) if you do not have one yet.
-2. **Write access** to this repository — If you are part of the IAA AI Task Force, request access from a maintainer by [sending an email](mailto:simon.hatzesberger@gmail.com). Your access is tied to your GitHub account.
+
+That is all you need. The workflow below uses **forking**, which means you create your own copy of the repository under your GitHub account. You do not need any special permissions.
 
 > [!IMPORTANT]
-> You must be **logged in** to your GitHub account to create branches and edit files. If you do not see editing options (e.g., the **"New branch"** button), you are either not logged in or your access has not been set up yet.
+> You must be **logged in** to your GitHub account to fork, create branches, and edit files. If you do not see the **"Fork"** button or editing options, you are not logged in.
 
 ---
 
@@ -31,42 +32,41 @@ Before you begin, make sure you have:
 
 This is the most common workflow. You will add an entry to the catalog file (`case-studies/README.md`) that describes a case study and links to its resources (article, code, dataset, etc.).
 
-### Step 1: Open the Repository
+### Step 1: Fork the Repository
+
+A **fork** is your personal copy of the repository. You make all your changes there, then propose them back to the original repository via a pull request.
 
 1. **Navigate** to the repository: [github.com/IAA-AITF/Actuarial-AI-Case-Studies](https://github.com/IAA-AITF/Actuarial-AI-Case-Studies)
-2. **Confirm you are logged in** — your profile picture should be visible in the top-right corner of the page. If you see a **"Sign in"** button instead, log in first.
-3. You will see the repository's main page with a file listing and a README displayed below it. At the top-left, a dropdown shows the current branch (likely **main**).
+2. **Confirm you are logged in** — your profile picture should be visible in the top-right corner. If you see a **"Sign in"** button instead, log in first.
+3. **Click** the **"Fork"** button (top-right of the page).
+4. On the fork creation page, leave the defaults and **click** **"Create fork"**.
+5. GitHub will redirect you to your fork. You can confirm this by checking the repository name at the top — it should say **`your-username/Actuarial-AI-Case-Studies`** with a note "forked from IAA-AITF/Actuarial-AI-Case-Studies".
+
+> [!TIP]
+> You only need to fork once. If you have already forked this repository, navigate to your fork at `github.com/your-username/Actuarial-AI-Case-Studies` instead.
 
 ### Step 2: Create Your Working Branch
 
-You will create a personal copy of the `dev` branch to work on. This keeps your changes separate until they are ready to be merged.
+You will create a branch on your fork to keep your changes organized. This is your private workspace — you can make changes freely without affecting anyone else.
 
 > [!NOTE]
-> **What is a branch?** Think of a branch as your own private workspace. You can make changes freely without affecting anyone else's work. Once you are done, you merge your changes back into the shared `dev` branch.
+> **What is a branch?** Think of a branch as your own private workspace. You can make changes freely without affecting anyone else's work. Once you are done, you merge your changes back via a pull request.
 
-1. **Click** the branch dropdown (top-left of the page, it likely says **"main"**).
-2. **Click** **"View all branches"** at the bottom of the dropdown.
-3. On the Branches page, **click** the green **"New branch"** button.
-4. A dialog will appear:
-   - **New branch name** — Choose a short, descriptive name with no spaces. Use your name or initials so others can identify it (e.g., `entries_wilson`, `catalog_smith`).
-   - **Source** — Make sure **`dev`** is selected as the source.
-5. **Click** **"Create new branch"**.
+1. On your fork's main page, **click** the branch dropdown (top-left of the page, it likely says **"main"** or **"dev"**).
+2. **Type** a short, descriptive branch name with no spaces (e.g., `entries_wilson`, `catalog_smith`).
+3. **Click** **"Create branch: your-branch-name from 'dev'"** (or from `main` if `dev` is not available).
 
 > [!IMPORTANT]
-> Always select **`dev`** as the source — not `main`. The `dev` branch contains the latest working version. The `main` branch is only updated by maintainers.
-
-> [!TIP]
-> You will see your new branch listed on the Branches page. You can always return to this page to find or switch between branches.
+> If a **`dev`** branch exists, create your branch from **`dev`** — it contains the latest working version. If only `main` is available, use `main`.
 
 ### Step 3: Switch to Your Branch
 
-1. **Navigate** back to the repository's main page by clicking the repository name (**"Actuarial-AI-Case-Studies"**) at the top.
-2. **Click** the branch dropdown (top-left). It might still show **main**.
-3. **Select** your newly created branch from the list.
-4. **Verify** that the branch dropdown now displays your branch name.
+1. **Click** the branch dropdown (top-left).
+2. **Select** your newly created branch from the list.
+3. **Verify** that the branch dropdown now displays your branch name.
 
 > [!WARNING]
-> **Always confirm you are on your own branch before making any edits.** If the branch dropdown shows `main` or `dev`, you are not on your branch. Any changes made directly to `dev` or `main` will affect everyone. Switch to your branch first.
+> **Always confirm you are on your own branch before making any edits.** If the branch dropdown shows `main` or `dev`, switch to your branch first.
 
 ### Step 4: Open the Catalog File for Editing
 
@@ -93,7 +93,7 @@ You are now in the file editor. You will see two tabs at the top: **Edit** and *
 - **Date:** YYYY-MM-DD
 - **Resources:** [Article](https://link-to-article), [Code](https://link-to-code)
 - **Type:** Case Study
-- **Level:** 🟩🟩⬜ Beginner
+- **Level:** 🟩⬜⬜ Beginner
 - **Field:** P&C
 - **Primary Topics:** `Topic 1`, `Topic 2`
 - **Secondary Topics:** `Topic 1`, `Topic 2`
@@ -117,7 +117,7 @@ You are now in the file editor. You will see two tabs at the top: **Edit** and *
 | Field | Accepted values |
 |:------|:----------------|
 | **Type** | `Case Study`, `Tutorial`, `White Paper`, `Educational` |
-| **Level** | `🟩🟩⬜ Beginner`, `🟨🟨⬜ Advanced`, `🟥🟥🟥 Expert` |
+| **Level** | `🟩⬜⬜ Beginner`, `🟨🟨⬜ Advanced`, `🟥🟥🟥 Expert` |
 | **Field** | `Life`, `P&C`, `Health`, `General` |
 | **Date** | ISO 8601 format: `YYYY-MM-DD` (e.g., `2025-06-22`) |
 | **Programming Language(s)** | `Python`, `R`, or `–` if not applicable |
@@ -155,38 +155,32 @@ If you spot errors, repeat Steps 4–6 to make corrections.
 
 ### Step 8: Create a Pull Request
 
-When you are satisfied with your changes, you need to propose merging them into the shared `dev` branch. This is done through a **pull request**.
+When you are satisfied with your changes, you need to propose merging them into the original repository. This is done through a **pull request**.
 
 > [!NOTE]
-> **What is a pull request?** A pull request (PR) is a formal proposal to merge your changes into another branch. It lets others review what you changed before the changes go live.
+> **What is a pull request?** A pull request (PR) is a formal proposal to merge your changes into the original repository. It lets maintainers review what you changed before the changes go live.
 
-1. **Navigate** to the repository's main page.
-2. If you recently pushed commits, GitHub will show a yellow banner at the top saying **"[your-branch] had recent pushes"** with a **"Compare & pull request"** button. **Click** it.
-   - If you do not see this banner: **click** the **"Pull requests"** tab at the top of the page, then **click** the green **"New pull request"** button. Select `dev` as the **base** branch and your branch as the **compare** branch.
+1. **Navigate** to your fork's main page on GitHub.
+2. GitHub will show a banner saying your branch is ahead of the original repository, with a **"Contribute"** button or a **"Compare & pull request"** button. **Click** it.
+   - If you do not see this banner: **click** the **"Pull requests"** tab on the **original** repository, then **click** the green **"New pull request"** button. Click **"compare across forks"**, select the original repository's `dev` branch as the **base**, and your fork's branch as the **compare** branch.
 3. On the pull request form:
    - **Title** — Write a short title (e.g., "Add 3 new case study entries").
    - **Description** — Briefly describe what you added or changed.
-   - **Base branch** — Confirm it says **`dev`** (not `main`).
+   - **Base branch** — Confirm it points to the original repository's **`dev`** branch (or `main` if `dev` does not exist).
 4. **Click** the green **"Create pull request"** button.
 
-### Step 9: Merge the Pull Request
+### Step 9: Wait for Review
 
-After creating the pull request, you can merge it yourself if there are no conflicts.
-
-1. On the pull request page, **scroll down**. You should see a green message: **"This branch has no conflicts with the base branch."**
-2. **Click** the green **"Merge pull request"** button.
-3. **Click** **"Confirm merge"**.
-4. You should see a success message: **"Pull request successfully merged and closed."**
-
-> [!WARNING]
-> If you see a message about **merge conflicts**, do not force the merge. This means someone else has edited the same part of the file. Contact a maintainer for help resolving the conflict.
+After creating the pull request, a maintainer will review your contribution. You may receive feedback or change requests — GitHub will notify you by email. Once approved, a maintainer will merge your changes.
 
 > [!TIP]
-> After merging, GitHub may offer to **delete your branch**. You can safely delete it — the branch is no longer needed once its changes have been merged.
+> You can check the status of your pull request at any time by navigating to the **"Pull requests"** tab on the original repository.
 
 ### Step 10: Verify Your Contribution
 
-1. **Navigate** back to the repository's main page.
+After your pull request has been merged:
+
+1. **Navigate** to the original repository: [github.com/IAA-AITF/Actuarial-AI-Case-Studies](https://github.com/IAA-AITF/Actuarial-AI-Case-Studies)
 2. **Switch** to the **`dev`** branch using the branch dropdown.
 3. **Open** the `case-studies/` folder and click `README.md`.
 4. **Confirm** that your entries appear in the catalog.
@@ -197,7 +191,7 @@ Your contribution is now part of the shared `dev` branch. A maintainer will peri
 
 ## Part B — Submitting a Full Case Study (with Notebook and Files)
 
-If you are contributing a complete, runnable case study (not just a catalog entry), follow the same branch workflow as Part A, with these additional steps:
+If you are contributing a complete, runnable case study (not just a catalog entry), follow the same fork-and-branch workflow as Part A, with these additional steps:
 
 ### Preparing Your Files
 
@@ -216,13 +210,45 @@ Your case study directory should include:
 
 ### Uploading Your Files
 
-1. **Create a branch** from `dev` (see Part A, Steps 2–3).
+1. **Fork and create a branch** (see Part A, Steps 1–3).
 2. **Navigate** to the `case-studies/` folder, then into the appropriate year folder (e.g., `2025/`).
 3. **Click** **"Add file"** (top-right) and then **"Upload files"**.
 4. **Drag and drop** your case study folder or select files from your computer.
 5. **Commit** the uploaded files to your branch (see Part A, Step 6).
 6. **Add a catalog entry** to `case-studies/README.md` following the instructions in Part A, Steps 4–6.
-7. **Create a pull request** and **merge** (Part A, Steps 8–9).
+7. **Create a pull request** (Part A, Step 8) and wait for a maintainer to review and merge it.
+
+---
+
+## For Experienced Git Users: CLI Workflow
+
+If you prefer working locally with Git, here is the quick-reference workflow:
+
+```bash
+# 1. Fork the repository on GitHub (use the "Fork" button), then clone your fork
+git clone https://github.com/your-username/Actuarial-AI-Case-Studies.git
+cd Actuarial-AI-Case-Studies
+
+# 2. Create a branch from dev (or main if dev does not exist)
+git checkout dev
+git checkout -b your-branch-name
+
+# 3. Make your changes (edit case-studies/README.md, add files, etc.)
+
+# 4. Stage and commit
+git add .
+git commit -m "Add your-case-study entry"
+
+# 5. Push to your fork
+git push origin your-branch-name
+
+# 6. Open a pull request on GitHub
+#    Go to the original repository and click "Compare & pull request",
+#    or use:  gh pr create --base dev --repo IAA-AITF/Actuarial-AI-Case-Studies
+```
+
+> [!TIP]
+> If your fork is behind the original repository, sync it before starting: on your fork's GitHub page, click **"Sync fork"**, or run `git fetch upstream && git merge upstream/dev`.
 
 ---
 
