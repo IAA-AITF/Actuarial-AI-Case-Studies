@@ -28,6 +28,24 @@ A curated and continuously growing collection of AI case studies relevant to act
 ## 2026
 <br>
 
+### Geographic Ratemaking with Spatial Embeddings — Florida Flood Insurance  
+- **Author:** Claudio Senatore Reso  
+- **Date:** 2026-03-30  
+- **Resources:** [Code Repository](https://github.com/CSen86/geo-embeddings-flood-pricing), [Notebook](https://github.com/CSen86/geo-embeddings-flood-pricing/blob/master/notebooks/GeoEmbeddings_Florida_NFIP_GDSC.ipynb)  
+- **Type:** Case Study  
+- **Level:** 🟨🟨⬜ Advanced  
+- **Field:** P&C  
+- **Market/Geography:** United States (Florida; NFIP flood insurance)  
+- **Primary Topics:** `Geographic Ratemaking`, `Spatial Embeddings`, `Flood Insurance Pricing`  
+- **Secondary Topics:** `CNN Autoencoders`, `Poisson GLM`, `NFIP`, `Census Data`, `Geospatial Feature Engineering`  
+- **Language(s):** English  
+- **Programming Language(s):** Python  
+- **Methods and/or Models:** End-to-end implementation of the Blier-Wong et al. geographic ratemaking framework on real Florida NFIP data: FEMA OpenFEMA claims and policy exposures are aggregated to census tract level and merged with ACS socioeconomic variables and tract centroids; each tract is represented by a Geographic Data Square Cuboid (GDSC), i.e. a 7×7 neighborhood grid with ~60+ census-feature channels and 3 km spacing; a CNN autoencoder learns a 16-dimensional spatial embedding for each tract; actuarial evaluation is then performed with Poisson GLMs with log-exposure offsets, comparing null, census-only, embeddings-only, and census-plus-embedding specifications for claim-rate prediction.  
+- **Notes:** Particularly useful for actuaries interested in territory modeling and spatially enriched pricing. The notebook is fully reproducible and shows the complete workflow from public-data download and cleaning through feature construction, embedding learning, and model comparison. In the posted run, the embeddings-only model materially outperformed the census-only baseline on the test set, and the combined census-plus-embedding model performed best overall.  
+- **Abstract/Summary (AI generated):**  
+    This case study translates the spatial-embedding ratemaking idea of Blier-Wong et al. into a practical actuarial workflow using real U.S. flood insurance data. Instead of modeling each census tract only through its own tabular covariates, the notebook constructs a local spatial tensor around every tract so that nearby socioeconomic patterns can be learned by a convolutional neural network. The resulting 16-dimensional geographic embeddings are then inserted into standard Poisson claim-frequency models with exposure offsets, allowing a transparent comparison against more traditional hand-picked census rating factors. For actuaries, the key contribution is the demonstration that deep-learning-derived territory representations can add measurable predictive value in flood risk modeling while still being integrated into a familiar GLM-based pricing framework.  
+<br>
+
 ### Reinforcement Learning for Micro-Level Claims Reserving  
 - **Author:** Benjamin Avanzi, Ronald Richman, Bernard Wong, Mario V. Wüthrich, Yagebu Xie  
 - **Date:** 2026-01-13  
