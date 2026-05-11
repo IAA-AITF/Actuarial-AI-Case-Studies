@@ -47,6 +47,7 @@ Simon Hatzesberger ([simon.hatzesberger@gmail.com](mailto:simon.hatzesberger@gma
 
 ## Version History
 
+- **2.0** (May 11, 2026) — Minor improvements
 - **1.0** (June 22, 2025) — Initial release
 
 ## License
