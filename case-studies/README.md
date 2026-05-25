@@ -28,10 +28,113 @@ A curated and continuously growing collection of AI case studies relevant to act
 ## 2026
 <br>
 
+### Is TabPFN the Silver Bullet for Insurance Pricing?
+- **Author:** Bruno Deprez, Wouter Verbeke, Tim Verdonck
+- **Date:** 2026-05-21
+- **Resources:** [Article (arXiv)](https://arxiv.org/abs/2605.22892)
+- **Type:** Case Study
+- **Level:** 🟥🟥🟥 Expert
+- **Field:** P&C
+- **Primary Topics:** `Tabular Foundation Models`, `Insurance Pricing`
+- **Secondary Topics:** `TabPFN`, `In-Context Learning`, `Claim Frequency`, `Claim Severity`, `MTPL`, `GLM Benchmark`, `XGBoost Benchmark`
+- **Language(s):** English
+- **Programming Language(s):** –
+- **Methods and/or Models:** Empirical evaluation of TabPFN — a tabular foundation model that pre-trains on large collections of synthetic datasets and performs inference on new tabular data via in-context learning, without dataset-specific fitting or hyperparameter tuning — for motor third-party liability (MTPL) claim frequency and severity prediction; benchmarked against generalized linear models and XGBoost on two publicly available MTPL datasets; ablations over in-context training set size and inference-time cost.
+- **Notes:** First empirical evaluation of a tabular foundation model in an actuarial pricing context. Headline finding: TabPFN does not consistently outperform GLM/XGBoost on MTPL pricing, exhibits substantially longer inference times, and is sensitive to the size of the in-context training set — useful counterweight to the prevailing optimism around foundation models for tabular insurance data. No public code repository linked.
+- **Abstract:**
+    Modelling claim frequency and severity for non-life insurance pricing predominantly relies on generalised linear models, with gradient-boosted machines as the leading machine learning alternative. Tabular foundation models (TFMs) offer a fundamentally different paradigm. By pre-training on large collections of synthetic datasets, TFMs enable inference on new data through in-context learning, without any dataset-specific fitting or hyperparameter tuning. This paper presents a first empirical evaluation of TabPFN for motor insurance pricing, benchmarking it against GLM and XGBoost on two publicly available MTPL datasets. Our results show that TabPFN does not consistently outperform established baselines, exhibits substantially longer inference times, and is sensitive to the size of the in-context training set. While tabular foundation models represent a promising direction, particularly in data-scarce settings, their current formulation does not offer a viable replacement for established actuarial methods.
+<br>
+
+### Neural-Actuarial Longevity Forecasting: Anchoring LSTMs for Explainable Risk Management (Hybrid-Lift)
+- **Author:** Davide Rindori
+- **Date:** 2026-05-07
+- **Resources:** [Article (arXiv)](https://arxiv.org/abs/2605.06438), [Code (GitHub)](https://github.com/davide-rindori/Actuarial-DS-Portfolio/tree/main/04_Multi_Population_Longevity_XAI)
+- **Type:** Case Study
+- **Level:** 🟥🟥🟥 Expert
+- **Field:** Life
+- **Primary Topics:** `Longevity Risk`, `Mortality Forecasting`, `Deep Learning`
+- **Secondary Topics:** `LSTM`, `Hierarchical Networks`, `Multi-Population Models`, `Lee-Carter`, `Li-Lee`, `Explainable AI`, `SHAP`, `Solvency II`, `Swiss SST`
+- **Language(s):** English
+- **Programming Language(s):** Python
+- **Methods and/or Models:** Hybrid-Lift, a neural-actuarial multi-population longevity framework: hierarchical LSTM networks paired with a Mean-Bias Correction (MBC) anchoring mechanism that constrains the network's outputs to remain consistent with classical actuarial mortality principles; explainability via SHAP-based cross-country influence mapping; dual uncertainty quantification suited to regulatory reporting; benchmarked against the Li-Lee multi-population model on high-longevity clusters (notably Sweden and West Germany) where Li-Lee's mean-reversion assumption breaks down (the "stationarity paradox" of persistent unit roots in country-specific mortality residuals).
+- **Notes:** Targets the regulatory longevity-risk capital problem (Solvency II / Swiss SST) where misspecified mean reversion can systematically mis-price tail risk. Out-of-sample validation spans 2012–2020 across Switzerland, Sweden, Norway, Germany, Netherlands, and Japan. Code is available on the author's GitHub portfolio repository.
+- **Abstract:**
+    Traditional multi-population models, such as the Li-Lee framework, rely on the assumption of mean-reverting country-specific deviations. However, recent data from high-longevity clusters suggest a systemic break in this paradigm. We identify a stationarity paradox where mortality residuals in countries like Sweden and West Germany exhibit persistent unit roots, leading to a systematic mispricing of longevity risk in linear models. To address these non-linearities, we propose Hybrid-Lift, a neural-actuarial framework that combines Hierarchical LSTM networks with a Mean-Bias Correction (MBC) anchoring mechanism.
+<br>
+
+### Revealing Geography-Driven Signals in Zone-Level Claim Frequency Models: An Empirical Study Using Environmental and Visual Predictors
+- **Author:** Sherly Alfonso-Sánchez, Cristián Bravo, Kristina G. Stankova
+- **Date:** 2026-04-23
+- **Resources:** [Article (arXiv)](https://arxiv.org/abs/2604.21893)
+- **Type:** Case Study
+- **Level:** 🟥🟥🟥 Expert
+- **Field:** P&C
+- **Market/Geography:** Belgium (MTPL; postcode-level)
+- **Primary Topics:** `Geographic Ratemaking`, `Computer Vision`
+- **Secondary Topics:** `MTPL Claim Frequency`, `OpenStreetMap`, `CORINE Land Cover`, `Orthoimagery`, `Vision Transformers`, `CNN`, `GLM`, `Regularized GLM`, `Gradient Boosting`
+- **Language(s):** English
+- **Programming Language(s):** –
+- **Methods and/or Models:** Zone-level claim-frequency modelling on the public BeMTPL97 dataset evaluated on unseen postcodes; geographic information injected through two parallel channels — (i) environmental indicators from OpenStreetMap and CORINE Land Cover at multiple spatial scales, and (ii) Belgian National Geographic Institute orthoimagery. Three baselines (GLM, regularized GLM, gradient-boosted trees) are augmented with coordinates, environmental features, and pretrained vision-transformer image embeddings; raw imagery is additionally fed to convolutional neural networks. Ablations vary neighborhood size (~5 km performs best) and isolate the contribution of each predictor family.
+- **Notes:** Complements the catalog's existing "Geographic Ratemaking with Spatial Embeddings" (2026-03-30, Florida NFIP) by tackling the same problem in a different geography (Belgium, MTPL) and with a different image-side method (pretrained ViT embeddings rather than learned CNN autoencoder embeddings). Key finding: image embeddings add value mainly when environmental features are absent — predictive value of geography depends more on representation than model complexity. No public code repository linked.
+- **Abstract:**
+    Geographic context is often consider relevant to motor insurance risk, yet public actuarial datasets provide limited location identifiers, constraining how this information can be incorporated and evaluated in claim-frequency models. This study examines how geographic information from alternative data sources can be incorporated into actuarial models for Motor Third Party Liability (MTPL) claim prediction under such constraints. Using the BeMTPL97 dataset, we adopt a zone-level modeling framework and evaluate predictive performance on unseen postcodes. Geographic information is introduced through two channels: environmental indicators from OpenStreetMap and CORINE Land Cover, and orthoimagery released by the Belgian National Geographic Institute for academic use. We evaluate the predictive contribution of coordinates, environmental features, and image embeddings across three baseline models: generalized linear models (GLMs), regularized GLMs, and gradient-boosted trees, while raw imagery is modeled using convolutional neural networks. Our results show that augmenting actuarial variables with constructed geographic information improves accuracy. Across experiments, both linear and tree-based models benefit most from combining coordinates with environmental features extracted at 5 km scale, while smaller neighborhoods also improve baseline specifications. Generally, image embeddings do not improve performance when environmental features are available; however, when such features are absent, pretrained vision-transformer embeddings enhance accuracy and stability for regularized GLMs. Our results show that the predictive value of geographic information in zone-level MTPL frequency models depends less on model complexity than on how geography is represented, and illustrate that geographic context can be incorporated despite limited individual-level spatial information.
+<br>
+
+### A Wasserstein GAN-Based Climate Scenario Generator for Risk Management and Insurance: The Case of Soil Subsidence (SwiGAN)
+- **Author:** Antoine Heranval, Olivier Lopez, Didier Ngatcha, Daniel Nkameni
+- **Date:** 2026-04-22
+- **Resources:** [Article (arXiv)](https://arxiv.org/abs/2605.06678)
+- **Type:** Case Study
+- **Level:** 🟥🟥🟥 Expert
+- **Field:** P&C
+- **Market/Geography:** France (Cat Nat scheme; soil subsidence / drought)
+- **Primary Topics:** `Generative Adversarial Networks`, `Climate Risk`, `Natural Catastrophe Insurance`
+- **Secondary Topics:** `Conditional GANs`, `Wasserstein GAN`, `Soil Wetness Index`, `Drought Modelling`, `Spatio-Temporal Simulation`, `Economic Scenario Generation`, `Solvency II`
+- **Language(s):** English
+- **Programming Language(s):** –
+- **Methods and/or Models:** SwiGAN — a Conditional Wasserstein GAN trained on historical Soil Wetness Index (SWI) maps for a drought-exposed region of France — to generate plausible spatio-temporal trajectories of SWI through 2050 under climate-change scenarios. The generated map sequences feed downstream actuarial analyses of drought losses under the French Cat Nat insurance scheme. The architecture is presented as a general template for climate-aware economic-scenario generation that extends beyond Solvency II's one-year horizon.
+- **Notes:** Drought accounts for ~30% of indemnities under the French natural catastrophe insurance scheme, which makes long-horizon drought scenarios materially relevant for reserving and capital planning. The authors emphasize generalizability to other climate-related perils. No public code repository is linked in the paper; affiliations include BioSP (INRAE) and CREST (ENSAE).
+- **Abstract:**
+    According to the United Nations Office for Disaster Risk Reduction (2025), the average annual cost of natural catastrophes increased from 70--80 billion USD between 1970 and 2000 to 180--200 billion USD between 2001 and 2020. Reports from organizations such as the IFOA and the WWF highlight the need for the insurance sector to adapt to this rapidly evolving context by developing medium- to long-term strategies that go beyond the one-year horizon of prudential regulations such as Solvency II. This paper introduces an artificial intelligence framework based on Conditional Generative Adversarial Networks (Conditional GANs) to generate future spatio-temporal trajectories of climatic indices. The approach focuses on the Soil Wetness Index (SWI), a key indicator used in France to assess drought severity. Drought accounts for approximately 30% of the indemnities paid under the French natural catastrophe insurance scheme. The proposed model, SwiGAN, simulates plausible drought propagation patterns up to 2050 for a region of France particularly exposed to this hazard. By generating realistic sequences of SWI maps, SwiGAN provides insights into drought dynamics under climate change scenarios and supports the design of adaptive risk management and insurance strategies. The methodology is also generalizable to other climate-related perils and actuarial applications such as economic scenario generation.
+<br>
+
+### Actuarial Legacy Code Migration with a Multi-Agent System
+- **Author:** Simon Hatzesberger, Iris Nonneman
+- **Date:** 2026-04-15
+- **Resources:** [Notebook](https://github.com/IAA-AITF/Actuarial-AI-Case-Studies/tree/main/case-studies/2026/actuarial_legacy_code_migration_multi-agent_system)
+- **Type:** Case Study
+- **Level:** 🟨🟨⬜ Advanced
+- **Primary Topics:** `Multi-Agent Systems`, `Code Migration`
+- **Secondary Topics:** `LangGraph`, `Chain-Ladder`, `GLM Reserving`, `Bootstrap`, `Test-Driven Translation`
+- **Language(s):** English
+- **Programming Language(s):** Python, R
+- **Methods and/or Models:** Five specialised LLM agents (R Analysis, Translation, Compilation, Test Runner, Report) orchestrated by a LangGraph StateGraph with hardcoded sequential edges and conditional retry loops; deterministic Chain-Ladder migration and a stochastic GLM-bootstrap reserving migration; validation against prespecified R-verified pytest suites whose ground-truth values are held outside the Translation Agent's context; 10-run benchmarking to quantify LLM stochasticity.
+- **Notes:** Architecture generalises to other source–target language pairs (SAS, COBOL, VBA → Python, Java, C#). The notebook is reproducible end-to-end on Colab/Kaggle via auto-installing the extra packages those platforms don't ship by default.
+- **Abstract/Summary (AI generated):**
+    A LangGraph-based multi-agent pipeline automates the migration of actuarial R code to Python by decomposing the task across five narrowly scoped LLM agents. The workflow is exercised on two end-to-end actuarial examples — a deterministic Chain-Ladder reserving script and a stochastic GLM-based reserving pipeline with bootstrap — both validated against a manually-written, R-verified test suite. Compilation and test failures are fed back to the Translation Agent for targeted self-correction rather than full rewrites. Benchmarking over 10 repetitions per example quantifies run-to-run variability while confirming functional equivalence on deterministic outputs.
+<br>
+
+### Do Fair Algorithms Improve Welfare? Evidence from the Insurance Market
+- **Author:** Fei Huang, Hajime Shimao, Warut Khern-am-nuai
+- **Date:** 2026-04-06
+- **Resources:** [Article (SSRN)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=5112616)
+- **Type:** Case Study
+- **Level:** 🟨🟨⬜ Advanced
+- **Field:** P&C, General
+- **Primary Topics:** `Algorithmic Fairness`, `Welfare Analysis`
+- **Secondary Topics:** `Discrimination-Free Pricing`, `Fair Machine Learning`, `Protected Attributes`, `Model Accountability`, `Insurance Demand`, `Regulatory Constraints`
+- **Language(s):** English
+- **Programming Language(s):** –
+- **Methods and/or Models:** Empirical welfare framework that connects algorithmic-fairness constraints imposed at the cost-prediction stage of an insurance pricing pipeline to downstream pricing, demand, and welfare outcomes. The framework is applied to real-world insurance data to evaluate commonly proposed fairness interventions — including restrictions on the use of protected attributes and model-accountability constraints — and to quantify their effect on participation and welfare distribution across consumer segments.
+- **Notes:** Forthcoming as a UNSW Business School Research Paper. Distinct from prior welfare-of-fairness work in that the evaluation is grounded in observed insurance-market data and the fairness interventions evaluated correspond to those actually being mandated by regulators (e.g., NAIC, EU AI Act). Complements the existing "Insurance, Biases, Discrimination and Fairness" (Charpentier) and "Avoiding Unfair Bias in Insurance Applications of AI Models" (SOA) catalog entries by adding an empirical welfare-economics lens to a literature otherwise dominated by methodological and regulatory framings.
+- **Abstract/Summary (AI generated):**
+    Algorithmic fairness constraints are increasingly being imposed on insurance pricing models by regulators and firms responding to discrimination concerns, but little is known about how those constraints actually affect market outcomes. This paper develops an empirical welfare framework that connects fairness interventions applied at the cost-prediction stage to downstream pricing, demand, and welfare distribution, and then evaluates the welfare consequences of commonly proposed interventions — including restrictions on the use of protected attributes and model-accountability constraints — on real-world insurance data. The result is a quantitative bridge between the algorithmic-fairness literature, which focuses on prediction-stage criteria, and the welfare-economics literature on price discrimination in insurance — letting actuaries reason about which fairness interventions are worth their cost to consumers.
+<br>
+
 ### Geographic Ratemaking with Spatial Embeddings — Florida Flood Insurance  
 - **Author:** Claudio Senatore Reso  
 - **Date:** 2026-03-30  
-- **Resources:** [Code Repository](https://github.com/CSen86/geo-embeddings-flood-pricing), [Notebook](https://github.com/CSen86/geo-embeddings-flood-pricing/blob/master/notebooks/GeoEmbeddings_Florida_NFIP_GDSC.ipynb)  
+- **Resources:** [Paper](https://github.com/CSen86/geo-embeddings-flood-pricing/blob/master/Paper.html), [Code Repository](https://github.com/CSen86/geo-embeddings-flood-pricing), [Notebook](https://github.com/CSen86/geo-embeddings-flood-pricing/blob/master/notebooks/02_florida_nfip_real_data.ipynb)  
 - **Type:** Case Study  
 - **Level:** 🟨🟨⬜ Advanced  
 - **Field:** P&C  
@@ -514,7 +617,7 @@ The book distinguishes between models and data to enhance our comprehension of w
 
 ### Avoiding Unfair Bias in Insurance Applications of AI Models  
 - **Author:** Logan T. Smith, Emma Pirchalski, and Ilana Golbin  
-- **Date:** 2022-08  
+- **Date:** 2022-08-01  
 - **Resources:** [Website](https://www.soa.org/resources/research-reports/2022/avoid-unfair-bias-ai/), [White Paper (English)](https://www.soa.org/4a288a/globalassets/assets/files/resources/research-report/2022/avoid-unfair-bias-ai.pdf), [White Paper (Simplified Chinese)](https://www.soa.org/4959c4/globalassets/assets/files/resources/research-report/2023/avoid-unfair-bias-ai-chinese.pdf)  
 - **Type:** White Paper  
 - **Level:** 🟩⬜⬜ Beginner  
@@ -591,12 +694,12 @@ The book distinguishes between models and data to enhance our comprehension of w
 - **Type:** Case Study  
 - **Level:** 🟩⬜⬜ Beginner  
 - **Market/Geography:** Singapore
-- **Primary Topics:** `Governance`  
-- **Secondary Topics:** TODO  
+- **Primary Topics:** `AI Governance`, `Responsible AI`  
+- **Secondary Topics:** `Model AI Governance Framework`, `Accountability`, `Transparency`, `Cross-Sector Use Cases`  
 - **Language(s):** English  
 - **Programming Language(s):** –  
-- **Methods and/or Models:** Gradient Boosting Model, PDP, SHAP, PFI  
-- **Notes:** Data derived from a Kaggle competition's real-world dataset  
+- **Methods and/or Models:** –  
+- **Notes:** Two-volume compendium illustrating Singapore's Model AI Governance Framework with use cases drawn from organisations across multiple sectors; not tied to a specific dataset or model.  
 - **Abstract/Summary:**  
     AI will transform businesses and power the next bound of economic growth. Businesses and society can enjoy the full benefits of AI if the deployment of AI products and services is founded upon trustworthy AI governance practices. As part of advancing Singapore’s thought leadership in AI governance, Singapore has released the Model AI Governance Framework (Model Framework) to guide organisations on how to deploy AI in a responsible manner. This Compendium of Use Cases demonstrates how various organisations across different sectors – big and small, local and international – have either implemented or aligned their AI governance practices with all sections of the Model Framework. The Compendium also illustrates how the organisations have effectively put in place accountable AI governance practices and benefit from the use of AI in their line of business. By implementing responsible AI governance practices, organisations can distinguish themselves from others and show that they care about building trust with consumers and other stakeholders. This will create a virtuous cycle of trust, allowing organisations to continue to innovate for their stakeholders. We thank the World Economic Forum Centre for the Fourth Industrial Revolution for partnering us on this journey. We hope that this Compendium will inspire more organisations to embark on a similar journey.
 <br>
