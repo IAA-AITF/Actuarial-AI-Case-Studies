@@ -26,7 +26,9 @@ Browse the full catalog of case studies (including external references) in the [
 ```
 Actuarial-AI-Case-Studies/
 ├── case-studies/          # Case studies organized by year
-│   └── 2025/              # Notebooks, data, and documentation
+│   ├── README.md          # Catalog index of all case studies (hosted + external)
+│   ├── 2025/              # Hosted notebooks, data, and documentation
+│   └── 2026/              # Hosted notebooks, data, and documentation
 ├── templates/             # Templates for new case study submissions
 ├── CONTRIBUTING.md        # Contribution guidelines
 └── LICENSE                # MIT (code) + CC BY 4.0 (content)
@@ -40,7 +42,7 @@ Each case study is self-contained in its own directory with a `README.md`, a Jup
 
 ```bash
 git clone https://github.com/IAA-AITF/Actuarial-AI-Case-Studies.git
-cd Actuarial-AI-Case-Studies/case-studies/2025/<case-study-name>
+cd Actuarial-AI-Case-Studies/case-studies/<year>/<case-study-name>
 pip install -r requirements.txt
 jupyter notebook <notebook-name>.ipynb
 ```
