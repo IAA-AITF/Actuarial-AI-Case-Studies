@@ -7332,12 +7332,7 @@ a.anchor-link {
     if (!diagrams.length) {
       return;
     }
-    const mermaid = (await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.0/mermaid.esm.min.mjs")).default;
-    const elkUrl = "https://cdnjs.cloudflare.com/ajax/libs/mermaid-layout-elk/0.1.9/mermaid-layout-elk.esm.min.mjs";
-    if(elkUrl) {
-      const elkLayouts = (await import(elkUrl)).default;
-      mermaid.registerLayoutLoaders(elkLayouts);
-    }
+    const mermaid = (await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.7.0/mermaid.esm.min.mjs")).default;
     const parser = new DOMParser();
 
     mermaid.initialize({
@@ -7434,8 +7429,7 @@ a.anchor-link {
      * Post-process to ensure mermaid diagrams contain only valid SVG and XHTML.
      */
     function cleanMermaidSvg(svg) {
-      svg = svg.replace(RE_VOID_ELEMENT, replaceVoidElement);
-      return `${SVG_XML_HEADER}${svg}`;
+      return svg.replace(RE_VOID_ELEMENT, replaceVoidElement);
     }
 
 
@@ -7461,285 +7455,6 @@ a.anchor-link {
       }
       return `<${tag} ${rest}>`;
     }
-
-
-  /**
-   * Named HTML entities with their decimal equivalent codes.
-   *
-   * @see https://www.w3.org/TR/WD-html40-970708/sgml/entities.html
-   * */
-  const HTML_ENTITIES = `<!ENTITY Aacute "&#193;">
-<!ENTITY aacute "&#225;">
-<!ENTITY Acirc "&#194;">
-<!ENTITY acirc "&#226;">
-<!ENTITY acute "&#180;">
-<!ENTITY AElig "&#198;">
-<!ENTITY aelig "&#230;">
-<!ENTITY Agrave "&#192;">
-<!ENTITY agrave "&#224;">
-<!ENTITY alefsym "&#8501;">
-<!ENTITY Alpha "&#913;">
-<!ENTITY alpha "&#945;">
-<!ENTITY amp "&#38;">
-<!ENTITY and "&#8869;">
-<!ENTITY ang "&#8736;">
-<!ENTITY Aring "&#197;">
-<!ENTITY aring "&#229;">
-<!ENTITY asymp "&#8776;">
-<!ENTITY Atilde "&#195;">
-<!ENTITY atilde "&#227;">
-<!ENTITY Auml "&#196;">
-<!ENTITY auml "&#228;">
-<!ENTITY bdquo "&#8222;">
-<!ENTITY Beta "&#914;">
-<!ENTITY beta "&#946;">
-<!ENTITY brvbar "&#166;">
-<!ENTITY bull "&#8226;">
-<!ENTITY cap "&#8745;">
-<!ENTITY Ccedil "&#199;">
-<!ENTITY ccedil "&#231;">
-<!ENTITY cedil "&#184;">
-<!ENTITY cent "&#162;">
-<!ENTITY Chi "&#935;">
-<!ENTITY chi "&#967;">
-<!ENTITY circ "&#710;">
-<!ENTITY clubs "&#9827;">
-<!ENTITY cong "&#8773;">
-<!ENTITY copy "&#169;">
-<!ENTITY crarr "&#8629;">
-<!ENTITY cup "&#8746;">
-<!ENTITY curren "&#164;">
-<!ENTITY dagger "&#8224;">
-<!ENTITY Dagger "&#8225;">
-<!ENTITY darr "&#8595;">
-<!ENTITY dArr "&#8659;">
-<!ENTITY deg "&#176;">
-<!ENTITY Delta "&#916;">
-<!ENTITY delta "&#948;">
-<!ENTITY diams "&#9830;">
-<!ENTITY divide "&#247;">
-<!ENTITY Eacute "&#201;">
-<!ENTITY eacute "&#233;">
-<!ENTITY Ecirc "&#202;">
-<!ENTITY ecirc "&#234;">
-<!ENTITY Egrave "&#200;">
-<!ENTITY egrave "&#232;">
-<!ENTITY empty "&#8709;">
-<!ENTITY emsp "&#8195;">
-<!ENTITY ensp "&#8194;">
-<!ENTITY epsilon "&#949;">
-<!ENTITY Epsilon "&#917;">
-<!ENTITY equiv "&#8801;">
-<!ENTITY Eta "&#919;">
-<!ENTITY eta "&#951;">
-<!ENTITY ETH "&#208;">
-<!ENTITY eth "&#240;">
-<!ENTITY Euml "&#203;">
-<!ENTITY euml "&#235;">
-<!ENTITY exist "&#8707;">
-<!ENTITY fnof "&#402;">
-<!ENTITY forall "&#8704;">
-<!ENTITY frac12 "&#189;">
-<!ENTITY frac14 "&#188;">
-<!ENTITY frac34 "&#190;">
-<!ENTITY frasl "&#8260;">
-<!ENTITY Gamma "&#915;">
-<!ENTITY gamma "&#947;">
-<!ENTITY ge "&#8805;">
-<!ENTITY gt "&#62;">
-<!ENTITY harr "&#8596;">
-<!ENTITY hArr "&#8660;">
-<!ENTITY hearts "&#9829;">
-<!ENTITY hellip "&#8230;">
-<!ENTITY Iacute "&#205;">
-<!ENTITY iacute "&#237;">
-<!ENTITY Icirc "&#206;">
-<!ENTITY icirc "&#238;">
-<!ENTITY iexcl "&#161;">
-<!ENTITY Igrave "&#204;">
-<!ENTITY igrave "&#236;">
-<!ENTITY image "&#8465;">
-<!ENTITY infin "&#8734;">
-<!ENTITY int "&#8747;">
-<!ENTITY Iota "&#921;">
-<!ENTITY iota "&#953;">
-<!ENTITY iquest "&#191;">
-<!ENTITY isin "&#8712;">
-<!ENTITY Iuml "&#207;">
-<!ENTITY iuml "&#239;">
-<!ENTITY Kappa "&#922;">
-<!ENTITY kappa "&#954;">
-<!ENTITY Lambda "&#923;">
-<!ENTITY lambda "&#955;">
-<!ENTITY lang "&#9001;">
-<!ENTITY laquo "&#171;">
-<!ENTITY larr "&#8592;">
-<!ENTITY lArr "&#8656;">
-<!ENTITY lceil "&#8968;">
-<!ENTITY ldquo "&#8220;">
-<!ENTITY le "&#8804;">
-<!ENTITY lfloor "&#8970;">
-<!ENTITY lowast "&#8727;">
-<!ENTITY loz "&#9674;">
-<!ENTITY lrm "&#8206;">
-<!ENTITY lsaquo "&#8249;">
-<!ENTITY lsquo "&#8216;">
-<!ENTITY lt "&#60;">
-<!ENTITY macr "&#175;">
-<!ENTITY mdash "&#8212;">
-<!ENTITY micro "&#181;">
-<!ENTITY middot "&#183;">
-<!ENTITY minus "&#8722;">
-<!ENTITY Mu "&#924;">
-<!ENTITY mu "&#956;">
-<!ENTITY nabla "&#8711;">
-<!ENTITY nbsp "&#160;">
-<!ENTITY ndash "&#8211;">
-<!ENTITY ne "&#8800;">
-<!ENTITY ni "&#8715;">
-<!ENTITY not "&#172;">
-<!ENTITY notin "&#8713;">
-<!ENTITY nsub "&#8836;">
-<!ENTITY Ntilde "&#209;">
-<!ENTITY ntilde "&#241;">
-<!ENTITY Nu "&#925;">
-<!ENTITY nu "&#957;">
-<!ENTITY Oacute "&#211;">
-<!ENTITY oacute "&#243;">
-<!ENTITY Ocirc "&#212;">
-<!ENTITY ocirc "&#244;">
-<!ENTITY OElig "&#338;">
-<!ENTITY oelig "&#339;">
-<!ENTITY Ograve "&#210;">
-<!ENTITY ograve "&#242;">
-<!ENTITY oline "&#8254;">
-<!ENTITY Omega "&#937;">
-<!ENTITY omega "&#969;">
-<!ENTITY Omicron "&#927;">
-<!ENTITY omicron "&#959;">
-<!ENTITY oplus "&#8853;">
-<!ENTITY or "&#8870;">
-<!ENTITY ordf "&#170;">
-<!ENTITY ordm "&#186;">
-<!ENTITY Oslash "&#216;">
-<!ENTITY oslash "&#248;">
-<!ENTITY Otilde "&#213;">
-<!ENTITY otilde "&#245;">
-<!ENTITY otimes "&#8855;">
-<!ENTITY Ouml "&#214;">
-<!ENTITY ouml "&#246;">
-<!ENTITY para "&#182;">
-<!ENTITY part "&#8706;">
-<!ENTITY permil "&#8240;">
-<!ENTITY perp "&#8869;">
-<!ENTITY Phi "&#934;">
-<!ENTITY phi "&#966;">
-<!ENTITY Pi "&#928;">
-<!ENTITY pi "&#960;">
-<!ENTITY piv "&#982;">
-<!ENTITY plusmn "&#177;">
-<!ENTITY pound "&#163;">
-<!ENTITY prime "&#8242;">
-<!ENTITY Prime "&#8243;">
-<!ENTITY prod "&#8719;">
-<!ENTITY prop "&#8733;">
-<!ENTITY Psi "&#936;">
-<!ENTITY psi "&#968;">
-<!ENTITY quot "&#34;">
-<!ENTITY radic "&#8730;">
-<!ENTITY rang "&#9002;">
-<!ENTITY raquo "&#187;">
-<!ENTITY rarr "&#8594;">
-<!ENTITY rArr "&#8658;">
-<!ENTITY rceil "&#8969;">
-<!ENTITY rdquo "&#8221;">
-<!ENTITY real "&#8476;">
-<!ENTITY reg "&#174;">
-<!ENTITY rfloor "&#8971;">
-<!ENTITY Rho "&#929;">
-<!ENTITY rho "&#961;">
-<!ENTITY rlm "&#8207;">
-<!ENTITY rsaquo "&#8250;">
-<!ENTITY rsquo "&#8217;">
-<!ENTITY sbquo "&#8218;">
-<!ENTITY Scaron "&#352;">
-<!ENTITY scaron "&#353;">
-<!ENTITY sdot "&#8901;">
-<!ENTITY sect "&#167;">
-<!ENTITY shy "&#173;">
-<!ENTITY Sigma "&#931;">
-<!ENTITY sigma "&#963;">
-<!ENTITY sigmaf "&#962;">
-<!ENTITY sim "&#8764;">
-<!ENTITY spades "&#9824;">
-<!ENTITY sub "&#8834;">
-<!ENTITY sube "&#8838;">
-<!ENTITY sum "&#8721;">
-<!ENTITY sup "&#8835;">
-<!ENTITY sup1 "&#185;">
-<!ENTITY sup2 "&#178;">
-<!ENTITY sup3 "&#179;">
-<!ENTITY supe "&#8839;">
-<!ENTITY szlig "&#223;">
-<!ENTITY Tau "&#932;">
-<!ENTITY tau "&#964;">
-<!ENTITY there4 "&#8756;">
-<!ENTITY Theta "&#920;">
-<!ENTITY theta "&#952;">
-<!ENTITY thetasym "&#977;">
-<!ENTITY thinsp "&#8201;">
-<!ENTITY THORN "&#222;">
-<!ENTITY thorn "&#254;">
-<!ENTITY tilde "&#732;">
-<!ENTITY times "&#215;">
-<!ENTITY trade "&#8482;">
-<!ENTITY Uacute "&#218;">
-<!ENTITY uacute "&#250;">
-<!ENTITY uarr "&#8593;">
-<!ENTITY uArr "&#8657;">
-<!ENTITY Ucirc "&#219;">
-<!ENTITY ucirc "&#251;">
-<!ENTITY Ugrave "&#217;">
-<!ENTITY ugrave "&#249;">
-<!ENTITY uml "&#168;">
-<!ENTITY upsih "&#978;">
-<!ENTITY Upsilon "&#933;">
-<!ENTITY upsilon "&#965;">
-<!ENTITY Uuml "&#220;">
-<!ENTITY uuml "&#252;">
-<!ENTITY weierp "&#8472;">
-<!ENTITY Xi "&#926;">
-<!ENTITY xi "&#958;">
-<!ENTITY Yacute "&#221;">
-<!ENTITY yacute "&#253;">
-<!ENTITY yen "&#165;">
-<!ENTITY Yuml "&#376;">
-<!ENTITY yuml "&#255;">
-<!ENTITY Zeta "&#918;">
-<!ENTITY zeta "&#950;">
-<!ENTITY zwj "&#8205;">
-<!ENTITY zwnj "&#8204;">`.replace(/\n/g, ' ');
-
-  /**
-   * A reasonably strict xml declaration.
-   */
-  const XML_DECL = '<?xml version="1.0" standalone="no"?>';
-
-  /**
-   * The beginning of the XML doctype declaration.
-   */
-  const DOCTYPE_START = `<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [`;
-
-  /**
-   * The end of the XML docype declaration.
-   */
-  const DOCTYPE_END = ']>';
-
-  /**
-   * A full header for an SVG XML document.
-   */
-  const SVG_XML_HEADER = `${XML_DECL}
-    ${DOCTYPE_START}${HTML_ENTITIES}${DOCTYPE_END}`;
 
     void Promise.all([...diagrams].map(renderOneMarmaid));
   });
@@ -7805,7 +7520,7 @@ a.anchor-link {
 <p style="font-size:19px; text-align:left;"><i>Advanced Applications of Generative AI in Actuarial Science: Case Studies Beyond ChatGPT</i></p>
 <p style="font-size:25px; text-align:left; font-weight:bold;">Case Study: GenAI-Powered Market Comparison</p>
 <p style="font-size:19px; text-align:left; margin-top: -10px; margin-bottom: 15px;">Simon Hatzesberger (<a href="mailto:simon.hatzesberger@gmail.com">simon.hatzesberger@gmail.com</a>), Iris Nonneman (<a href="mailto:irisnonneman@gmail.com">irisnonneman@gmail.com</a>)
-<p style="font-style:italic; font-size: 19px">Date: April 15, 2026</p>
+<p style="font-style:italic; font-size: 19px">Date: June 24, 2026</p>
 </p></div>
 </div>
 </div>
@@ -7827,7 +7542,7 @@ a.anchor-link {
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=69be90ee">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=69be90ee">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
@@ -7849,6 +7564,19 @@ a.anchor-link {
 <span class="k">else</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"Local environment detected. Ensure packages are installed via requirements.txt."</span><span class="p">)</span>
 </pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Local environment detected. Ensure packages are installed via requirements.txt.
+</pre>
 </div>
 </div>
 </div>
@@ -8605,23 +8333,23 @@ Consolidated financial statements
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
 <style type="text/css">
-#T_07fa1_row0_col1, #T_07fa1_row1_col1, #T_07fa1_row2_col1 {
+#T_1d841_row0_col1, #T_1d841_row1_col1, #T_1d841_row2_col1 {
   text-align: left;
   white-space: pre-wrap;
   vertical-align: top;
 }
 </style>
-<table id="T_07fa1">
+<table id="T_1d841">
 <thead>
 <tr>
-<th class="col_heading level0 col0" id="T_07fa1_level0_col0">Chunk ID</th>
-<th class="col_heading level0 col1" id="T_07fa1_level0_col1">Chunk Preview</th>
+<th class="col_heading level0 col0" id="T_1d841_level0_col0">Chunk ID</th>
+<th class="col_heading level0 col1" id="T_1d841_level0_col1">Chunk Preview</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="data row0 col0" id="T_07fa1_row0_col0">AXA-229</td>
-<td class="data row0 col1" id="T_07fa1_row0_col1">ges in
+<td class="data row0 col0" id="T_1d841_row0_col0">AXA-229</td>
+<td class="data row0 col1" id="T_1d841_row0_col1">ges in
 applicable laws and regulations. In some cases, AXA may
 receive information after the reporting period but before the
 Management Report is approved for issuance. If such
@@ -8662,8 +8390,8 @@ impact, may involve complex models and research and can
 result in m</td>
 </tr>
 <tr>
-<td class="data row1 col0" id="T_07fa1_row1_col0">AXA-052</td>
-<td class="data row1 col1" id="T_07fa1_row1_col1">e on
+<td class="data row1 col0" id="T_1d841_row1_col0">AXA-052</td>
+<td class="data row1 col1" id="T_1d841_row1_col1">e on
 a comparable basis to €2,233 million, as growth in NB CSM
 was offset by the decrease in the contribution of short‑term
 multinational business in France.
@@ -8802,8 +8530,8 @@ Revenues
 19,555</td>
 </tr>
 <tr>
-<td class="data row2 col0" id="T_07fa1_row2_col0">AXA-564</td>
-<td class="data row2 col1" id="T_07fa1_row2_col1">pliance of the process implemented by AXA
+<td class="data row2 col0" id="T_1d841_row2_col0">AXA-564</td>
+<td class="data row2 col1" id="T_1d841_row2_col1">pliance of the process implemented by AXA
 S.A. with the ESRS.
 Elements that received particular attention
 Information on how the Entity updates its double materiality
@@ -8997,63 +8725,63 @@ Statement.
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
 <style type="text/css">
-#T_f594a_row0_col2 {
+#T_2dfc6_row0_col2 {
   background-color: #004529;
   color: #f1f1f1;
 }
-#T_f594a_row0_col3, #T_f594a_row1_col3, #T_f594a_row2_col3, #T_f594a_row3_col3, #T_f594a_row4_col3, #T_f594a_row5_col3, #T_f594a_row6_col3, #T_f594a_row7_col3, #T_f594a_row8_col3, #T_f594a_row9_col3 {
+#T_2dfc6_row0_col3, #T_2dfc6_row1_col3, #T_2dfc6_row2_col3, #T_2dfc6_row3_col3, #T_2dfc6_row4_col3, #T_2dfc6_row5_col3, #T_2dfc6_row6_col3, #T_2dfc6_row7_col3, #T_2dfc6_row8_col3, #T_2dfc6_row9_col3 {
   text-align: left;
   white-space: pre-wrap;
   vertical-align: top;
 }
-#T_f594a_row1_col2 {
-  background-color: #248644;
+#T_2dfc6_row1_col2 {
+  background-color: #268846;
   color: #f1f1f1;
 }
-#T_f594a_row2_col2 {
-  background-color: #2f944e;
+#T_2dfc6_row2_col2 {
+  background-color: #31974f;
   color: #f1f1f1;
 }
-#T_f594a_row3_col2 {
-  background-color: #69bf72;
+#T_2dfc6_row3_col2 {
+  background-color: #6dc073;
   color: #000000;
 }
-#T_f594a_row4_col2 {
-  background-color: #9ad587;
+#T_2dfc6_row4_col2 {
+  background-color: #97d385;
   color: #000000;
 }
-#T_f594a_row5_col2 {
-  background-color: #b6e192;
+#T_2dfc6_row5_col2 {
+  background-color: #c4e799;
   color: #000000;
 }
-#T_f594a_row6_col2, #T_f594a_row7_col2 {
-  background-color: #ddf2a6;
+#T_2dfc6_row6_col2, #T_2dfc6_row7_col2 {
+  background-color: #e2f4aa;
   color: #000000;
 }
-#T_f594a_row8_col2 {
-  background-color: #eef9b3;
+#T_2dfc6_row8_col2 {
+  background-color: #f3fab6;
   color: #000000;
 }
-#T_f594a_row9_col2 {
+#T_2dfc6_row9_col2 {
   background-color: #ffffe5;
   color: #000000;
 }
 </style>
-<table id="T_f594a">
+<table id="T_2dfc6">
 <thead>
 <tr>
-<th class="col_heading level0 col0" id="T_f594a_level0_col0">Rank</th>
-<th class="col_heading level0 col1" id="T_f594a_level0_col1">Chunk ID</th>
-<th class="col_heading level0 col2" id="T_f594a_level0_col2">Similarity</th>
-<th class="col_heading level0 col3" id="T_f594a_level0_col3">Preview</th>
+<th class="col_heading level0 col0" id="T_2dfc6_level0_col0">Rank</th>
+<th class="col_heading level0 col1" id="T_2dfc6_level0_col1">Chunk ID</th>
+<th class="col_heading level0 col2" id="T_2dfc6_level0_col2">Similarity</th>
+<th class="col_heading level0 col3" id="T_2dfc6_level0_col3">Preview</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="data row0 col0" id="T_f594a_row0_col0">1</td>
-<td class="data row0 col1" id="T_f594a_row0_col1">Generali-692</td>
-<td class="data row0 col2" id="T_f594a_row0_col2">0.348</td>
-<td class="data row0 col3" id="T_f594a_row0_col3">uality.
+<td class="data row0 col0" id="T_2dfc6_row0_col0">1</td>
+<td class="data row0 col1" id="T_2dfc6_row0_col1">Generali-692</td>
+<td class="data row0 col2" id="T_2dfc6_row0_col2">0.348</td>
+<td class="data row0 col3" id="T_2dfc6_row0_col3">uality.
 Reinsurance contracts held: breakdown by rating
 (€ million)
 31/12/2025
@@ -9097,10 +8825,10 @@ the stress scenario.
 Considering all the above, the following table details the maturity analysis of net ex</td>
 </tr>
 <tr>
-<td class="data row1 col0" id="T_f594a_row1_col0">2</td>
-<td class="data row1 col1" id="T_f594a_row1_col1">Generali-025</td>
-<td class="data row1 col2" id="T_f594a_row1_col2">0.337</td>
-<td class="data row1 col3" id="T_f594a_row1_col3">dy’s upgraded Generali’s Insurer Financial Strength Rating (IFSR) from A3 to A2 and changed the outlook from positive to
+<td class="data row1 col0" id="T_2dfc6_row1_col0">2</td>
+<td class="data row1 col1" id="T_2dfc6_row1_col1">Generali-025</td>
+<td class="data row1 col2" id="T_2dfc6_row1_col2">0.337</td>
+<td class="data row1 col3" id="T_2dfc6_row1_col3">dy’s upgraded Generali’s Insurer Financial Strength Rating (IFSR) from A3 to A2 and changed the outlook from positive to
 stable. The change follows the upgrade by one notch of the ratings of the Government of Italy (Baa2, stable). The upgrade also
 reflects the Group’s very strong financial and business profile, which benefits from leading positions in its chosen markets in Europe,
 diversification by business lines and relatively low product risk. The ratings of Generali’s main operating insurance subsidiaries in Italy,
@@ -9121,10 +8849,10 @@ The share buyback for the purposes of cancelling own shares was completed, since
 of 24 April 2025 authorizing the purchase of treasury shares for a total disbursement o</td>
 </tr>
 <tr>
-<td class="data row2 col0" id="T_f594a_row2_col0">3</td>
-<td class="data row2 col1" id="T_f594a_row2_col1">Generali-691</td>
-<td class="data row2 col2" id="T_f594a_row2_col2">0.335</td>
-<td class="data row2 col3" id="T_f594a_row2_col3">ative claim cost
+<td class="data row2 col0" id="T_2dfc6_row2_col0">3</td>
+<td class="data row2 col1" id="T_2dfc6_row2_col1">Generali-691</td>
+<td class="data row2 col2" id="T_2dfc6_row2_col2">0.335</td>
+<td class="data row2 col3" id="T_2dfc6_row2_col3">ative claim cost
 (Total B)
 14,116
 14,579
@@ -9392,10 +9120,10 @@ Total
 In some circumstances, local regulations, market practices, or specific operations allow the Group</td>
 </tr>
 <tr>
-<td class="data row3 col0" id="T_f594a_row3_col0">4</td>
-<td class="data row3 col1" id="T_f594a_row3_col1">Generali-024</td>
-<td class="data row3 col2" id="T_f594a_row3_col2">0.328</td>
-<td class="data row3 col3" id="T_f594a_row3_col3"> the interest payment date falling on 21 November 2025, all
+<td class="data row3 col0" id="T_2dfc6_row3_col0">4</td>
+<td class="data row3 col1" id="T_2dfc6_row3_col1">Generali-024</td>
+<td class="data row3 col2" id="T_2dfc6_row3_col2">0.328</td>
+<td class="data row3 col3" id="T_2dfc6_row3_col3"> the interest payment date falling on 21 November 2025, all
 outstanding notes issued on 21 November 2014. The outstanding notes were redeemed in full on 21 November 2025 at their
 principal amount together with interest accrued up to (but excluding) such date, subject to the terms and conditions of the notes.
 The early redemption of the notes has been approved by Istituto per la Vigilanza sulle Assicurazioni (IVASS).
@@ -9421,10 +9149,10 @@ stable. The change follows the upgrade by one notch of the ratings of the Govern
 reflects the Group’s very strong financial and busin</td>
 </tr>
 <tr>
-<td class="data row4 col0" id="T_f594a_row4_col0">5</td>
-<td class="data row4 col1" id="T_f594a_row4_col1">Generali-378</td>
-<td class="data row4 col2" id="T_f594a_row4_col2">0.323</td>
-<td class="data row4 col3" id="T_f594a_row4_col3">oviding a brief oversight of the risk management system;
+<td class="data row4 col0" id="T_2dfc6_row4_col0">5</td>
+<td class="data row4 col1" id="T_2dfc6_row4_col1">Generali-378</td>
+<td class="data row4 col2" id="T_2dfc6_row4_col2">0.324</td>
+<td class="data row4 col3" id="T_2dfc6_row4_col3">oviding a brief oversight of the risk management system;
 • section C providing the Group solvency position and the key elements of the capital management process, as well as the sensitivity
 analysis to main risks;
 • section D providing a highlight on the Group risk profile.
@@ -9454,10 +9182,10 @@ of defence;
 Internal Audit Function togethe</td>
 </tr>
 <tr>
-<td class="data row5 col0" id="T_f594a_row5_col0">6</td>
-<td class="data row5 col1" id="T_f594a_row5_col1">Generali-125</td>
-<td class="data row5 col2" id="T_f594a_row5_col2">0.320</td>
-<td class="data row5 col3" id="T_f594a_row5_col3">occurrence and severity, and that possible mitigation actions are identified. All risks are considered, both quantifiable,
+<td class="data row5 col0" id="T_2dfc6_row5_col0">6</td>
+<td class="data row5 col1" id="T_2dfc6_row5_col1">Generali-125</td>
+<td class="data row5 col2" id="T_2dfc6_row5_col2">0.319</td>
+<td class="data row5 col3" id="T_2dfc6_row5_col3">occurrence and severity, and that possible mitigation actions are identified. All risks are considered, both quantifiable,
 included in the calculation of the Solvency Capital Requirement (SCR), and non-quantifiable ones, i.e., not included in the calculation of
 the SCR, among which emerging and sustainability risks, for which no capital requirement is allocated. Specific prescriptions for managing
 the different risk categories are provided in the respective Group policies and guidelines, as well as in the Group Risk Appetite Framework.
@@ -9491,10 +9219,35 @@ human rights ratings
 • UN Glo</td>
 </tr>
 <tr>
-<td class="data row6 col0" id="T_f594a_row6_col0">7</td>
-<td class="data row6 col1" id="T_f594a_row6_col1">Generali-408</td>
-<td class="data row6 col2" id="T_f594a_row6_col2">0.315</td>
-<td class="data row6 col3" id="T_f594a_row6_col3">taking into account the reinsurance market cycle.
+<td class="data row6 col0" id="T_2dfc6_row6_col0">7</td>
+<td class="data row6 col1" id="T_2dfc6_row6_col1">Generali-403</td>
+<td class="data row6 col2" id="T_2dfc6_row6_col2">0.315</td>
+<td class="data row6 col3" id="T_2dfc6_row6_col3">sks are considered but also the financial risks related to the minimum interest rate guarantee and any potential
+mismatch between the liabilities and the corresponding assets.
+For the purpose of long-term health insurance pricing, the monitoring of health-related market claims and corresponding indexing
+mechanisms is performed.
+A particular emphasis is placed on the underwriting of new contracts with reference to medical, financial and moral hazard risks.
+The Group has defined clear underwriting standards through manuals, forms, medical and financial underwriting requirements. For
+insurance riders, which are most exposed to moral hazard, maximum insurability levels are also set, lower than those applied for
+death covers. In order to mitigate these risks, policy exclusions are also defined.
+Regular risk exposure monitoring and adherence to the operative limits, reporting and escalation processes are also in place,
+allowing for potential remediation actions to be undertaken.
+Group Risk Management Function defines the guidelines to be implemented by the local Risk Management Functions to contribute
+to these processes and to ensure an adequate risk perspective.
+In particular, the Risk Management Function assesses the risk implications of new lines of business/products and monitors the
+Group’s risk profile on a regular basis. It also supports compliance assessment with respect to operative limits as well as the reporting
+and escalation processes to define the most appropriate mitigation actions.
+The Group has defined a framework aimed at developing new products and services in line with sustainability targets. Furthermore,
+the potential impacts of sustainability risks are taken into account in the underwriting processes.
+During 2023, Generali Group’s surrender rates increased, driven by the evolution of the macroeconomic environment and rising
+interest rates. Already in 2024, a decreasing trend in surrender rates compared to 2023 was observed, also supported by the
+succe</td>
+</tr>
+<tr>
+<td class="data row7 col0" id="T_2dfc6_row7_col0">8</td>
+<td class="data row7 col1" id="T_2dfc6_row7_col1">Generali-408</td>
+<td class="data row7 col2" id="T_2dfc6_row7_col2">0.315</td>
+<td class="data row7 col3" id="T_2dfc6_row7_col3">taking into account the reinsurance market cycle.
 24. For the scope of the PIM please refer to section A. Executive Summary. Entities not included in the IM scope calculate the capital requirement based on Standard Formula or the capital requirements of sectoral regime.
 
 Risk Report
@@ -9517,35 +9270,10 @@ counterparties to which the Group is exposed to fulfil their financial obligatio
 • reinvested proceeds of existing assets being exposed to unfavourable market co</td>
 </tr>
 <tr>
-<td class="data row7 col0" id="T_f594a_row7_col0">8</td>
-<td class="data row7 col1" id="T_f594a_row7_col1">Generali-403</td>
-<td class="data row7 col2" id="T_f594a_row7_col2">0.315</td>
-<td class="data row7 col3" id="T_f594a_row7_col3">sks are considered but also the financial risks related to the minimum interest rate guarantee and any potential
-mismatch between the liabilities and the corresponding assets.
-For the purpose of long-term health insurance pricing, the monitoring of health-related market claims and corresponding indexing
-mechanisms is performed.
-A particular emphasis is placed on the underwriting of new contracts with reference to medical, financial and moral hazard risks.
-The Group has defined clear underwriting standards through manuals, forms, medical and financial underwriting requirements. For
-insurance riders, which are most exposed to moral hazard, maximum insurability levels are also set, lower than those applied for
-death covers. In order to mitigate these risks, policy exclusions are also defined.
-Regular risk exposure monitoring and adherence to the operative limits, reporting and escalation processes are also in place,
-allowing for potential remediation actions to be undertaken.
-Group Risk Management Function defines the guidelines to be implemented by the local Risk Management Functions to contribute
-to these processes and to ensure an adequate risk perspective.
-In particular, the Risk Management Function assesses the risk implications of new lines of business/products and monitors the
-Group’s risk profile on a regular basis. It also supports compliance assessment with respect to operative limits as well as the reporting
-and escalation processes to define the most appropriate mitigation actions.
-The Group has defined a framework aimed at developing new products and services in line with sustainability targets. Furthermore,
-the potential impacts of sustainability risks are taken into account in the underwriting processes.
-During 2023, Generali Group’s surrender rates increased, driven by the evolution of the macroeconomic environment and rising
-interest rates. Already in 2024, a decreasing trend in surrender rates compared to 2023 was observed, also supported by the
-succe</td>
-</tr>
-<tr>
-<td class="data row8 col0" id="T_f594a_row8_col0">9</td>
-<td class="data row8 col1" id="T_f594a_row8_col1">Generali-126</td>
-<td class="data row8 col2" id="T_f594a_row8_col2">0.312</td>
-<td class="data row8 col3" id="T_f594a_row8_col3">
+<td class="data row8 col0" id="T_2dfc6_row8_col0">9</td>
+<td class="data row8 col1" id="T_2dfc6_row8_col1">Generali-126</td>
+<td class="data row8 col2" id="T_2dfc6_row8_col2">0.312</td>
+<td class="data row8 col3" id="T_2dfc6_row8_col3">
 industries
 • WWF Risk Filter heatmap by country
 • Standard setters for nature impact in the
@@ -9597,32 +9325,119 @@ communication of the Group’s impacts on sustainability factors (e.g., greenwas
 controls on certain business processes, such as the negative screening led by </td>
 </tr>
 <tr>
-<td class="data row9 col0" id="T_f594a_row9_col0">10</td>
-<td class="data row9 col1" id="T_f594a_row9_col1">Generali-511</td>
-<td class="data row9 col2" id="T_f594a_row9_col2">0.305</td>
-<td class="data row9 col3" id="T_f594a_row9_col3">ttern used for releasing the CSM. If,
-however, the IACF relate to insurance contracts accounted for under the PAA model, the amortization follows the release of the LRC.
-For groups of contracts to be recognized or for the future renewals or for contracts that have a delay in the beginning of the coverage,
+<td class="data row9 col0" id="T_2dfc6_row9_col0">10</td>
+<td class="data row9 col1" id="T_2dfc6_row9_col1">Generali-619</td>
+<td class="data row9 col2" id="T_2dfc6_row9_col2">0.306</td>
+<td class="data row9 col3" id="T_2dfc6_row9_col3">ct exposure: breakdown by sector
+(€ million)
+31/12/2025
+31/12/2024
+Book Value
+Comp. (%)
+Book Value
+Comp. (%)
+Financial
+34,041
+28.5%
+35,466
+31.0%
+Financial - Covered Bonds
+6,441
+5.4%
+6,800
+6.0%
+Utilities
+12,935
+10.8%
+12,741
+11.1%
+Consumer
+11,694
+9.8%
+11,158
+9.8%
+Industrial
+11,072
+9.3%
+9,739
+8.5%
+Telecom
+8,609
+7.2%
+8,165
+7.1%
+Health Care
+5,119
+4.3%
+4,814
+4.2%
+Other
+17,928
+15.0%
+16,322
+14.3%
+Total Corporate bonds General account
+107,839
+90.3%
+105,205
+92.1%
+Financial assets linked to technical reserves where the investment risk is borne
+by the policyholders, to financial liabilities related to investment contracts, and
+reserves linked to pension funds
+11,538
+9.7%
+9,081
+7.9%
+Total Corporate bonds
+119,377
+100.0%
+114,286
+100.0%
+The corporate bonds portfolio amounted to € 119,377 million (€ 114,286 million at 31 December 2024), of which € 11,538 million
+(€ 9,081 million at 31 December 2024) of corporate exposures in financial assets linked to technical reserves where the investment
+risk is borne by the policyholders, to financial liabilities related to investment contracts, and reserves linked to pension funds.
+In terms of exposures, the portfolio is composed for 56.4% (55.0% at 31 December 2024) by non-financial corporate bonds, for
+33.9% (37.0% at 31 December 2024) by financial corporate bonds and for 9.7% (7.9% at 31 December 2024) by bonds in financial
+assets linked to technical reserves where the investment risk is borne by the policyholders, to financial liabilities related to investment
+contracts, and reserves linked to pension funds.
 
-240
-Annual Integrated Report and Consolidated Financial Statements 2025
-Generali Group
-in case the expected future cash flows (including Risk Adjustment) do not exceed the IACF asset, an impairment of the asset should
-be considered and reported in profit or loss. At each reporting date, if a reversal of impairment is recognized based on the outcome
-of the impairment test, the IACF asset is increased, and a gain is recognized in profit or loss.
-Insurance finance income and expenses
-The Group applies the disaggregation approach to its existing portfolio of insurance contracts issued and reinsurance contracts held
-to mitigate the potential accounting mismatch and related volatility in the Income Statement that may arise because of the interaction
-between the classification and measurement of financial assets in accordance with IFRS 9 and the accounting for insurance contract
-liabilities.
-Consequently, any change in discount rates is recognized into Other Comprehensive Income. More in detail:
-• for insurance contracts under the Variable Fee Approach, the insurance finance expenses to be included in the Income Statement
-is an amount that offsets the finance income (expense) arising on the financial underlying items;
-• for insurance contracts under the GMM, the insurance finance expenses that are recognized in the Income Statement include only
-the amount arising by discounting insurance liabilities with the discount rates determined at initial recognition (i.e. locked-in rate).
-Any change in financial assumptions arising from the application of current rates shall be accounted for Other Comprehensive
-Income;
-• for insurance contracts under the PAA, the insurance finance</td>
+295
+Consolidated Financial Statements
+With reference to corporate bond exposures, reported at book value, the breakdown by rating is provided below:
+Corporate bonds direct exposure: breakdown by rating
+(€ million)
+31/12/2025
+31/12/2024
+Book Value
+Comp. (%)
+Book Value
+Comp. (%)
+AAA
+6,129
+5.1%
+6,843
+6.0%
+AA
+6,557
+5.5%
+7,927
+6.9%
+A
+32,093
+26.9%
+29,012
+25.4%
+BBB
+54,660
+45.8%
+53,956
+47.2%
+Non investment grade
+6,932
+5.8%
+5,463
+4.8%
+Not rated</td>
 </tr>
 </tbody>
 </table>
@@ -10019,85 +9834,85 @@ In practice, evidence-grounding fields such as source locations or short support
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
 <style type="text/css">
-#T_00989_row0_col1, #T_00989_row0_col3, #T_00989_row0_col4, #T_00989_row1_col1, #T_00989_row1_col3, #T_00989_row1_col4, #T_00989_row2_col1, #T_00989_row2_col3, #T_00989_row2_col4, #T_00989_row3_col1, #T_00989_row3_col3, #T_00989_row3_col4, #T_00989_row4_col1, #T_00989_row4_col3, #T_00989_row4_col4, #T_00989_row5_col1, #T_00989_row5_col3, #T_00989_row5_col4, #T_00989_row6_col1, #T_00989_row6_col3, #T_00989_row6_col4, #T_00989_row7_col1, #T_00989_row7_col3, #T_00989_row7_col4, #T_00989_row8_col1, #T_00989_row8_col3, #T_00989_row8_col4 {
+#T_7e84f_row0_col1, #T_7e84f_row0_col3, #T_7e84f_row0_col4, #T_7e84f_row1_col1, #T_7e84f_row1_col3, #T_7e84f_row1_col4, #T_7e84f_row2_col1, #T_7e84f_row2_col3, #T_7e84f_row2_col4, #T_7e84f_row3_col1, #T_7e84f_row3_col3, #T_7e84f_row3_col4, #T_7e84f_row4_col1, #T_7e84f_row4_col3, #T_7e84f_row4_col4, #T_7e84f_row5_col1, #T_7e84f_row5_col3, #T_7e84f_row5_col4, #T_7e84f_row6_col1, #T_7e84f_row6_col3, #T_7e84f_row6_col4, #T_7e84f_row7_col1, #T_7e84f_row7_col3, #T_7e84f_row7_col4, #T_7e84f_row8_col1, #T_7e84f_row8_col3, #T_7e84f_row8_col4 {
   text-align: left;
   white-space: pre-wrap;
   vertical-align: top;
 }
 </style>
-<table id="T_00989">
+<table id="T_7e84f">
 <thead>
 <tr>
-<th class="col_heading level0 col0" id="T_00989_level0_col0">company</th>
-<th class="col_heading level0 col1" id="T_00989_level0_col1">query_title</th>
-<th class="col_heading level0 col2" id="T_00989_level0_col2">model_label</th>
-<th class="col_heading level0 col3" id="T_00989_level0_col3">business_summary</th>
-<th class="col_heading level0 col4" id="T_00989_level0_col4">error</th>
+<th class="col_heading level0 col0" id="T_7e84f_level0_col0">company</th>
+<th class="col_heading level0 col1" id="T_7e84f_level0_col1">query_title</th>
+<th class="col_heading level0 col2" id="T_7e84f_level0_col2">model_label</th>
+<th class="col_heading level0 col3" id="T_7e84f_level0_col3">business_summary</th>
+<th class="col_heading level0 col4" id="T_7e84f_level0_col4">error</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="data row0 col0" id="T_00989_row0_col0">AXA</td>
-<td class="data row0 col1" id="T_00989_row0_col1">2025 solvency position</td>
-<td class="data row0 col2" id="T_00989_row0_col2">GPT-5.4</td>
-<td class="data row0 col3" id="T_00989_row0_col3">224% under Solvency II</td>
-<td class="data row0 col4" id="T_00989_row0_col4">None</td>
+<td class="data row0 col0" id="T_7e84f_row0_col0">AXA</td>
+<td class="data row0 col1" id="T_7e84f_row0_col1">2025 solvency position</td>
+<td class="data row0 col2" id="T_7e84f_row0_col2">GPT-5.4</td>
+<td class="data row0 col3" id="T_7e84f_row0_col3">224% under Solvency II</td>
+<td class="data row0 col4" id="T_7e84f_row0_col4">None</td>
 </tr>
 <tr>
-<td class="data row1 col0" id="T_00989_row1_col0">AXA</td>
-<td class="data row1 col1" id="T_00989_row1_col1">EUR discount curve used for liabilities</td>
-<td class="data row1 col2" id="T_00989_row1_col2">GPT-5.4</td>
-<td class="data row1 col3" id="T_00989_row1_col3">EUR curve: 1y: 2.40%, 2y: 2.50%, 3y: 2.60%, 5y: 2.80%, 7y: 3.00%, 10y: 3.20%, 15y: 3.40%, 20y: 3.50%, 25y: 3.50%, 30y: 3.40%</td>
-<td class="data row1 col4" id="T_00989_row1_col4">None</td>
+<td class="data row1 col0" id="T_7e84f_row1_col0">AXA</td>
+<td class="data row1 col1" id="T_7e84f_row1_col1">EUR discount curve used for liabilities</td>
+<td class="data row1 col2" id="T_7e84f_row1_col2">GPT-5.4</td>
+<td class="data row1 col3" id="T_7e84f_row1_col3">EUR curve: 1y: 2.40%, 2y: 2.50%, 3y: 2.60%, 5y: 2.80%, 7y: 3.00%, 10y: 3.20%, 15y: 3.40%, 20y: 3.50%, 25y: 3.50%, 30y: 3.40%</td>
+<td class="data row1 col4" id="T_7e84f_row1_col4">None</td>
 </tr>
 <tr>
-<td class="data row2 col0" id="T_00989_row2_col0">AXA</td>
-<td class="data row2 col1" id="T_00989_row2_col1">Insurance financial strength ratings by agency</td>
-<td class="data row2 col2" id="T_00989_row2_col2">GPT-5.4</td>
-<td class="data row2 col3" id="T_00989_row2_col3">S&amp;P: AA- / positive; Moody's: Aa2 / stable; AM Best: A+ Superior / stable</td>
-<td class="data row2 col4" id="T_00989_row2_col4">None</td>
+<td class="data row2 col0" id="T_7e84f_row2_col0">AXA</td>
+<td class="data row2 col1" id="T_7e84f_row2_col1">Insurance financial strength ratings by agency</td>
+<td class="data row2 col2" id="T_7e84f_row2_col2">GPT-5.4</td>
+<td class="data row2 col3" id="T_7e84f_row2_col3">S&amp;P: AA- / positive; Moody's: Aa2 / stable; AM Best: A+ Superior / stable</td>
+<td class="data row2 col4" id="T_7e84f_row2_col4">None</td>
 </tr>
 <tr>
-<td class="data row3 col0" id="T_00989_row3_col0">Generali</td>
-<td class="data row3 col1" id="T_00989_row3_col1">2025 solvency position</td>
-<td class="data row3 col2" id="T_00989_row3_col2">GPT-5.4</td>
-<td class="data row3 col3" id="T_00989_row3_col3">219% under Solvency II</td>
-<td class="data row3 col4" id="T_00989_row3_col4">None</td>
+<td class="data row3 col0" id="T_7e84f_row3_col0">Generali</td>
+<td class="data row3 col1" id="T_7e84f_row3_col1">2025 solvency position</td>
+<td class="data row3 col2" id="T_7e84f_row3_col2">GPT-5.4</td>
+<td class="data row3 col3" id="T_7e84f_row3_col3">219% under Solvency II</td>
+<td class="data row3 col4" id="T_7e84f_row3_col4">None</td>
 </tr>
 <tr>
-<td class="data row4 col0" id="T_00989_row4_col0">Generali</td>
-<td class="data row4 col1" id="T_00989_row4_col1">EUR discount curve used for liabilities</td>
-<td class="data row4 col2" id="T_00989_row4_col2">GPT-5.4</td>
-<td class="data row4 col3" id="T_00989_row4_col3">EUR curve: 1y: 2.22%, 2y: 2.30%, 3y: 2.42%, 4y: 2.53%, 5y: 2.62%, 6y: 2.70%, 7y: 2.79%, 8y: 2.86%, 9y: 2.93%, 10y: 3.00%, 15y: 3.25%, 20y: 3.35%, 25y: 3.39%, 30y: 3.41%, 35y: 3.41%, 40y: 3.40%, 45y: 3.40%, 50y: 3.39%</td>
-<td class="data row4 col4" id="T_00989_row4_col4">None</td>
+<td class="data row4 col0" id="T_7e84f_row4_col0">Generali</td>
+<td class="data row4 col1" id="T_7e84f_row4_col1">EUR discount curve used for liabilities</td>
+<td class="data row4 col2" id="T_7e84f_row4_col2">GPT-5.4</td>
+<td class="data row4 col3" id="T_7e84f_row4_col3">EUR curve: 1y: 2.22%, 2y: 2.30%, 3y: 2.42%, 4y: 2.53%, 5y: 2.62%, 6y: 2.70%, 7y: 2.79%, 8y: 2.86%, 9y: 2.93%, 10y: 3.00%, 15y: 3.25%, 20y: 3.35%, 25y: 3.39%, 30y: 3.41%, 35y: 3.41%, 40y: 3.40%, 45y: 3.40%, 50y: 3.39%</td>
+<td class="data row4 col4" id="T_7e84f_row4_col4">None</td>
 </tr>
 <tr>
-<td class="data row5 col0" id="T_00989_row5_col0">Generali</td>
-<td class="data row5 col1" id="T_00989_row5_col1">Insurance financial strength ratings by agency</td>
-<td class="data row5 col2" id="T_00989_row5_col2">GPT-5.4</td>
-<td class="data row5 col3" id="T_00989_row5_col3">Moody's: A2 / stable; AM Best: A+ / stable; Fitch: AA- / stable</td>
-<td class="data row5 col4" id="T_00989_row5_col4">None</td>
+<td class="data row5 col0" id="T_7e84f_row5_col0">Generali</td>
+<td class="data row5 col1" id="T_7e84f_row5_col1">Insurance financial strength ratings by agency</td>
+<td class="data row5 col2" id="T_7e84f_row5_col2">GPT-5.4</td>
+<td class="data row5 col3" id="T_7e84f_row5_col3">Moody's: A2 / stable; AM Best: A+ / stable; Fitch: AA- / stable</td>
+<td class="data row5 col4" id="T_7e84f_row5_col4">None</td>
 </tr>
 <tr>
-<td class="data row6 col0" id="T_00989_row6_col0">Zurich</td>
-<td class="data row6 col1" id="T_00989_row6_col1">2025 solvency position</td>
-<td class="data row6 col2" id="T_00989_row6_col2">GPT-5.4</td>
-<td class="data row6 col3" id="T_00989_row6_col3">259% under SST</td>
-<td class="data row6 col4" id="T_00989_row6_col4">None</td>
+<td class="data row6 col0" id="T_7e84f_row6_col0">Zurich</td>
+<td class="data row6 col1" id="T_7e84f_row6_col1">2025 solvency position</td>
+<td class="data row6 col2" id="T_7e84f_row6_col2">GPT-5.4</td>
+<td class="data row6 col3" id="T_7e84f_row6_col3">259% under SST</td>
+<td class="data row6 col4" id="T_7e84f_row6_col4">None</td>
 </tr>
 <tr>
-<td class="data row7 col0" id="T_00989_row7_col0">Zurich</td>
-<td class="data row7 col1" id="T_00989_row7_col1">EUR discount curve used for liabilities</td>
-<td class="data row7 col2" id="T_00989_row7_col2">GPT-5.4</td>
-<td class="data row7 col3" id="T_00989_row7_col3">EUR curve: 1y: 2.08%, 5y: 2.48%, 10y: 2.86%, 20y: 3.21%, 40y: 3.27%</td>
-<td class="data row7 col4" id="T_00989_row7_col4">None</td>
+<td class="data row7 col0" id="T_7e84f_row7_col0">Zurich</td>
+<td class="data row7 col1" id="T_7e84f_row7_col1">EUR discount curve used for liabilities</td>
+<td class="data row7 col2" id="T_7e84f_row7_col2">GPT-5.4</td>
+<td class="data row7 col3" id="T_7e84f_row7_col3">EUR curve: 1y: 2.08%, 5y: 2.48%, 10y: 2.86%, 20y: 3.21%, 40y: 3.27%</td>
+<td class="data row7 col4" id="T_7e84f_row7_col4">None</td>
 </tr>
 <tr>
-<td class="data row8 col0" id="T_00989_row8_col0">Zurich</td>
-<td class="data row8 col1" id="T_00989_row8_col1">Insurance financial strength ratings by agency</td>
-<td class="data row8 col2" id="T_00989_row8_col2">GPT-5.4</td>
-<td class="data row8 col3" id="T_00989_row8_col3">S&amp;P: AA / stable; Moody's: Aa2 / stable; AM Best: A+ (Superior) / stable</td>
-<td class="data row8 col4" id="T_00989_row8_col4">None</td>
+<td class="data row8 col0" id="T_7e84f_row8_col0">Zurich</td>
+<td class="data row8 col1" id="T_7e84f_row8_col1">Insurance financial strength ratings by agency</td>
+<td class="data row8 col2" id="T_7e84f_row8_col2">GPT-5.4</td>
+<td class="data row8 col3" id="T_7e84f_row8_col3">S&amp;P: AA / stable; Moody's: Aa2 / stable; AM Best: A+ (Superior) / stable</td>
+<td class="data row8 col4" id="T_7e84f_row8_col4">None</td>
 </tr>
 </tbody>
 </table>
@@ -10154,39 +9969,39 @@ In practice, evidence-grounding fields such as source locations or short support
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
 <style type="text/css">
-#T_f482f_row0_col1, #T_f482f_row0_col2, #T_f482f_row0_col3, #T_f482f_row1_col1, #T_f482f_row1_col2, #T_f482f_row1_col3, #T_f482f_row2_col1, #T_f482f_row2_col2, #T_f482f_row2_col3 {
+#T_132c4_row0_col1, #T_132c4_row0_col2, #T_132c4_row0_col3, #T_132c4_row1_col1, #T_132c4_row1_col2, #T_132c4_row1_col3, #T_132c4_row2_col1, #T_132c4_row2_col2, #T_132c4_row2_col3 {
   text-align: left;
   white-space: pre-wrap;
   vertical-align: top;
 }
 </style>
-<table id="T_f482f">
+<table id="T_132c4">
 <thead>
 <tr>
-<th class="col_heading level0 col0" id="T_f482f_level0_col0">Company</th>
-<th class="col_heading level0 col1" id="T_f482f_level0_col1">2025 solvency position</th>
-<th class="col_heading level0 col2" id="T_f482f_level0_col2">EUR discount curve used for liabilities</th>
-<th class="col_heading level0 col3" id="T_f482f_level0_col3">Insurance financial strength ratings by agency</th>
+<th class="col_heading level0 col0" id="T_132c4_level0_col0">Company</th>
+<th class="col_heading level0 col1" id="T_132c4_level0_col1">2025 solvency position</th>
+<th class="col_heading level0 col2" id="T_132c4_level0_col2">EUR discount curve used for liabilities</th>
+<th class="col_heading level0 col3" id="T_132c4_level0_col3">Insurance financial strength ratings by agency</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="data row0 col0" id="T_f482f_row0_col0">AXA</td>
-<td class="data row0 col1" id="T_f482f_row0_col1">224% under Solvency II</td>
-<td class="data row0 col2" id="T_f482f_row0_col2">EUR curve: 1y: 2.40%, 2y: 2.50%, 3y: 2.60%, 5y: 2.80%, 7y: 3.00%, 10y: 3.20%, 15y: 3.40%, 20y: 3.50%, 25y: 3.50%, 30y: 3.40%</td>
-<td class="data row0 col3" id="T_f482f_row0_col3">S&amp;P: AA- / positive; Moody's: Aa2 / stable; AM Best: A+ Superior / stable</td>
+<td class="data row0 col0" id="T_132c4_row0_col0">AXA</td>
+<td class="data row0 col1" id="T_132c4_row0_col1">224% under Solvency II</td>
+<td class="data row0 col2" id="T_132c4_row0_col2">EUR curve: 1y: 2.40%, 2y: 2.50%, 3y: 2.60%, 5y: 2.80%, 7y: 3.00%, 10y: 3.20%, 15y: 3.40%, 20y: 3.50%, 25y: 3.50%, 30y: 3.40%</td>
+<td class="data row0 col3" id="T_132c4_row0_col3">S&amp;P: AA- / positive; Moody's: Aa2 / stable; AM Best: A+ Superior / stable</td>
 </tr>
 <tr>
-<td class="data row1 col0" id="T_f482f_row1_col0">Generali</td>
-<td class="data row1 col1" id="T_f482f_row1_col1">219% under Solvency II</td>
-<td class="data row1 col2" id="T_f482f_row1_col2">EUR curve: 1y: 2.22%, 2y: 2.30%, 3y: 2.42%, 4y: 2.53%, 5y: 2.62%, 6y: 2.70%, 7y: 2.79%, 8y: 2.86%, 9y: 2.93%, 10y: 3.00%, 15y: 3.25%, 20y: 3.35%, 25y: 3.39%, 30y: 3.41%, 35y: 3.41%, 40y: 3.40%, 45y: 3.40%, 50y: 3.39%</td>
-<td class="data row1 col3" id="T_f482f_row1_col3">Moody's: A2 / stable; AM Best: A+ / stable; Fitch: AA- / stable</td>
+<td class="data row1 col0" id="T_132c4_row1_col0">Generali</td>
+<td class="data row1 col1" id="T_132c4_row1_col1">219% under Solvency II</td>
+<td class="data row1 col2" id="T_132c4_row1_col2">EUR curve: 1y: 2.22%, 2y: 2.30%, 3y: 2.42%, 4y: 2.53%, 5y: 2.62%, 6y: 2.70%, 7y: 2.79%, 8y: 2.86%, 9y: 2.93%, 10y: 3.00%, 15y: 3.25%, 20y: 3.35%, 25y: 3.39%, 30y: 3.41%, 35y: 3.41%, 40y: 3.40%, 45y: 3.40%, 50y: 3.39%</td>
+<td class="data row1 col3" id="T_132c4_row1_col3">Moody's: A2 / stable; AM Best: A+ / stable; Fitch: AA- / stable</td>
 </tr>
 <tr>
-<td class="data row2 col0" id="T_f482f_row2_col0">Zurich</td>
-<td class="data row2 col1" id="T_f482f_row2_col1">259% under SST</td>
-<td class="data row2 col2" id="T_f482f_row2_col2">EUR curve: 1y: 2.08%, 5y: 2.48%, 10y: 2.86%, 20y: 3.21%, 40y: 3.27%</td>
-<td class="data row2 col3" id="T_f482f_row2_col3">S&amp;P: AA / stable; Moody's: Aa2 / stable; AM Best: A+ (Superior) / stable</td>
+<td class="data row2 col0" id="T_132c4_row2_col0">Zurich</td>
+<td class="data row2 col1" id="T_132c4_row2_col1">259% under SST</td>
+<td class="data row2 col2" id="T_132c4_row2_col2">EUR curve: 1y: 2.08%, 5y: 2.48%, 10y: 2.86%, 20y: 3.21%, 40y: 3.27%</td>
+<td class="data row2 col3" id="T_132c4_row2_col3">S&amp;P: AA / stable; Moody's: Aa2 / stable; AM Best: A+ (Superior) / stable</td>
 </tr>
 </tbody>
 </table>
@@ -10366,38 +10181,38 @@ In practice, evidence-grounding fields such as source locations or short support
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
 <style type="text/css">
-#T_3cbec_row0_col1, #T_3cbec_row0_col2, #T_3cbec_row0_col3, #T_3cbec_row0_col4, #T_3cbec_row1_col1, #T_3cbec_row1_col2, #T_3cbec_row1_col3, #T_3cbec_row1_col4, #T_3cbec_row2_col1, #T_3cbec_row2_col2, #T_3cbec_row2_col3, #T_3cbec_row2_col4, #T_3cbec_row3_col1, #T_3cbec_row3_col2, #T_3cbec_row3_col3, #T_3cbec_row3_col4, #T_3cbec_row4_col1, #T_3cbec_row4_col2, #T_3cbec_row4_col3, #T_3cbec_row4_col4, #T_3cbec_row5_col1, #T_3cbec_row5_col2, #T_3cbec_row5_col3, #T_3cbec_row5_col4, #T_3cbec_row6_col1, #T_3cbec_row6_col2, #T_3cbec_row6_col3, #T_3cbec_row6_col4, #T_3cbec_row7_col1, #T_3cbec_row7_col2, #T_3cbec_row7_col3, #T_3cbec_row7_col4, #T_3cbec_row8_col1, #T_3cbec_row8_col2, #T_3cbec_row8_col3, #T_3cbec_row8_col4 {
+#T_c7b26_row0_col1, #T_c7b26_row0_col2, #T_c7b26_row0_col3, #T_c7b26_row0_col4, #T_c7b26_row1_col1, #T_c7b26_row1_col2, #T_c7b26_row1_col3, #T_c7b26_row1_col4, #T_c7b26_row2_col1, #T_c7b26_row2_col2, #T_c7b26_row2_col3, #T_c7b26_row2_col4, #T_c7b26_row3_col1, #T_c7b26_row3_col2, #T_c7b26_row3_col3, #T_c7b26_row3_col4, #T_c7b26_row4_col1, #T_c7b26_row4_col2, #T_c7b26_row4_col3, #T_c7b26_row4_col4, #T_c7b26_row5_col1, #T_c7b26_row5_col2, #T_c7b26_row5_col3, #T_c7b26_row5_col4, #T_c7b26_row6_col1, #T_c7b26_row6_col2, #T_c7b26_row6_col3, #T_c7b26_row6_col4, #T_c7b26_row7_col1, #T_c7b26_row7_col2, #T_c7b26_row7_col3, #T_c7b26_row7_col4, #T_c7b26_row8_col1, #T_c7b26_row8_col2, #T_c7b26_row8_col3, #T_c7b26_row8_col4 {
   text-align: left;
   white-space: pre-wrap;
   vertical-align: top;
 }
 </style>
-<table id="T_3cbec">
+<table id="T_c7b26">
 <thead>
 <tr>
-<th class="col_heading level0 col0" id="T_3cbec_level0_col0">company</th>
-<th class="col_heading level0 col1" id="T_3cbec_level0_col1">query_label</th>
-<th class="col_heading level0 col2" id="T_3cbec_level0_col2">resolved_model</th>
-<th class="col_heading level0 col3" id="T_3cbec_level0_col3">raw_output</th>
-<th class="col_heading level0 col4" id="T_3cbec_level0_col4">error</th>
+<th class="col_heading level0 col0" id="T_c7b26_level0_col0">company</th>
+<th class="col_heading level0 col1" id="T_c7b26_level0_col1">query_label</th>
+<th class="col_heading level0 col2" id="T_c7b26_level0_col2">resolved_model</th>
+<th class="col_heading level0 col3" id="T_c7b26_level0_col3">raw_output</th>
+<th class="col_heading level0 col4" id="T_c7b26_level0_col4">error</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="data row0 col0" id="T_3cbec_row0_col0">AXA</td>
-<td class="data row0 col1" id="T_3cbec_row0_col1">solvency_ratio</td>
-<td class="data row0 col2" id="T_3cbec_row0_col2">gpt-5.4-2026-03-05</td>
-<td class="data row0 col3" id="T_3cbec_row0_col3">{
+<td class="data row0 col0" id="T_c7b26_row0_col0">AXA</td>
+<td class="data row0 col1" id="T_c7b26_row0_col1">solvency_ratio</td>
+<td class="data row0 col2" id="T_c7b26_row0_col2">gpt-5.4-2026-03-05</td>
+<td class="data row0 col3" id="T_c7b26_row0_col3">{
   "capital_ratio": 224,
   "regulatory_framework": "Solvency II"
 }</td>
-<td class="data row0 col4" id="T_3cbec_row0_col4">None</td>
+<td class="data row0 col4" id="T_c7b26_row0_col4">None</td>
 </tr>
 <tr>
-<td class="data row1 col0" id="T_3cbec_row1_col0">AXA</td>
-<td class="data row1 col1" id="T_3cbec_row1_col1">discount_rates</td>
-<td class="data row1 col2" id="T_3cbec_row1_col2">gpt-5.4-2026-03-05</td>
-<td class="data row1 col3" id="T_3cbec_row1_col3">{
+<td class="data row1 col0" id="T_c7b26_row1_col0">AXA</td>
+<td class="data row1 col1" id="T_c7b26_row1_col1">discount_rates</td>
+<td class="data row1 col2" id="T_c7b26_row1_col2">gpt-5.4-2026-03-05</td>
+<td class="data row1 col3" id="T_c7b26_row1_col3">{
   "currency": "EUR",
   "rates": [
     {
@@ -10442,13 +10257,13 @@ In practice, evidence-grounding fields such as source locations or short support
     }
   ]
 }</td>
-<td class="data row1 col4" id="T_3cbec_row1_col4">None</td>
+<td class="data row1 col4" id="T_c7b26_row1_col4">None</td>
 </tr>
 <tr>
-<td class="data row2 col0" id="T_3cbec_row2_col0">AXA</td>
-<td class="data row2 col1" id="T_3cbec_row2_col1">financial_strength_ratings</td>
-<td class="data row2 col2" id="T_3cbec_row2_col2">gpt-5.4-2026-03-05</td>
-<td class="data row2 col3" id="T_3cbec_row2_col3">{
+<td class="data row2 col0" id="T_c7b26_row2_col0">AXA</td>
+<td class="data row2 col1" id="T_c7b26_row2_col1">financial_strength_ratings</td>
+<td class="data row2 col2" id="T_c7b26_row2_col2">gpt-5.4-2026-03-05</td>
+<td class="data row2 col3" id="T_c7b26_row2_col3">{
   "ratings": [
     {
       "rater": "S&amp;P",
@@ -10467,23 +10282,23 @@ In practice, evidence-grounding fields such as source locations or short support
     }
   ]
 }</td>
-<td class="data row2 col4" id="T_3cbec_row2_col4">None</td>
+<td class="data row2 col4" id="T_c7b26_row2_col4">None</td>
 </tr>
 <tr>
-<td class="data row3 col0" id="T_3cbec_row3_col0">Generali</td>
-<td class="data row3 col1" id="T_3cbec_row3_col1">solvency_ratio</td>
-<td class="data row3 col2" id="T_3cbec_row3_col2">gpt-5.4-2026-03-05</td>
-<td class="data row3 col3" id="T_3cbec_row3_col3">{
+<td class="data row3 col0" id="T_c7b26_row3_col0">Generali</td>
+<td class="data row3 col1" id="T_c7b26_row3_col1">solvency_ratio</td>
+<td class="data row3 col2" id="T_c7b26_row3_col2">gpt-5.4-2026-03-05</td>
+<td class="data row3 col3" id="T_c7b26_row3_col3">{
   "capital_ratio": 219,
   "regulatory_framework": "Solvency II"
 }</td>
-<td class="data row3 col4" id="T_3cbec_row3_col4">None</td>
+<td class="data row3 col4" id="T_c7b26_row3_col4">None</td>
 </tr>
 <tr>
-<td class="data row4 col0" id="T_3cbec_row4_col0">Generali</td>
-<td class="data row4 col1" id="T_3cbec_row4_col1">discount_rates</td>
-<td class="data row4 col2" id="T_3cbec_row4_col2">gpt-5.4-2026-03-05</td>
-<td class="data row4 col3" id="T_3cbec_row4_col3">{
+<td class="data row4 col0" id="T_c7b26_row4_col0">Generali</td>
+<td class="data row4 col1" id="T_c7b26_row4_col1">discount_rates</td>
+<td class="data row4 col2" id="T_c7b26_row4_col2">gpt-5.4-2026-03-05</td>
+<td class="data row4 col3" id="T_c7b26_row4_col3">{
   "currency": "EUR",
   "rates": [
     {
@@ -10560,13 +10375,13 @@ In practice, evidence-grounding fields such as source locations or short support
     }
   ]
 }</td>
-<td class="data row4 col4" id="T_3cbec_row4_col4">None</td>
+<td class="data row4 col4" id="T_c7b26_row4_col4">None</td>
 </tr>
 <tr>
-<td class="data row5 col0" id="T_3cbec_row5_col0">Generali</td>
-<td class="data row5 col1" id="T_3cbec_row5_col1">financial_strength_ratings</td>
-<td class="data row5 col2" id="T_3cbec_row5_col2">gpt-5.4-2026-03-05</td>
-<td class="data row5 col3" id="T_3cbec_row5_col3">{
+<td class="data row5 col0" id="T_c7b26_row5_col0">Generali</td>
+<td class="data row5 col1" id="T_c7b26_row5_col1">financial_strength_ratings</td>
+<td class="data row5 col2" id="T_c7b26_row5_col2">gpt-5.4-2026-03-05</td>
+<td class="data row5 col3" id="T_c7b26_row5_col3">{
   "ratings": [
     {
       "rater": "Moody's",
@@ -10585,23 +10400,23 @@ In practice, evidence-grounding fields such as source locations or short support
     }
   ]
 }</td>
-<td class="data row5 col4" id="T_3cbec_row5_col4">None</td>
+<td class="data row5 col4" id="T_c7b26_row5_col4">None</td>
 </tr>
 <tr>
-<td class="data row6 col0" id="T_3cbec_row6_col0">Zurich</td>
-<td class="data row6 col1" id="T_3cbec_row6_col1">solvency_ratio</td>
-<td class="data row6 col2" id="T_3cbec_row6_col2">gpt-5.4-2026-03-05</td>
-<td class="data row6 col3" id="T_3cbec_row6_col3">{
+<td class="data row6 col0" id="T_c7b26_row6_col0">Zurich</td>
+<td class="data row6 col1" id="T_c7b26_row6_col1">solvency_ratio</td>
+<td class="data row6 col2" id="T_c7b26_row6_col2">gpt-5.4-2026-03-05</td>
+<td class="data row6 col3" id="T_c7b26_row6_col3">{
   "capital_ratio": 259,
   "regulatory_framework": "SST"
 }</td>
-<td class="data row6 col4" id="T_3cbec_row6_col4">None</td>
+<td class="data row6 col4" id="T_c7b26_row6_col4">None</td>
 </tr>
 <tr>
-<td class="data row7 col0" id="T_3cbec_row7_col0">Zurich</td>
-<td class="data row7 col1" id="T_3cbec_row7_col1">discount_rates</td>
-<td class="data row7 col2" id="T_3cbec_row7_col2">gpt-5.4-2026-03-05</td>
-<td class="data row7 col3" id="T_3cbec_row7_col3">{
+<td class="data row7 col0" id="T_c7b26_row7_col0">Zurich</td>
+<td class="data row7 col1" id="T_c7b26_row7_col1">discount_rates</td>
+<td class="data row7 col2" id="T_c7b26_row7_col2">gpt-5.4-2026-03-05</td>
+<td class="data row7 col3" id="T_c7b26_row7_col3">{
   "currency": "EUR",
   "rates": [
     {
@@ -10626,13 +10441,13 @@ In practice, evidence-grounding fields such as source locations or short support
     }
   ]
 }</td>
-<td class="data row7 col4" id="T_3cbec_row7_col4">None</td>
+<td class="data row7 col4" id="T_c7b26_row7_col4">None</td>
 </tr>
 <tr>
-<td class="data row8 col0" id="T_3cbec_row8_col0">Zurich</td>
-<td class="data row8 col1" id="T_3cbec_row8_col1">financial_strength_ratings</td>
-<td class="data row8 col2" id="T_3cbec_row8_col2">gpt-5.4-2026-03-05</td>
-<td class="data row8 col3" id="T_3cbec_row8_col3">{
+<td class="data row8 col0" id="T_c7b26_row8_col0">Zurich</td>
+<td class="data row8 col1" id="T_c7b26_row8_col1">financial_strength_ratings</td>
+<td class="data row8 col2" id="T_c7b26_row8_col2">gpt-5.4-2026-03-05</td>
+<td class="data row8 col3" id="T_c7b26_row8_col3">{
   "ratings": [
     {
       "rater": "S&amp;P",
@@ -10651,7 +10466,7 @@ In practice, evidence-grounding fields such as source locations or short support
     }
   ]
 }</td>
-<td class="data row8 col4" id="T_3cbec_row8_col4">None</td>
+<td class="data row8 col4" id="T_c7b26_row8_col4">None</td>
 </tr>
 </tbody>
 </table>
@@ -10689,7 +10504,13 @@ In practice, evidence-grounding fields such as source locations or short support
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <p>The final section compares the five selected models on the same extraction tasks and under the same retrieval setup. This makes the benchmark easier to interpret, because differences in the final results are less likely to be caused by different retrievers.</p>
-<p>For all three tasks, deterministic scoring is appropriate because the expected answers can be stated precisely enough for direct comparison once the outputs are normalized. The ratings task is evaluated on a normalized list of reported insurer financial strength ratings, which means that minor formatting differences such as <code>AM Best</code> versus <code>A. M. Best</code> or <code>A+(Superior)</code> versus <code>A+ Superior</code> do not count as true errors. The rater field is restricted to <code>AM Best</code>, <code>Fitch</code>, <code>Moody's</code>, <code>S&amp;P</code>, and <code>Other</code>, and the outlook field is restricted to <code>positive</code>, <code>stable</code>, <code>negative</code>, or <code>None</code>. When the source could be read at different entity levels, the benchmark uses the values intended to represent the whole group or the parent legal entity.</p>
+<p>Each extraction is scored as a binary pass/fail (1 or 0) with no partial credit, using deterministic, aspect-specific criteria:</p>
+<ul>
+<li><strong>Solvency ratios</strong> must match the ground truth <em>exactly</em> on both the integer capital ratio (in %) and the regulatory-framework label (Solvency II or SST).</li>
+<li><strong>Discount rates</strong> are matched <em>exactly</em> at the precision reported in the annual reports (two decimal places): for every duration in the ground truth the extracted rate must equal the reported rate, and all durations must be present, for the run to pass. No tolerance band is applied; rounding to the reported precision only removes representation artefacts such as <code>2.4</code> versus <code>2.40</code>.</li>
+<li><strong>Insurer financial strength ratings</strong> are evaluated as a normalized set, so that minor formatting differences such as <code>AM Best</code> versus <code>A. M. Best</code> or <code>A+(Superior)</code> versus <code>A+ Superior</code> do not count as true errors. The rater field is restricted to <code>AM Best</code>, <code>Fitch</code>, <code>Moody's</code>, <code>S&amp;P</code>, and <code>Other</code>, and the outlook field to <code>positive</code>, <code>stable</code>, <code>negative</code>, or <code>None</code>. When the source could be read at different entity levels, the benchmark uses the values intended to represent the whole group or the parent legal entity.</li>
+</ul>
+<p>We deliberately use an exact, binary pass/fail criterion rather than a tolerance band or partial credit. In a market-comparison setting these figures feed directly into regulatory and competitive analyses, where a solvency ratio, a discount curve, or a rating is only operationally useful if it reproduces the published value exactly; an approximate or partially correct extraction would silently propagate into the downstream comparison. A strict per-field criterion therefore mirrors the acceptance decision an actuary would actually apply when relying on these values, and it sets a deliberately demanding bar for the benchmark.</p>
 <p>The tables below keep the aspect order fixed as solvency ratio, discount rates, and insurer financial strength ratings. In the company-level heatmap, the columns are grouped first by company and then by aspect so the structure is easier to read.</p>
 </div>
 </div>
@@ -10792,18 +10613,17 @@ In practice, evidence-grounding fields such as source locations or short support
 <span class="k">def</span><span class="w"> </span><span class="nf">score_discount_rates</span><span class="p">(</span>
     <span class="n">parsed_output</span><span class="p">:</span> <span class="n">DiscountCurveResult</span><span class="p">,</span>
     <span class="n">gold</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">int</span><span class="p">,</span> <span class="nb">float</span><span class="p">],</span>
-    <span class="n">tolerance</span><span class="p">:</span> <span class="nb">float</span> <span class="o">=</span> <span class="mf">0.05</span><span class="p">,</span>
 <span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">bool</span><span class="p">,</span> <span class="nb">float</span><span class="p">,</span> <span class="nb">str</span><span class="p">]:</span>
-<span class="w">    </span><span class="sd">"""Score the discount-rate result using a small numeric tolerance by duration only."""</span>
+<span class="w">    </span><span class="sd">"""Score the discount-rate result using exact matching by duration, at the precision reported in the SFCRs (two decimal places)."""</span>
     <span class="n">predicted</span> <span class="o">=</span> <span class="p">{</span><span class="nb">int</span><span class="p">(</span><span class="n">point</span><span class="o">.</span><span class="n">duration_year</span><span class="p">):</span> <span class="nb">float</span><span class="p">(</span><span class="n">point</span><span class="o">.</span><span class="n">discount_rate_percent</span><span class="p">)</span> <span class="k">for</span> <span class="n">point</span> <span class="ow">in</span> <span class="n">parsed_output</span><span class="o">.</span><span class="n">rates</span><span class="p">}</span>
     <span class="n">hits</span> <span class="o">=</span> <span class="mi">0</span>
     <span class="k">for</span> <span class="n">duration</span><span class="p">,</span> <span class="n">expected_value</span> <span class="ow">in</span> <span class="n">gold</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
         <span class="n">predicted_value</span> <span class="o">=</span> <span class="n">predicted</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">predicted_value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">abs</span><span class="p">(</span><span class="n">predicted_value</span> <span class="o">-</span> <span class="n">expected_value</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">tolerance</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">predicted_value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">round</span><span class="p">(</span><span class="n">predicted_value</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="nb">round</span><span class="p">(</span><span class="n">expected_value</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
             <span class="n">hits</span> <span class="o">+=</span> <span class="mi">1</span>
     <span class="n">score</span> <span class="o">=</span> <span class="n">hits</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">gold</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">passed</span> <span class="o">=</span> <span class="n">hits</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">gold</span><span class="p">)</span>
-    <span class="n">notes</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"matched </span><span class="si">{</span><span class="n">hits</span><span class="si">}</span><span class="s2"> of </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">gold</span><span class="p">)</span><span class="si">}</span><span class="s2"> expected durations within +/-</span><span class="si">{</span><span class="n">tolerance</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2"> percentage points"</span>
+    <span class="n">notes</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">"matched </span><span class="si">{</span><span class="n">hits</span><span class="si">}</span><span class="s2"> of </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">gold</span><span class="p">)</span><span class="si">}</span><span class="s2"> expected durations exactly"</span>
     <span class="k">return</span> <span class="n">passed</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="n">notes</span>
 
 
@@ -10923,7 +10743,7 @@ In practice, evidence-grounding fields such as source locations or short support
 
     <span class="k">if</span> <span class="n">query_label</span> <span class="o">==</span> <span class="s2">"discount_rates"</span><span class="p">:</span>
         <span class="n">passed</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="n">notes</span> <span class="o">=</span> <span class="n">score_discount_rates</span><span class="p">(</span><span class="n">parsed_output</span><span class="p">,</span> <span class="n">gold</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">passed</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="s2">"deterministic_numeric_match"</span><span class="p">,</span> <span class="n">notes</span>
+        <span class="k">return</span> <span class="n">passed</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="s2">"deterministic_exact_match"</span><span class="p">,</span> <span class="n">notes</span>
 
     <span class="n">passed</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="n">notes</span> <span class="o">=</span> <span class="n">score_financial_strength_ratings</span><span class="p">(</span><span class="n">parsed_output</span><span class="p">,</span> <span class="n">gold</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">passed</span><span class="p">,</span> <span class="n">score</span><span class="p">,</span> <span class="s2">"deterministic_structured_match"</span><span class="p">,</span> <span class="n">notes</span>
@@ -11003,105 +10823,699 @@ In practice, evidence-grounding fields such as source locations or short support
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
 <pre>Running benchmark: GPT-5.4 | run 1/20
-Running benchmark: GPT-5.4 | run 2/20
-Running benchmark: GPT-5.4 | run 3/20
-Running benchmark: GPT-5.4 | run 4/20
-Running benchmark: GPT-5.4 | run 5/20
-Running benchmark: GPT-5.4 | run 6/20
-Running benchmark: GPT-5.4 | run 7/20
-Running benchmark: GPT-5.4 | run 8/20
-Running benchmark: GPT-5.4 | run 9/20
-Running benchmark: GPT-5.4 | run 10/20
-Running benchmark: GPT-5.4 | run 11/20
-Running benchmark: GPT-5.4 | run 12/20
-Running benchmark: GPT-5.4 | run 13/20
-Running benchmark: GPT-5.4 | run 14/20
-Running benchmark: GPT-5.4 | run 15/20
-Running benchmark: GPT-5.4 | run 16/20
-Running benchmark: GPT-5.4 | run 17/20
-Running benchmark: GPT-5.4 | run 18/20
-Running benchmark: GPT-5.4 | run 19/20
-Running benchmark: GPT-5.4 | run 20/20
-Running benchmark: GPT-5.4 mini | run 1/20
-Running benchmark: GPT-5.4 mini | run 2/20
-Running benchmark: GPT-5.4 mini | run 3/20
-Running benchmark: GPT-5.4 mini | run 4/20
-Running benchmark: GPT-5.4 mini | run 5/20
-Running benchmark: GPT-5.4 mini | run 6/20
-Running benchmark: GPT-5.4 mini | run 7/20
-Running benchmark: GPT-5.4 mini | run 8/20
-Running benchmark: GPT-5.4 mini | run 9/20
-Running benchmark: GPT-5.4 mini | run 10/20
-Running benchmark: GPT-5.4 mini | run 11/20
-Running benchmark: GPT-5.4 mini | run 12/20
-Running benchmark: GPT-5.4 mini | run 13/20
-Running benchmark: GPT-5.4 mini | run 14/20
-Running benchmark: GPT-5.4 mini | run 15/20
-Running benchmark: GPT-5.4 mini | run 16/20
-Running benchmark: GPT-5.4 mini | run 17/20
-Running benchmark: GPT-5.4 mini | run 18/20
-Running benchmark: GPT-5.4 mini | run 19/20
-Running benchmark: GPT-5.4 mini | run 20/20
-Running benchmark: GPT-4.1 | run 1/20
-Running benchmark: GPT-4.1 | run 2/20
-Running benchmark: GPT-4.1 | run 3/20
-Running benchmark: GPT-4.1 | run 4/20
-Running benchmark: GPT-4.1 | run 5/20
-Running benchmark: GPT-4.1 | run 6/20
-Running benchmark: GPT-4.1 | run 7/20
-Running benchmark: GPT-4.1 | run 8/20
-Running benchmark: GPT-4.1 | run 9/20
-Running benchmark: GPT-4.1 | run 10/20
-Running benchmark: GPT-4.1 | run 11/20
-Running benchmark: GPT-4.1 | run 12/20
-Running benchmark: GPT-4.1 | run 13/20
-Running benchmark: GPT-4.1 | run 14/20
-Running benchmark: GPT-4.1 | run 15/20
-Running benchmark: GPT-4.1 | run 16/20
-Running benchmark: GPT-4.1 | run 17/20
-Running benchmark: GPT-4.1 | run 18/20
-Running benchmark: GPT-4.1 | run 19/20
-Running benchmark: GPT-4.1 | run 20/20
-Running benchmark: GPT-4.1 mini | run 1/20
-Running benchmark: GPT-4.1 mini | run 2/20
-Running benchmark: GPT-4.1 mini | run 3/20
-Running benchmark: GPT-4.1 mini | run 4/20
-Running benchmark: GPT-4.1 mini | run 5/20
-Running benchmark: GPT-4.1 mini | run 6/20
-Running benchmark: GPT-4.1 mini | run 7/20
-Running benchmark: GPT-4.1 mini | run 8/20
-Running benchmark: GPT-4.1 mini | run 9/20
-Running benchmark: GPT-4.1 mini | run 10/20
-Running benchmark: GPT-4.1 mini | run 11/20
-Running benchmark: GPT-4.1 mini | run 12/20
-Running benchmark: GPT-4.1 mini | run 13/20
-Running benchmark: GPT-4.1 mini | run 14/20
-Running benchmark: GPT-4.1 mini | run 15/20
-Running benchmark: GPT-4.1 mini | run 16/20
-Running benchmark: GPT-4.1 mini | run 17/20
-Running benchmark: GPT-4.1 mini | run 18/20
-Running benchmark: GPT-4.1 mini | run 19/20
-Running benchmark: GPT-4.1 mini | run 20/20
-Running benchmark: Claude Sonnet 4.6 | run 1/20
-Running benchmark: Claude Sonnet 4.6 | run 2/20
-Running benchmark: Claude Sonnet 4.6 | run 3/20
-Running benchmark: Claude Sonnet 4.6 | run 4/20
-Running benchmark: Claude Sonnet 4.6 | run 5/20
-Running benchmark: Claude Sonnet 4.6 | run 6/20
-Running benchmark: Claude Sonnet 4.6 | run 7/20
-Running benchmark: Claude Sonnet 4.6 | run 8/20
-Running benchmark: Claude Sonnet 4.6 | run 9/20
-Running benchmark: Claude Sonnet 4.6 | run 10/20
-Running benchmark: Claude Sonnet 4.6 | run 11/20
-Running benchmark: Claude Sonnet 4.6 | run 12/20
-Running benchmark: Claude Sonnet 4.6 | run 13/20
-Running benchmark: Claude Sonnet 4.6 | run 14/20
-Running benchmark: Claude Sonnet 4.6 | run 15/20
-Running benchmark: Claude Sonnet 4.6 | run 16/20
-Running benchmark: Claude Sonnet 4.6 | run 17/20
-Running benchmark: Claude Sonnet 4.6 | run 18/20
-Running benchmark: Claude Sonnet 4.6 | run 19/20
-Running benchmark: Claude Sonnet 4.6 | run 20/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 | run 2/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 | run 3/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 | run 4/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 | run 5/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 | run 6/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 | run 7/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 | run 8/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 | run 9/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 | run 10/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 | run 11/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 | run 12/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 | run 13/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 | run 14/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 | run 15/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 | run 16/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 | run 17/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 | run 18/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 | run 19/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 | run 20/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 mini | run 1/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 mini | run 2/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 mini | run 3/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 mini | run 4/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 mini | run 5/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 mini | run 6/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 mini | run 7/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 mini | run 8/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 mini | run 9/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 mini | run 10/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 mini | run 11/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 mini | run 12/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 mini | run 13/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 mini | run 14/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 mini | run 15/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 mini | run 16/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 mini | run 17/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 mini | run 18/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 mini | run 19/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-5.4 mini | run 20/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 | run 1/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 | run 2/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 | run 3/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 | run 4/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 | run 5/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 | run 6/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 | run 7/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 | run 8/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 | run 9/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 | run 10/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 | run 11/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 | run 12/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 | run 13/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 | run 14/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 | run 15/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 | run 16/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 | run 17/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 | run 18/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 | run 19/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 | run 20/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 mini | run 1/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 mini | run 2/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 mini | run 3/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 mini | run 4/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 mini | run 5/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 mini | run 6/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 mini | run 7/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 mini | run 8/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 mini | run 9/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 mini | run 10/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 mini | run 11/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 mini | run 12/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 mini | run 13/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 mini | run 14/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 mini | run 15/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 mini | run 16/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 mini | run 17/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 mini | run 18/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 mini | run 19/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: GPT-4.1 mini | run 20/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: Claude Sonnet 4.6 | run 1/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: Claude Sonnet 4.6 | run 2/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: Claude Sonnet 4.6 | run 3/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: Claude Sonnet 4.6 | run 4/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: Claude Sonnet 4.6 | run 5/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: Claude Sonnet 4.6 | run 6/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: Claude Sonnet 4.6 | run 7/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: Claude Sonnet 4.6 | run 8/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: Claude Sonnet 4.6 | run 9/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: Claude Sonnet 4.6 | run 10/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: Claude Sonnet 4.6 | run 11/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: Claude Sonnet 4.6 | run 12/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: Claude Sonnet 4.6 | run 13/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: Claude Sonnet 4.6 | run 14/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: Claude Sonnet 4.6 | run 15/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: Claude Sonnet 4.6 | run 16/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: Claude Sonnet 4.6 | run 17/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: Claude Sonnet 4.6 | run 18/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: Claude Sonnet 4.6 | run 19/20
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Running benchmark: Claude Sonnet 4.6 | run 20/20
 </pre>
 </div>
 </div>
@@ -11139,345 +11553,345 @@ Running benchmark: Claude Sonnet 4.6 | run 20/20
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
 <style type="text/css">
-#T_dcca2_row0_col8, #T_dcca2_row0_col9, #T_dcca2_row0_col10, #T_dcca2_row1_col8, #T_dcca2_row1_col9, #T_dcca2_row1_col10, #T_dcca2_row2_col8, #T_dcca2_row2_col9, #T_dcca2_row2_col10, #T_dcca2_row3_col8, #T_dcca2_row3_col9, #T_dcca2_row3_col10, #T_dcca2_row4_col8, #T_dcca2_row4_col9, #T_dcca2_row4_col10, #T_dcca2_row5_col8, #T_dcca2_row5_col9, #T_dcca2_row5_col10, #T_dcca2_row6_col8, #T_dcca2_row6_col9, #T_dcca2_row6_col10, #T_dcca2_row7_col8, #T_dcca2_row7_col9, #T_dcca2_row7_col10, #T_dcca2_row8_col8, #T_dcca2_row8_col9, #T_dcca2_row8_col10, #T_dcca2_row9_col8, #T_dcca2_row9_col9, #T_dcca2_row9_col10, #T_dcca2_row10_col8, #T_dcca2_row10_col9, #T_dcca2_row10_col10, #T_dcca2_row11_col8, #T_dcca2_row11_col9, #T_dcca2_row11_col10, #T_dcca2_row12_col8, #T_dcca2_row12_col9, #T_dcca2_row12_col10, #T_dcca2_row13_col8, #T_dcca2_row13_col9, #T_dcca2_row13_col10, #T_dcca2_row14_col8, #T_dcca2_row14_col9, #T_dcca2_row14_col10, #T_dcca2_row15_col8, #T_dcca2_row15_col9, #T_dcca2_row15_col10, #T_dcca2_row16_col8, #T_dcca2_row16_col9, #T_dcca2_row16_col10, #T_dcca2_row17_col8, #T_dcca2_row17_col9, #T_dcca2_row17_col10, #T_dcca2_row18_col8, #T_dcca2_row18_col9, #T_dcca2_row18_col10, #T_dcca2_row19_col8, #T_dcca2_row19_col9, #T_dcca2_row19_col10 {
+#T_da917_row0_col8, #T_da917_row0_col9, #T_da917_row0_col10, #T_da917_row1_col8, #T_da917_row1_col9, #T_da917_row1_col10, #T_da917_row2_col8, #T_da917_row2_col9, #T_da917_row2_col10, #T_da917_row3_col8, #T_da917_row3_col9, #T_da917_row3_col10, #T_da917_row4_col8, #T_da917_row4_col9, #T_da917_row4_col10, #T_da917_row5_col8, #T_da917_row5_col9, #T_da917_row5_col10, #T_da917_row6_col8, #T_da917_row6_col9, #T_da917_row6_col10, #T_da917_row7_col8, #T_da917_row7_col9, #T_da917_row7_col10, #T_da917_row8_col8, #T_da917_row8_col9, #T_da917_row8_col10, #T_da917_row9_col8, #T_da917_row9_col9, #T_da917_row9_col10, #T_da917_row10_col8, #T_da917_row10_col9, #T_da917_row10_col10, #T_da917_row11_col8, #T_da917_row11_col9, #T_da917_row11_col10, #T_da917_row12_col8, #T_da917_row12_col9, #T_da917_row12_col10, #T_da917_row13_col8, #T_da917_row13_col9, #T_da917_row13_col10, #T_da917_row14_col8, #T_da917_row14_col9, #T_da917_row14_col10, #T_da917_row15_col8, #T_da917_row15_col9, #T_da917_row15_col10, #T_da917_row16_col8, #T_da917_row16_col9, #T_da917_row16_col10, #T_da917_row17_col8, #T_da917_row17_col9, #T_da917_row17_col10, #T_da917_row18_col8, #T_da917_row18_col9, #T_da917_row18_col10, #T_da917_row19_col8, #T_da917_row19_col9, #T_da917_row19_col10 {
   text-align: left;
   white-space: pre-wrap;
   vertical-align: top;
 }
 </style>
-<table id="T_dcca2">
+<table id="T_da917">
 <thead>
 <tr>
-<th class="col_heading level0 col0" id="T_dcca2_level0_col0">model_label</th>
-<th class="col_heading level0 col1" id="T_dcca2_level0_col1">provider</th>
-<th class="col_heading level0 col2" id="T_dcca2_level0_col2">company</th>
-<th class="col_heading level0 col3" id="T_dcca2_level0_col3">query_label</th>
-<th class="col_heading level0 col4" id="T_dcca2_level0_col4">run_id</th>
-<th class="col_heading level0 col5" id="T_dcca2_level0_col5">passed</th>
-<th class="col_heading level0 col6" id="T_dcca2_level0_col6">score</th>
-<th class="col_heading level0 col7" id="T_dcca2_level0_col7">evaluation_method</th>
-<th class="col_heading level0 col8" id="T_dcca2_level0_col8">resolved_model</th>
-<th class="col_heading level0 col9" id="T_dcca2_level0_col9">notes</th>
-<th class="col_heading level0 col10" id="T_dcca2_level0_col10">output_signature</th>
+<th class="col_heading level0 col0" id="T_da917_level0_col0">model_label</th>
+<th class="col_heading level0 col1" id="T_da917_level0_col1">provider</th>
+<th class="col_heading level0 col2" id="T_da917_level0_col2">company</th>
+<th class="col_heading level0 col3" id="T_da917_level0_col3">query_label</th>
+<th class="col_heading level0 col4" id="T_da917_level0_col4">run_id</th>
+<th class="col_heading level0 col5" id="T_da917_level0_col5">passed</th>
+<th class="col_heading level0 col6" id="T_da917_level0_col6">score</th>
+<th class="col_heading level0 col7" id="T_da917_level0_col7">evaluation_method</th>
+<th class="col_heading level0 col8" id="T_da917_level0_col8">resolved_model</th>
+<th class="col_heading level0 col9" id="T_da917_level0_col9">notes</th>
+<th class="col_heading level0 col10" id="T_da917_level0_col10">output_signature</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="data row0 col0" id="T_dcca2_row0_col0">Claude Sonnet 4.6</td>
-<td class="data row0 col1" id="T_dcca2_row0_col1">anthropic</td>
-<td class="data row0 col2" id="T_dcca2_row0_col2">AXA</td>
-<td class="data row0 col3" id="T_dcca2_row0_col3">solvency_ratio</td>
-<td class="data row0 col4" id="T_dcca2_row0_col4">1</td>
-<td class="data row0 col5" id="T_dcca2_row0_col5">True</td>
-<td class="data row0 col6" id="T_dcca2_row0_col6">1.000000</td>
-<td class="data row0 col7" id="T_dcca2_row0_col7">deterministic_exact_match</td>
-<td class="data row0 col8" id="T_dcca2_row0_col8">claude-sonnet-4-6</td>
-<td class="data row0 col9" id="T_dcca2_row0_col9">ratio_ok=True, framework_ok=True</td>
-<td class="data row0 col10" id="T_dcca2_row0_col10">{
+<td class="data row0 col0" id="T_da917_row0_col0">Claude Sonnet 4.6</td>
+<td class="data row0 col1" id="T_da917_row0_col1">anthropic</td>
+<td class="data row0 col2" id="T_da917_row0_col2">AXA</td>
+<td class="data row0 col3" id="T_da917_row0_col3">solvency_ratio</td>
+<td class="data row0 col4" id="T_da917_row0_col4">1</td>
+<td class="data row0 col5" id="T_da917_row0_col5">True</td>
+<td class="data row0 col6" id="T_da917_row0_col6">1.000000</td>
+<td class="data row0 col7" id="T_da917_row0_col7">deterministic_exact_match</td>
+<td class="data row0 col8" id="T_da917_row0_col8">claude-sonnet-4-6</td>
+<td class="data row0 col9" id="T_da917_row0_col9">ratio_ok=True, framework_ok=True</td>
+<td class="data row0 col10" id="T_da917_row0_col10">{
   "capital_ratio": 224,
   "regulatory_framework": "Solvency II"
 }</td>
 </tr>
 <tr>
-<td class="data row1 col0" id="T_dcca2_row1_col0">Claude Sonnet 4.6</td>
-<td class="data row1 col1" id="T_dcca2_row1_col1">anthropic</td>
-<td class="data row1 col2" id="T_dcca2_row1_col2">AXA</td>
-<td class="data row1 col3" id="T_dcca2_row1_col3">solvency_ratio</td>
-<td class="data row1 col4" id="T_dcca2_row1_col4">2</td>
-<td class="data row1 col5" id="T_dcca2_row1_col5">True</td>
-<td class="data row1 col6" id="T_dcca2_row1_col6">1.000000</td>
-<td class="data row1 col7" id="T_dcca2_row1_col7">deterministic_exact_match</td>
-<td class="data row1 col8" id="T_dcca2_row1_col8">claude-sonnet-4-6</td>
-<td class="data row1 col9" id="T_dcca2_row1_col9">ratio_ok=True, framework_ok=True</td>
-<td class="data row1 col10" id="T_dcca2_row1_col10">{
+<td class="data row1 col0" id="T_da917_row1_col0">Claude Sonnet 4.6</td>
+<td class="data row1 col1" id="T_da917_row1_col1">anthropic</td>
+<td class="data row1 col2" id="T_da917_row1_col2">AXA</td>
+<td class="data row1 col3" id="T_da917_row1_col3">solvency_ratio</td>
+<td class="data row1 col4" id="T_da917_row1_col4">2</td>
+<td class="data row1 col5" id="T_da917_row1_col5">True</td>
+<td class="data row1 col6" id="T_da917_row1_col6">1.000000</td>
+<td class="data row1 col7" id="T_da917_row1_col7">deterministic_exact_match</td>
+<td class="data row1 col8" id="T_da917_row1_col8">claude-sonnet-4-6</td>
+<td class="data row1 col9" id="T_da917_row1_col9">ratio_ok=True, framework_ok=True</td>
+<td class="data row1 col10" id="T_da917_row1_col10">{
   "capital_ratio": 224,
   "regulatory_framework": "Solvency II"
 }</td>
 </tr>
 <tr>
-<td class="data row2 col0" id="T_dcca2_row2_col0">Claude Sonnet 4.6</td>
-<td class="data row2 col1" id="T_dcca2_row2_col1">anthropic</td>
-<td class="data row2 col2" id="T_dcca2_row2_col2">AXA</td>
-<td class="data row2 col3" id="T_dcca2_row2_col3">solvency_ratio</td>
-<td class="data row2 col4" id="T_dcca2_row2_col4">3</td>
-<td class="data row2 col5" id="T_dcca2_row2_col5">True</td>
-<td class="data row2 col6" id="T_dcca2_row2_col6">1.000000</td>
-<td class="data row2 col7" id="T_dcca2_row2_col7">deterministic_exact_match</td>
-<td class="data row2 col8" id="T_dcca2_row2_col8">claude-sonnet-4-6</td>
-<td class="data row2 col9" id="T_dcca2_row2_col9">ratio_ok=True, framework_ok=True</td>
-<td class="data row2 col10" id="T_dcca2_row2_col10">{
+<td class="data row2 col0" id="T_da917_row2_col0">Claude Sonnet 4.6</td>
+<td class="data row2 col1" id="T_da917_row2_col1">anthropic</td>
+<td class="data row2 col2" id="T_da917_row2_col2">AXA</td>
+<td class="data row2 col3" id="T_da917_row2_col3">solvency_ratio</td>
+<td class="data row2 col4" id="T_da917_row2_col4">3</td>
+<td class="data row2 col5" id="T_da917_row2_col5">True</td>
+<td class="data row2 col6" id="T_da917_row2_col6">1.000000</td>
+<td class="data row2 col7" id="T_da917_row2_col7">deterministic_exact_match</td>
+<td class="data row2 col8" id="T_da917_row2_col8">claude-sonnet-4-6</td>
+<td class="data row2 col9" id="T_da917_row2_col9">ratio_ok=True, framework_ok=True</td>
+<td class="data row2 col10" id="T_da917_row2_col10">{
   "capital_ratio": 224,
   "regulatory_framework": "Solvency II"
 }</td>
 </tr>
 <tr>
-<td class="data row3 col0" id="T_dcca2_row3_col0">Claude Sonnet 4.6</td>
-<td class="data row3 col1" id="T_dcca2_row3_col1">anthropic</td>
-<td class="data row3 col2" id="T_dcca2_row3_col2">AXA</td>
-<td class="data row3 col3" id="T_dcca2_row3_col3">solvency_ratio</td>
-<td class="data row3 col4" id="T_dcca2_row3_col4">4</td>
-<td class="data row3 col5" id="T_dcca2_row3_col5">True</td>
-<td class="data row3 col6" id="T_dcca2_row3_col6">1.000000</td>
-<td class="data row3 col7" id="T_dcca2_row3_col7">deterministic_exact_match</td>
-<td class="data row3 col8" id="T_dcca2_row3_col8">claude-sonnet-4-6</td>
-<td class="data row3 col9" id="T_dcca2_row3_col9">ratio_ok=True, framework_ok=True</td>
-<td class="data row3 col10" id="T_dcca2_row3_col10">{
+<td class="data row3 col0" id="T_da917_row3_col0">Claude Sonnet 4.6</td>
+<td class="data row3 col1" id="T_da917_row3_col1">anthropic</td>
+<td class="data row3 col2" id="T_da917_row3_col2">AXA</td>
+<td class="data row3 col3" id="T_da917_row3_col3">solvency_ratio</td>
+<td class="data row3 col4" id="T_da917_row3_col4">4</td>
+<td class="data row3 col5" id="T_da917_row3_col5">True</td>
+<td class="data row3 col6" id="T_da917_row3_col6">1.000000</td>
+<td class="data row3 col7" id="T_da917_row3_col7">deterministic_exact_match</td>
+<td class="data row3 col8" id="T_da917_row3_col8">claude-sonnet-4-6</td>
+<td class="data row3 col9" id="T_da917_row3_col9">ratio_ok=True, framework_ok=True</td>
+<td class="data row3 col10" id="T_da917_row3_col10">{
   "capital_ratio": 224,
   "regulatory_framework": "Solvency II"
 }</td>
 </tr>
 <tr>
-<td class="data row4 col0" id="T_dcca2_row4_col0">Claude Sonnet 4.6</td>
-<td class="data row4 col1" id="T_dcca2_row4_col1">anthropic</td>
-<td class="data row4 col2" id="T_dcca2_row4_col2">AXA</td>
-<td class="data row4 col3" id="T_dcca2_row4_col3">solvency_ratio</td>
-<td class="data row4 col4" id="T_dcca2_row4_col4">5</td>
-<td class="data row4 col5" id="T_dcca2_row4_col5">True</td>
-<td class="data row4 col6" id="T_dcca2_row4_col6">1.000000</td>
-<td class="data row4 col7" id="T_dcca2_row4_col7">deterministic_exact_match</td>
-<td class="data row4 col8" id="T_dcca2_row4_col8">claude-sonnet-4-6</td>
-<td class="data row4 col9" id="T_dcca2_row4_col9">ratio_ok=True, framework_ok=True</td>
-<td class="data row4 col10" id="T_dcca2_row4_col10">{
+<td class="data row4 col0" id="T_da917_row4_col0">Claude Sonnet 4.6</td>
+<td class="data row4 col1" id="T_da917_row4_col1">anthropic</td>
+<td class="data row4 col2" id="T_da917_row4_col2">AXA</td>
+<td class="data row4 col3" id="T_da917_row4_col3">solvency_ratio</td>
+<td class="data row4 col4" id="T_da917_row4_col4">5</td>
+<td class="data row4 col5" id="T_da917_row4_col5">True</td>
+<td class="data row4 col6" id="T_da917_row4_col6">1.000000</td>
+<td class="data row4 col7" id="T_da917_row4_col7">deterministic_exact_match</td>
+<td class="data row4 col8" id="T_da917_row4_col8">claude-sonnet-4-6</td>
+<td class="data row4 col9" id="T_da917_row4_col9">ratio_ok=True, framework_ok=True</td>
+<td class="data row4 col10" id="T_da917_row4_col10">{
   "capital_ratio": 224,
   "regulatory_framework": "Solvency II"
 }</td>
 </tr>
 <tr>
-<td class="data row5 col0" id="T_dcca2_row5_col0">Claude Sonnet 4.6</td>
-<td class="data row5 col1" id="T_dcca2_row5_col1">anthropic</td>
-<td class="data row5 col2" id="T_dcca2_row5_col2">AXA</td>
-<td class="data row5 col3" id="T_dcca2_row5_col3">solvency_ratio</td>
-<td class="data row5 col4" id="T_dcca2_row5_col4">6</td>
-<td class="data row5 col5" id="T_dcca2_row5_col5">True</td>
-<td class="data row5 col6" id="T_dcca2_row5_col6">1.000000</td>
-<td class="data row5 col7" id="T_dcca2_row5_col7">deterministic_exact_match</td>
-<td class="data row5 col8" id="T_dcca2_row5_col8">claude-sonnet-4-6</td>
-<td class="data row5 col9" id="T_dcca2_row5_col9">ratio_ok=True, framework_ok=True</td>
-<td class="data row5 col10" id="T_dcca2_row5_col10">{
+<td class="data row5 col0" id="T_da917_row5_col0">Claude Sonnet 4.6</td>
+<td class="data row5 col1" id="T_da917_row5_col1">anthropic</td>
+<td class="data row5 col2" id="T_da917_row5_col2">AXA</td>
+<td class="data row5 col3" id="T_da917_row5_col3">solvency_ratio</td>
+<td class="data row5 col4" id="T_da917_row5_col4">6</td>
+<td class="data row5 col5" id="T_da917_row5_col5">True</td>
+<td class="data row5 col6" id="T_da917_row5_col6">1.000000</td>
+<td class="data row5 col7" id="T_da917_row5_col7">deterministic_exact_match</td>
+<td class="data row5 col8" id="T_da917_row5_col8">claude-sonnet-4-6</td>
+<td class="data row5 col9" id="T_da917_row5_col9">ratio_ok=True, framework_ok=True</td>
+<td class="data row5 col10" id="T_da917_row5_col10">{
   "capital_ratio": 224,
   "regulatory_framework": "Solvency II"
 }</td>
 </tr>
 <tr>
-<td class="data row6 col0" id="T_dcca2_row6_col0">Claude Sonnet 4.6</td>
-<td class="data row6 col1" id="T_dcca2_row6_col1">anthropic</td>
-<td class="data row6 col2" id="T_dcca2_row6_col2">AXA</td>
-<td class="data row6 col3" id="T_dcca2_row6_col3">solvency_ratio</td>
-<td class="data row6 col4" id="T_dcca2_row6_col4">7</td>
-<td class="data row6 col5" id="T_dcca2_row6_col5">True</td>
-<td class="data row6 col6" id="T_dcca2_row6_col6">1.000000</td>
-<td class="data row6 col7" id="T_dcca2_row6_col7">deterministic_exact_match</td>
-<td class="data row6 col8" id="T_dcca2_row6_col8">claude-sonnet-4-6</td>
-<td class="data row6 col9" id="T_dcca2_row6_col9">ratio_ok=True, framework_ok=True</td>
-<td class="data row6 col10" id="T_dcca2_row6_col10">{
+<td class="data row6 col0" id="T_da917_row6_col0">Claude Sonnet 4.6</td>
+<td class="data row6 col1" id="T_da917_row6_col1">anthropic</td>
+<td class="data row6 col2" id="T_da917_row6_col2">AXA</td>
+<td class="data row6 col3" id="T_da917_row6_col3">solvency_ratio</td>
+<td class="data row6 col4" id="T_da917_row6_col4">7</td>
+<td class="data row6 col5" id="T_da917_row6_col5">True</td>
+<td class="data row6 col6" id="T_da917_row6_col6">1.000000</td>
+<td class="data row6 col7" id="T_da917_row6_col7">deterministic_exact_match</td>
+<td class="data row6 col8" id="T_da917_row6_col8">claude-sonnet-4-6</td>
+<td class="data row6 col9" id="T_da917_row6_col9">ratio_ok=True, framework_ok=True</td>
+<td class="data row6 col10" id="T_da917_row6_col10">{
   "capital_ratio": 224,
   "regulatory_framework": "Solvency II"
 }</td>
 </tr>
 <tr>
-<td class="data row7 col0" id="T_dcca2_row7_col0">Claude Sonnet 4.6</td>
-<td class="data row7 col1" id="T_dcca2_row7_col1">anthropic</td>
-<td class="data row7 col2" id="T_dcca2_row7_col2">AXA</td>
-<td class="data row7 col3" id="T_dcca2_row7_col3">solvency_ratio</td>
-<td class="data row7 col4" id="T_dcca2_row7_col4">8</td>
-<td class="data row7 col5" id="T_dcca2_row7_col5">True</td>
-<td class="data row7 col6" id="T_dcca2_row7_col6">1.000000</td>
-<td class="data row7 col7" id="T_dcca2_row7_col7">deterministic_exact_match</td>
-<td class="data row7 col8" id="T_dcca2_row7_col8">claude-sonnet-4-6</td>
-<td class="data row7 col9" id="T_dcca2_row7_col9">ratio_ok=True, framework_ok=True</td>
-<td class="data row7 col10" id="T_dcca2_row7_col10">{
+<td class="data row7 col0" id="T_da917_row7_col0">Claude Sonnet 4.6</td>
+<td class="data row7 col1" id="T_da917_row7_col1">anthropic</td>
+<td class="data row7 col2" id="T_da917_row7_col2">AXA</td>
+<td class="data row7 col3" id="T_da917_row7_col3">solvency_ratio</td>
+<td class="data row7 col4" id="T_da917_row7_col4">8</td>
+<td class="data row7 col5" id="T_da917_row7_col5">True</td>
+<td class="data row7 col6" id="T_da917_row7_col6">1.000000</td>
+<td class="data row7 col7" id="T_da917_row7_col7">deterministic_exact_match</td>
+<td class="data row7 col8" id="T_da917_row7_col8">claude-sonnet-4-6</td>
+<td class="data row7 col9" id="T_da917_row7_col9">ratio_ok=True, framework_ok=True</td>
+<td class="data row7 col10" id="T_da917_row7_col10">{
   "capital_ratio": 224,
   "regulatory_framework": "Solvency II"
 }</td>
 </tr>
 <tr>
-<td class="data row8 col0" id="T_dcca2_row8_col0">Claude Sonnet 4.6</td>
-<td class="data row8 col1" id="T_dcca2_row8_col1">anthropic</td>
-<td class="data row8 col2" id="T_dcca2_row8_col2">AXA</td>
-<td class="data row8 col3" id="T_dcca2_row8_col3">solvency_ratio</td>
-<td class="data row8 col4" id="T_dcca2_row8_col4">9</td>
-<td class="data row8 col5" id="T_dcca2_row8_col5">True</td>
-<td class="data row8 col6" id="T_dcca2_row8_col6">1.000000</td>
-<td class="data row8 col7" id="T_dcca2_row8_col7">deterministic_exact_match</td>
-<td class="data row8 col8" id="T_dcca2_row8_col8">claude-sonnet-4-6</td>
-<td class="data row8 col9" id="T_dcca2_row8_col9">ratio_ok=True, framework_ok=True</td>
-<td class="data row8 col10" id="T_dcca2_row8_col10">{
+<td class="data row8 col0" id="T_da917_row8_col0">Claude Sonnet 4.6</td>
+<td class="data row8 col1" id="T_da917_row8_col1">anthropic</td>
+<td class="data row8 col2" id="T_da917_row8_col2">AXA</td>
+<td class="data row8 col3" id="T_da917_row8_col3">solvency_ratio</td>
+<td class="data row8 col4" id="T_da917_row8_col4">9</td>
+<td class="data row8 col5" id="T_da917_row8_col5">True</td>
+<td class="data row8 col6" id="T_da917_row8_col6">1.000000</td>
+<td class="data row8 col7" id="T_da917_row8_col7">deterministic_exact_match</td>
+<td class="data row8 col8" id="T_da917_row8_col8">claude-sonnet-4-6</td>
+<td class="data row8 col9" id="T_da917_row8_col9">ratio_ok=True, framework_ok=True</td>
+<td class="data row8 col10" id="T_da917_row8_col10">{
   "capital_ratio": 224,
   "regulatory_framework": "Solvency II"
 }</td>
 </tr>
 <tr>
-<td class="data row9 col0" id="T_dcca2_row9_col0">Claude Sonnet 4.6</td>
-<td class="data row9 col1" id="T_dcca2_row9_col1">anthropic</td>
-<td class="data row9 col2" id="T_dcca2_row9_col2">AXA</td>
-<td class="data row9 col3" id="T_dcca2_row9_col3">solvency_ratio</td>
-<td class="data row9 col4" id="T_dcca2_row9_col4">10</td>
-<td class="data row9 col5" id="T_dcca2_row9_col5">True</td>
-<td class="data row9 col6" id="T_dcca2_row9_col6">1.000000</td>
-<td class="data row9 col7" id="T_dcca2_row9_col7">deterministic_exact_match</td>
-<td class="data row9 col8" id="T_dcca2_row9_col8">claude-sonnet-4-6</td>
-<td class="data row9 col9" id="T_dcca2_row9_col9">ratio_ok=True, framework_ok=True</td>
-<td class="data row9 col10" id="T_dcca2_row9_col10">{
+<td class="data row9 col0" id="T_da917_row9_col0">Claude Sonnet 4.6</td>
+<td class="data row9 col1" id="T_da917_row9_col1">anthropic</td>
+<td class="data row9 col2" id="T_da917_row9_col2">AXA</td>
+<td class="data row9 col3" id="T_da917_row9_col3">solvency_ratio</td>
+<td class="data row9 col4" id="T_da917_row9_col4">10</td>
+<td class="data row9 col5" id="T_da917_row9_col5">True</td>
+<td class="data row9 col6" id="T_da917_row9_col6">1.000000</td>
+<td class="data row9 col7" id="T_da917_row9_col7">deterministic_exact_match</td>
+<td class="data row9 col8" id="T_da917_row9_col8">claude-sonnet-4-6</td>
+<td class="data row9 col9" id="T_da917_row9_col9">ratio_ok=True, framework_ok=True</td>
+<td class="data row9 col10" id="T_da917_row9_col10">{
   "capital_ratio": 224,
   "regulatory_framework": "Solvency II"
 }</td>
 </tr>
 <tr>
-<td class="data row10 col0" id="T_dcca2_row10_col0">Claude Sonnet 4.6</td>
-<td class="data row10 col1" id="T_dcca2_row10_col1">anthropic</td>
-<td class="data row10 col2" id="T_dcca2_row10_col2">AXA</td>
-<td class="data row10 col3" id="T_dcca2_row10_col3">solvency_ratio</td>
-<td class="data row10 col4" id="T_dcca2_row10_col4">11</td>
-<td class="data row10 col5" id="T_dcca2_row10_col5">True</td>
-<td class="data row10 col6" id="T_dcca2_row10_col6">1.000000</td>
-<td class="data row10 col7" id="T_dcca2_row10_col7">deterministic_exact_match</td>
-<td class="data row10 col8" id="T_dcca2_row10_col8">claude-sonnet-4-6</td>
-<td class="data row10 col9" id="T_dcca2_row10_col9">ratio_ok=True, framework_ok=True</td>
-<td class="data row10 col10" id="T_dcca2_row10_col10">{
+<td class="data row10 col0" id="T_da917_row10_col0">Claude Sonnet 4.6</td>
+<td class="data row10 col1" id="T_da917_row10_col1">anthropic</td>
+<td class="data row10 col2" id="T_da917_row10_col2">AXA</td>
+<td class="data row10 col3" id="T_da917_row10_col3">solvency_ratio</td>
+<td class="data row10 col4" id="T_da917_row10_col4">11</td>
+<td class="data row10 col5" id="T_da917_row10_col5">True</td>
+<td class="data row10 col6" id="T_da917_row10_col6">1.000000</td>
+<td class="data row10 col7" id="T_da917_row10_col7">deterministic_exact_match</td>
+<td class="data row10 col8" id="T_da917_row10_col8">claude-sonnet-4-6</td>
+<td class="data row10 col9" id="T_da917_row10_col9">ratio_ok=True, framework_ok=True</td>
+<td class="data row10 col10" id="T_da917_row10_col10">{
   "capital_ratio": 224,
   "regulatory_framework": "Solvency II"
 }</td>
 </tr>
 <tr>
-<td class="data row11 col0" id="T_dcca2_row11_col0">Claude Sonnet 4.6</td>
-<td class="data row11 col1" id="T_dcca2_row11_col1">anthropic</td>
-<td class="data row11 col2" id="T_dcca2_row11_col2">AXA</td>
-<td class="data row11 col3" id="T_dcca2_row11_col3">solvency_ratio</td>
-<td class="data row11 col4" id="T_dcca2_row11_col4">12</td>
-<td class="data row11 col5" id="T_dcca2_row11_col5">True</td>
-<td class="data row11 col6" id="T_dcca2_row11_col6">1.000000</td>
-<td class="data row11 col7" id="T_dcca2_row11_col7">deterministic_exact_match</td>
-<td class="data row11 col8" id="T_dcca2_row11_col8">claude-sonnet-4-6</td>
-<td class="data row11 col9" id="T_dcca2_row11_col9">ratio_ok=True, framework_ok=True</td>
-<td class="data row11 col10" id="T_dcca2_row11_col10">{
+<td class="data row11 col0" id="T_da917_row11_col0">Claude Sonnet 4.6</td>
+<td class="data row11 col1" id="T_da917_row11_col1">anthropic</td>
+<td class="data row11 col2" id="T_da917_row11_col2">AXA</td>
+<td class="data row11 col3" id="T_da917_row11_col3">solvency_ratio</td>
+<td class="data row11 col4" id="T_da917_row11_col4">12</td>
+<td class="data row11 col5" id="T_da917_row11_col5">True</td>
+<td class="data row11 col6" id="T_da917_row11_col6">1.000000</td>
+<td class="data row11 col7" id="T_da917_row11_col7">deterministic_exact_match</td>
+<td class="data row11 col8" id="T_da917_row11_col8">claude-sonnet-4-6</td>
+<td class="data row11 col9" id="T_da917_row11_col9">ratio_ok=True, framework_ok=True</td>
+<td class="data row11 col10" id="T_da917_row11_col10">{
   "capital_ratio": 224,
   "regulatory_framework": "Solvency II"
 }</td>
 </tr>
 <tr>
-<td class="data row12 col0" id="T_dcca2_row12_col0">Claude Sonnet 4.6</td>
-<td class="data row12 col1" id="T_dcca2_row12_col1">anthropic</td>
-<td class="data row12 col2" id="T_dcca2_row12_col2">AXA</td>
-<td class="data row12 col3" id="T_dcca2_row12_col3">solvency_ratio</td>
-<td class="data row12 col4" id="T_dcca2_row12_col4">13</td>
-<td class="data row12 col5" id="T_dcca2_row12_col5">True</td>
-<td class="data row12 col6" id="T_dcca2_row12_col6">1.000000</td>
-<td class="data row12 col7" id="T_dcca2_row12_col7">deterministic_exact_match</td>
-<td class="data row12 col8" id="T_dcca2_row12_col8">claude-sonnet-4-6</td>
-<td class="data row12 col9" id="T_dcca2_row12_col9">ratio_ok=True, framework_ok=True</td>
-<td class="data row12 col10" id="T_dcca2_row12_col10">{
+<td class="data row12 col0" id="T_da917_row12_col0">Claude Sonnet 4.6</td>
+<td class="data row12 col1" id="T_da917_row12_col1">anthropic</td>
+<td class="data row12 col2" id="T_da917_row12_col2">AXA</td>
+<td class="data row12 col3" id="T_da917_row12_col3">solvency_ratio</td>
+<td class="data row12 col4" id="T_da917_row12_col4">13</td>
+<td class="data row12 col5" id="T_da917_row12_col5">True</td>
+<td class="data row12 col6" id="T_da917_row12_col6">1.000000</td>
+<td class="data row12 col7" id="T_da917_row12_col7">deterministic_exact_match</td>
+<td class="data row12 col8" id="T_da917_row12_col8">claude-sonnet-4-6</td>
+<td class="data row12 col9" id="T_da917_row12_col9">ratio_ok=True, framework_ok=True</td>
+<td class="data row12 col10" id="T_da917_row12_col10">{
   "capital_ratio": 224,
   "regulatory_framework": "Solvency II"
 }</td>
 </tr>
 <tr>
-<td class="data row13 col0" id="T_dcca2_row13_col0">Claude Sonnet 4.6</td>
-<td class="data row13 col1" id="T_dcca2_row13_col1">anthropic</td>
-<td class="data row13 col2" id="T_dcca2_row13_col2">AXA</td>
-<td class="data row13 col3" id="T_dcca2_row13_col3">solvency_ratio</td>
-<td class="data row13 col4" id="T_dcca2_row13_col4">14</td>
-<td class="data row13 col5" id="T_dcca2_row13_col5">True</td>
-<td class="data row13 col6" id="T_dcca2_row13_col6">1.000000</td>
-<td class="data row13 col7" id="T_dcca2_row13_col7">deterministic_exact_match</td>
-<td class="data row13 col8" id="T_dcca2_row13_col8">claude-sonnet-4-6</td>
-<td class="data row13 col9" id="T_dcca2_row13_col9">ratio_ok=True, framework_ok=True</td>
-<td class="data row13 col10" id="T_dcca2_row13_col10">{
+<td class="data row13 col0" id="T_da917_row13_col0">Claude Sonnet 4.6</td>
+<td class="data row13 col1" id="T_da917_row13_col1">anthropic</td>
+<td class="data row13 col2" id="T_da917_row13_col2">AXA</td>
+<td class="data row13 col3" id="T_da917_row13_col3">solvency_ratio</td>
+<td class="data row13 col4" id="T_da917_row13_col4">14</td>
+<td class="data row13 col5" id="T_da917_row13_col5">True</td>
+<td class="data row13 col6" id="T_da917_row13_col6">1.000000</td>
+<td class="data row13 col7" id="T_da917_row13_col7">deterministic_exact_match</td>
+<td class="data row13 col8" id="T_da917_row13_col8">claude-sonnet-4-6</td>
+<td class="data row13 col9" id="T_da917_row13_col9">ratio_ok=True, framework_ok=True</td>
+<td class="data row13 col10" id="T_da917_row13_col10">{
   "capital_ratio": 224,
   "regulatory_framework": "Solvency II"
 }</td>
 </tr>
 <tr>
-<td class="data row14 col0" id="T_dcca2_row14_col0">Claude Sonnet 4.6</td>
-<td class="data row14 col1" id="T_dcca2_row14_col1">anthropic</td>
-<td class="data row14 col2" id="T_dcca2_row14_col2">AXA</td>
-<td class="data row14 col3" id="T_dcca2_row14_col3">solvency_ratio</td>
-<td class="data row14 col4" id="T_dcca2_row14_col4">15</td>
-<td class="data row14 col5" id="T_dcca2_row14_col5">True</td>
-<td class="data row14 col6" id="T_dcca2_row14_col6">1.000000</td>
-<td class="data row14 col7" id="T_dcca2_row14_col7">deterministic_exact_match</td>
-<td class="data row14 col8" id="T_dcca2_row14_col8">claude-sonnet-4-6</td>
-<td class="data row14 col9" id="T_dcca2_row14_col9">ratio_ok=True, framework_ok=True</td>
-<td class="data row14 col10" id="T_dcca2_row14_col10">{
+<td class="data row14 col0" id="T_da917_row14_col0">Claude Sonnet 4.6</td>
+<td class="data row14 col1" id="T_da917_row14_col1">anthropic</td>
+<td class="data row14 col2" id="T_da917_row14_col2">AXA</td>
+<td class="data row14 col3" id="T_da917_row14_col3">solvency_ratio</td>
+<td class="data row14 col4" id="T_da917_row14_col4">15</td>
+<td class="data row14 col5" id="T_da917_row14_col5">True</td>
+<td class="data row14 col6" id="T_da917_row14_col6">1.000000</td>
+<td class="data row14 col7" id="T_da917_row14_col7">deterministic_exact_match</td>
+<td class="data row14 col8" id="T_da917_row14_col8">claude-sonnet-4-6</td>
+<td class="data row14 col9" id="T_da917_row14_col9">ratio_ok=True, framework_ok=True</td>
+<td class="data row14 col10" id="T_da917_row14_col10">{
   "capital_ratio": 224,
   "regulatory_framework": "Solvency II"
 }</td>
 </tr>
 <tr>
-<td class="data row15 col0" id="T_dcca2_row15_col0">Claude Sonnet 4.6</td>
-<td class="data row15 col1" id="T_dcca2_row15_col1">anthropic</td>
-<td class="data row15 col2" id="T_dcca2_row15_col2">AXA</td>
-<td class="data row15 col3" id="T_dcca2_row15_col3">solvency_ratio</td>
-<td class="data row15 col4" id="T_dcca2_row15_col4">16</td>
-<td class="data row15 col5" id="T_dcca2_row15_col5">True</td>
-<td class="data row15 col6" id="T_dcca2_row15_col6">1.000000</td>
-<td class="data row15 col7" id="T_dcca2_row15_col7">deterministic_exact_match</td>
-<td class="data row15 col8" id="T_dcca2_row15_col8">claude-sonnet-4-6</td>
-<td class="data row15 col9" id="T_dcca2_row15_col9">ratio_ok=True, framework_ok=True</td>
-<td class="data row15 col10" id="T_dcca2_row15_col10">{
+<td class="data row15 col0" id="T_da917_row15_col0">Claude Sonnet 4.6</td>
+<td class="data row15 col1" id="T_da917_row15_col1">anthropic</td>
+<td class="data row15 col2" id="T_da917_row15_col2">AXA</td>
+<td class="data row15 col3" id="T_da917_row15_col3">solvency_ratio</td>
+<td class="data row15 col4" id="T_da917_row15_col4">16</td>
+<td class="data row15 col5" id="T_da917_row15_col5">True</td>
+<td class="data row15 col6" id="T_da917_row15_col6">1.000000</td>
+<td class="data row15 col7" id="T_da917_row15_col7">deterministic_exact_match</td>
+<td class="data row15 col8" id="T_da917_row15_col8">claude-sonnet-4-6</td>
+<td class="data row15 col9" id="T_da917_row15_col9">ratio_ok=True, framework_ok=True</td>
+<td class="data row15 col10" id="T_da917_row15_col10">{
   "capital_ratio": 224,
   "regulatory_framework": "Solvency II"
 }</td>
 </tr>
 <tr>
-<td class="data row16 col0" id="T_dcca2_row16_col0">Claude Sonnet 4.6</td>
-<td class="data row16 col1" id="T_dcca2_row16_col1">anthropic</td>
-<td class="data row16 col2" id="T_dcca2_row16_col2">AXA</td>
-<td class="data row16 col3" id="T_dcca2_row16_col3">solvency_ratio</td>
-<td class="data row16 col4" id="T_dcca2_row16_col4">17</td>
-<td class="data row16 col5" id="T_dcca2_row16_col5">True</td>
-<td class="data row16 col6" id="T_dcca2_row16_col6">1.000000</td>
-<td class="data row16 col7" id="T_dcca2_row16_col7">deterministic_exact_match</td>
-<td class="data row16 col8" id="T_dcca2_row16_col8">claude-sonnet-4-6</td>
-<td class="data row16 col9" id="T_dcca2_row16_col9">ratio_ok=True, framework_ok=True</td>
-<td class="data row16 col10" id="T_dcca2_row16_col10">{
+<td class="data row16 col0" id="T_da917_row16_col0">Claude Sonnet 4.6</td>
+<td class="data row16 col1" id="T_da917_row16_col1">anthropic</td>
+<td class="data row16 col2" id="T_da917_row16_col2">AXA</td>
+<td class="data row16 col3" id="T_da917_row16_col3">solvency_ratio</td>
+<td class="data row16 col4" id="T_da917_row16_col4">17</td>
+<td class="data row16 col5" id="T_da917_row16_col5">True</td>
+<td class="data row16 col6" id="T_da917_row16_col6">1.000000</td>
+<td class="data row16 col7" id="T_da917_row16_col7">deterministic_exact_match</td>
+<td class="data row16 col8" id="T_da917_row16_col8">claude-sonnet-4-6</td>
+<td class="data row16 col9" id="T_da917_row16_col9">ratio_ok=True, framework_ok=True</td>
+<td class="data row16 col10" id="T_da917_row16_col10">{
   "capital_ratio": 224,
   "regulatory_framework": "Solvency II"
 }</td>
 </tr>
 <tr>
-<td class="data row17 col0" id="T_dcca2_row17_col0">Claude Sonnet 4.6</td>
-<td class="data row17 col1" id="T_dcca2_row17_col1">anthropic</td>
-<td class="data row17 col2" id="T_dcca2_row17_col2">AXA</td>
-<td class="data row17 col3" id="T_dcca2_row17_col3">solvency_ratio</td>
-<td class="data row17 col4" id="T_dcca2_row17_col4">18</td>
-<td class="data row17 col5" id="T_dcca2_row17_col5">True</td>
-<td class="data row17 col6" id="T_dcca2_row17_col6">1.000000</td>
-<td class="data row17 col7" id="T_dcca2_row17_col7">deterministic_exact_match</td>
-<td class="data row17 col8" id="T_dcca2_row17_col8">claude-sonnet-4-6</td>
-<td class="data row17 col9" id="T_dcca2_row17_col9">ratio_ok=True, framework_ok=True</td>
-<td class="data row17 col10" id="T_dcca2_row17_col10">{
+<td class="data row17 col0" id="T_da917_row17_col0">Claude Sonnet 4.6</td>
+<td class="data row17 col1" id="T_da917_row17_col1">anthropic</td>
+<td class="data row17 col2" id="T_da917_row17_col2">AXA</td>
+<td class="data row17 col3" id="T_da917_row17_col3">solvency_ratio</td>
+<td class="data row17 col4" id="T_da917_row17_col4">18</td>
+<td class="data row17 col5" id="T_da917_row17_col5">True</td>
+<td class="data row17 col6" id="T_da917_row17_col6">1.000000</td>
+<td class="data row17 col7" id="T_da917_row17_col7">deterministic_exact_match</td>
+<td class="data row17 col8" id="T_da917_row17_col8">claude-sonnet-4-6</td>
+<td class="data row17 col9" id="T_da917_row17_col9">ratio_ok=True, framework_ok=True</td>
+<td class="data row17 col10" id="T_da917_row17_col10">{
   "capital_ratio": 224,
   "regulatory_framework": "Solvency II"
 }</td>
 </tr>
 <tr>
-<td class="data row18 col0" id="T_dcca2_row18_col0">Claude Sonnet 4.6</td>
-<td class="data row18 col1" id="T_dcca2_row18_col1">anthropic</td>
-<td class="data row18 col2" id="T_dcca2_row18_col2">AXA</td>
-<td class="data row18 col3" id="T_dcca2_row18_col3">solvency_ratio</td>
-<td class="data row18 col4" id="T_dcca2_row18_col4">19</td>
-<td class="data row18 col5" id="T_dcca2_row18_col5">True</td>
-<td class="data row18 col6" id="T_dcca2_row18_col6">1.000000</td>
-<td class="data row18 col7" id="T_dcca2_row18_col7">deterministic_exact_match</td>
-<td class="data row18 col8" id="T_dcca2_row18_col8">claude-sonnet-4-6</td>
-<td class="data row18 col9" id="T_dcca2_row18_col9">ratio_ok=True, framework_ok=True</td>
-<td class="data row18 col10" id="T_dcca2_row18_col10">{
+<td class="data row18 col0" id="T_da917_row18_col0">Claude Sonnet 4.6</td>
+<td class="data row18 col1" id="T_da917_row18_col1">anthropic</td>
+<td class="data row18 col2" id="T_da917_row18_col2">AXA</td>
+<td class="data row18 col3" id="T_da917_row18_col3">solvency_ratio</td>
+<td class="data row18 col4" id="T_da917_row18_col4">19</td>
+<td class="data row18 col5" id="T_da917_row18_col5">True</td>
+<td class="data row18 col6" id="T_da917_row18_col6">1.000000</td>
+<td class="data row18 col7" id="T_da917_row18_col7">deterministic_exact_match</td>
+<td class="data row18 col8" id="T_da917_row18_col8">claude-sonnet-4-6</td>
+<td class="data row18 col9" id="T_da917_row18_col9">ratio_ok=True, framework_ok=True</td>
+<td class="data row18 col10" id="T_da917_row18_col10">{
   "capital_ratio": 224,
   "regulatory_framework": "Solvency II"
 }</td>
 </tr>
 <tr>
-<td class="data row19 col0" id="T_dcca2_row19_col0">Claude Sonnet 4.6</td>
-<td class="data row19 col1" id="T_dcca2_row19_col1">anthropic</td>
-<td class="data row19 col2" id="T_dcca2_row19_col2">AXA</td>
-<td class="data row19 col3" id="T_dcca2_row19_col3">solvency_ratio</td>
-<td class="data row19 col4" id="T_dcca2_row19_col4">20</td>
-<td class="data row19 col5" id="T_dcca2_row19_col5">True</td>
-<td class="data row19 col6" id="T_dcca2_row19_col6">1.000000</td>
-<td class="data row19 col7" id="T_dcca2_row19_col7">deterministic_exact_match</td>
-<td class="data row19 col8" id="T_dcca2_row19_col8">claude-sonnet-4-6</td>
-<td class="data row19 col9" id="T_dcca2_row19_col9">ratio_ok=True, framework_ok=True</td>
-<td class="data row19 col10" id="T_dcca2_row19_col10">{
+<td class="data row19 col0" id="T_da917_row19_col0">Claude Sonnet 4.6</td>
+<td class="data row19 col1" id="T_da917_row19_col1">anthropic</td>
+<td class="data row19 col2" id="T_da917_row19_col2">AXA</td>
+<td class="data row19 col3" id="T_da917_row19_col3">solvency_ratio</td>
+<td class="data row19 col4" id="T_da917_row19_col4">20</td>
+<td class="data row19 col5" id="T_da917_row19_col5">True</td>
+<td class="data row19 col6" id="T_da917_row19_col6">1.000000</td>
+<td class="data row19 col7" id="T_da917_row19_col7">deterministic_exact_match</td>
+<td class="data row19 col8" id="T_da917_row19_col8">claude-sonnet-4-6</td>
+<td class="data row19 col9" id="T_da917_row19_col9">ratio_ok=True, framework_ok=True</td>
+<td class="data row19 col10" id="T_da917_row19_col10">{
   "capital_ratio": 224,
   "regulatory_framework": "Solvency II"
 }</td>
@@ -11608,7 +12022,7 @@ Running benchmark: Claude Sonnet 4.6 | run 20/20
 <th>Claude Sonnet 4.6</th>
 <td>100.0</td>
 <td>100.0</td>
-<td>98.3</td>
+<td>100.0</td>
 </tr>
 <tr>
 <th>GPT-4.1</th>
@@ -11632,7 +12046,7 @@ Running benchmark: Claude Sonnet 4.6 | run 20/20
 <th>GPT-5.4 mini</th>
 <td>100.0</td>
 <td>100.0</td>
-<td>91.7</td>
+<td>71.7</td>
 </tr>
 </tbody>
 </table>
@@ -11649,38 +12063,38 @@ Running benchmark: Claude Sonnet 4.6 | run 20/20
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
 <style type="text/css">
-#T_7cbe6_row0_col0, #T_7cbe6_row0_col1, #T_7cbe6_row0_col3, #T_7cbe6_row0_col4, #T_7cbe6_row0_col5, #T_7cbe6_row0_col6, #T_7cbe6_row0_col7, #T_7cbe6_row0_col8, #T_7cbe6_row1_col0, #T_7cbe6_row1_col1, #T_7cbe6_row1_col3, #T_7cbe6_row1_col4, #T_7cbe6_row1_col6, #T_7cbe6_row1_col7, #T_7cbe6_row1_col8, #T_7cbe6_row2_col0, #T_7cbe6_row2_col1, #T_7cbe6_row2_col2, #T_7cbe6_row2_col3, #T_7cbe6_row2_col4, #T_7cbe6_row2_col6, #T_7cbe6_row2_col7, #T_7cbe6_row2_col8, #T_7cbe6_row3_col0, #T_7cbe6_row3_col1, #T_7cbe6_row3_col3, #T_7cbe6_row3_col4, #T_7cbe6_row3_col6, #T_7cbe6_row3_col7, #T_7cbe6_row3_col8, #T_7cbe6_row4_col0, #T_7cbe6_row4_col1, #T_7cbe6_row4_col3, #T_7cbe6_row4_col4, #T_7cbe6_row4_col6, #T_7cbe6_row4_col7, #T_7cbe6_row4_col8 {
+#T_0d05b_row0_col0, #T_0d05b_row0_col1, #T_0d05b_row0_col3, #T_0d05b_row0_col4, #T_0d05b_row0_col5, #T_0d05b_row0_col6, #T_0d05b_row0_col7, #T_0d05b_row0_col8, #T_0d05b_row1_col0, #T_0d05b_row1_col1, #T_0d05b_row1_col3, #T_0d05b_row1_col4, #T_0d05b_row1_col5, #T_0d05b_row1_col6, #T_0d05b_row1_col7, #T_0d05b_row1_col8, #T_0d05b_row2_col0, #T_0d05b_row2_col1, #T_0d05b_row2_col2, #T_0d05b_row2_col3, #T_0d05b_row2_col4, #T_0d05b_row2_col5, #T_0d05b_row2_col6, #T_0d05b_row2_col7, #T_0d05b_row2_col8, #T_0d05b_row3_col0, #T_0d05b_row3_col1, #T_0d05b_row3_col3, #T_0d05b_row3_col4, #T_0d05b_row3_col5, #T_0d05b_row3_col6, #T_0d05b_row3_col7, #T_0d05b_row3_col8, #T_0d05b_row4_col0, #T_0d05b_row4_col1, #T_0d05b_row4_col3, #T_0d05b_row4_col4, #T_0d05b_row4_col5, #T_0d05b_row4_col6, #T_0d05b_row4_col7, #T_0d05b_row4_col8 {
   background-color: #ffffe5;
   color: #000000;
 }
-#T_7cbe6_row0_col2, #T_7cbe6_row1_col2, #T_7cbe6_row1_col5, #T_7cbe6_row2_col5, #T_7cbe6_row3_col2, #T_7cbe6_row3_col5, #T_7cbe6_row4_col5 {
+#T_0d05b_row0_col2, #T_0d05b_row1_col2, #T_0d05b_row3_col2 {
   background-color: #004529;
   color: #f1f1f1;
 }
-#T_7cbe6_row4_col2 {
-  background-color: #228343;
-  color: #f1f1f1;
+#T_0d05b_row4_col2 {
+  background-color: #f1fab5;
+  color: #000000;
 }
 </style>
-<table id="T_7cbe6">
+<table id="T_0d05b">
 <thead>
 <tr>
 <th class="index_name level0">Company</th>
-<th class="col_heading level0 col0" colspan="3" id="T_7cbe6_level0_col0">AXA</th>
-<th class="col_heading level0 col3" colspan="3" id="T_7cbe6_level0_col3">Generali</th>
-<th class="col_heading level0 col6" colspan="3" id="T_7cbe6_level0_col6">Zurich</th>
+<th class="col_heading level0 col0" colspan="3" id="T_0d05b_level0_col0">AXA</th>
+<th class="col_heading level0 col3" colspan="3" id="T_0d05b_level0_col3">Generali</th>
+<th class="col_heading level0 col6" colspan="3" id="T_0d05b_level0_col6">Zurich</th>
 </tr>
 <tr>
 <th class="index_name level1">Aspect</th>
-<th class="col_heading level1 col0" id="T_7cbe6_level1_col0">Solvency ratio</th>
-<th class="col_heading level1 col1" id="T_7cbe6_level1_col1">Discount rates</th>
-<th class="col_heading level1 col2" id="T_7cbe6_level1_col2">Financial strength ratings</th>
-<th class="col_heading level1 col3" id="T_7cbe6_level1_col3">Solvency ratio</th>
-<th class="col_heading level1 col4" id="T_7cbe6_level1_col4">Discount rates</th>
-<th class="col_heading level1 col5" id="T_7cbe6_level1_col5">Financial strength ratings</th>
-<th class="col_heading level1 col6" id="T_7cbe6_level1_col6">Solvency ratio</th>
-<th class="col_heading level1 col7" id="T_7cbe6_level1_col7">Discount rates</th>
-<th class="col_heading level1 col8" id="T_7cbe6_level1_col8">Financial strength ratings</th>
+<th class="col_heading level1 col0" id="T_0d05b_level1_col0">Solvency ratio</th>
+<th class="col_heading level1 col1" id="T_0d05b_level1_col1">Discount rates</th>
+<th class="col_heading level1 col2" id="T_0d05b_level1_col2">Financial strength ratings</th>
+<th class="col_heading level1 col3" id="T_0d05b_level1_col3">Solvency ratio</th>
+<th class="col_heading level1 col4" id="T_0d05b_level1_col4">Discount rates</th>
+<th class="col_heading level1 col5" id="T_0d05b_level1_col5">Financial strength ratings</th>
+<th class="col_heading level1 col6" id="T_0d05b_level1_col6">Solvency ratio</th>
+<th class="col_heading level1 col7" id="T_0d05b_level1_col7">Discount rates</th>
+<th class="col_heading level1 col8" id="T_0d05b_level1_col8">Financial strength ratings</th>
 </tr>
 <tr>
 <th class="index_name level0">model_label</th>
@@ -11697,64 +12111,64 @@ Running benchmark: Claude Sonnet 4.6 | run 20/20
 </thead>
 <tbody>
 <tr>
-<th class="row_heading level0 row0" id="T_7cbe6_level0_row0">Claude Sonnet 4.6</th>
-<td class="data row0 col0" id="T_7cbe6_row0_col0">100.0</td>
-<td class="data row0 col1" id="T_7cbe6_row0_col1">100.0</td>
-<td class="data row0 col2" id="T_7cbe6_row0_col2">100.0</td>
-<td class="data row0 col3" id="T_7cbe6_row0_col3">100.0</td>
-<td class="data row0 col4" id="T_7cbe6_row0_col4">100.0</td>
-<td class="data row0 col5" id="T_7cbe6_row0_col5">95.0</td>
-<td class="data row0 col6" id="T_7cbe6_row0_col6">100.0</td>
-<td class="data row0 col7" id="T_7cbe6_row0_col7">100.0</td>
-<td class="data row0 col8" id="T_7cbe6_row0_col8">100.0</td>
+<th class="row_heading level0 row0" id="T_0d05b_level0_row0">Claude Sonnet 4.6</th>
+<td class="data row0 col0" id="T_0d05b_row0_col0">100.0</td>
+<td class="data row0 col1" id="T_0d05b_row0_col1">100.0</td>
+<td class="data row0 col2" id="T_0d05b_row0_col2">100.0</td>
+<td class="data row0 col3" id="T_0d05b_row0_col3">100.0</td>
+<td class="data row0 col4" id="T_0d05b_row0_col4">100.0</td>
+<td class="data row0 col5" id="T_0d05b_row0_col5">100.0</td>
+<td class="data row0 col6" id="T_0d05b_row0_col6">100.0</td>
+<td class="data row0 col7" id="T_0d05b_row0_col7">100.0</td>
+<td class="data row0 col8" id="T_0d05b_row0_col8">100.0</td>
 </tr>
 <tr>
-<th class="row_heading level0 row1" id="T_7cbe6_level0_row1">GPT-4.1</th>
-<td class="data row1 col0" id="T_7cbe6_row1_col0">100.0</td>
-<td class="data row1 col1" id="T_7cbe6_row1_col1">100.0</td>
-<td class="data row1 col2" id="T_7cbe6_row1_col2">100.0</td>
-<td class="data row1 col3" id="T_7cbe6_row1_col3">100.0</td>
-<td class="data row1 col4" id="T_7cbe6_row1_col4">100.0</td>
-<td class="data row1 col5" id="T_7cbe6_row1_col5">100.0</td>
-<td class="data row1 col6" id="T_7cbe6_row1_col6">100.0</td>
-<td class="data row1 col7" id="T_7cbe6_row1_col7">100.0</td>
-<td class="data row1 col8" id="T_7cbe6_row1_col8">100.0</td>
+<th class="row_heading level0 row1" id="T_0d05b_level0_row1">GPT-4.1</th>
+<td class="data row1 col0" id="T_0d05b_row1_col0">100.0</td>
+<td class="data row1 col1" id="T_0d05b_row1_col1">100.0</td>
+<td class="data row1 col2" id="T_0d05b_row1_col2">100.0</td>
+<td class="data row1 col3" id="T_0d05b_row1_col3">100.0</td>
+<td class="data row1 col4" id="T_0d05b_row1_col4">100.0</td>
+<td class="data row1 col5" id="T_0d05b_row1_col5">100.0</td>
+<td class="data row1 col6" id="T_0d05b_row1_col6">100.0</td>
+<td class="data row1 col7" id="T_0d05b_row1_col7">100.0</td>
+<td class="data row1 col8" id="T_0d05b_row1_col8">100.0</td>
 </tr>
 <tr>
-<th class="row_heading level0 row2" id="T_7cbe6_level0_row2">GPT-4.1 mini</th>
-<td class="data row2 col0" id="T_7cbe6_row2_col0">100.0</td>
-<td class="data row2 col1" id="T_7cbe6_row2_col1">100.0</td>
-<td class="data row2 col2" id="T_7cbe6_row2_col2">0.0</td>
-<td class="data row2 col3" id="T_7cbe6_row2_col3">100.0</td>
-<td class="data row2 col4" id="T_7cbe6_row2_col4">100.0</td>
-<td class="data row2 col5" id="T_7cbe6_row2_col5">100.0</td>
-<td class="data row2 col6" id="T_7cbe6_row2_col6">100.0</td>
-<td class="data row2 col7" id="T_7cbe6_row2_col7">100.0</td>
-<td class="data row2 col8" id="T_7cbe6_row2_col8">100.0</td>
+<th class="row_heading level0 row2" id="T_0d05b_level0_row2">GPT-4.1 mini</th>
+<td class="data row2 col0" id="T_0d05b_row2_col0">100.0</td>
+<td class="data row2 col1" id="T_0d05b_row2_col1">100.0</td>
+<td class="data row2 col2" id="T_0d05b_row2_col2">0.0</td>
+<td class="data row2 col3" id="T_0d05b_row2_col3">100.0</td>
+<td class="data row2 col4" id="T_0d05b_row2_col4">100.0</td>
+<td class="data row2 col5" id="T_0d05b_row2_col5">100.0</td>
+<td class="data row2 col6" id="T_0d05b_row2_col6">100.0</td>
+<td class="data row2 col7" id="T_0d05b_row2_col7">100.0</td>
+<td class="data row2 col8" id="T_0d05b_row2_col8">100.0</td>
 </tr>
 <tr>
-<th class="row_heading level0 row3" id="T_7cbe6_level0_row3">GPT-5.4</th>
-<td class="data row3 col0" id="T_7cbe6_row3_col0">100.0</td>
-<td class="data row3 col1" id="T_7cbe6_row3_col1">100.0</td>
-<td class="data row3 col2" id="T_7cbe6_row3_col2">100.0</td>
-<td class="data row3 col3" id="T_7cbe6_row3_col3">100.0</td>
-<td class="data row3 col4" id="T_7cbe6_row3_col4">100.0</td>
-<td class="data row3 col5" id="T_7cbe6_row3_col5">100.0</td>
-<td class="data row3 col6" id="T_7cbe6_row3_col6">100.0</td>
-<td class="data row3 col7" id="T_7cbe6_row3_col7">100.0</td>
-<td class="data row3 col8" id="T_7cbe6_row3_col8">100.0</td>
+<th class="row_heading level0 row3" id="T_0d05b_level0_row3">GPT-5.4</th>
+<td class="data row3 col0" id="T_0d05b_row3_col0">100.0</td>
+<td class="data row3 col1" id="T_0d05b_row3_col1">100.0</td>
+<td class="data row3 col2" id="T_0d05b_row3_col2">100.0</td>
+<td class="data row3 col3" id="T_0d05b_row3_col3">100.0</td>
+<td class="data row3 col4" id="T_0d05b_row3_col4">100.0</td>
+<td class="data row3 col5" id="T_0d05b_row3_col5">100.0</td>
+<td class="data row3 col6" id="T_0d05b_row3_col6">100.0</td>
+<td class="data row3 col7" id="T_0d05b_row3_col7">100.0</td>
+<td class="data row3 col8" id="T_0d05b_row3_col8">100.0</td>
 </tr>
 <tr>
-<th class="row_heading level0 row4" id="T_7cbe6_level0_row4">GPT-5.4 mini</th>
-<td class="data row4 col0" id="T_7cbe6_row4_col0">100.0</td>
-<td class="data row4 col1" id="T_7cbe6_row4_col1">100.0</td>
-<td class="data row4 col2" id="T_7cbe6_row4_col2">75.0</td>
-<td class="data row4 col3" id="T_7cbe6_row4_col3">100.0</td>
-<td class="data row4 col4" id="T_7cbe6_row4_col4">100.0</td>
-<td class="data row4 col5" id="T_7cbe6_row4_col5">100.0</td>
-<td class="data row4 col6" id="T_7cbe6_row4_col6">100.0</td>
-<td class="data row4 col7" id="T_7cbe6_row4_col7">100.0</td>
-<td class="data row4 col8" id="T_7cbe6_row4_col8">100.0</td>
+<th class="row_heading level0 row4" id="T_0d05b_level0_row4">GPT-5.4 mini</th>
+<td class="data row4 col0" id="T_0d05b_row4_col0">100.0</td>
+<td class="data row4 col1" id="T_0d05b_row4_col1">100.0</td>
+<td class="data row4 col2" id="T_0d05b_row4_col2">15.0</td>
+<td class="data row4 col3" id="T_0d05b_row4_col3">100.0</td>
+<td class="data row4 col4" id="T_0d05b_row4_col4">100.0</td>
+<td class="data row4 col5" id="T_0d05b_row4_col5">100.0</td>
+<td class="data row4 col6" id="T_0d05b_row4_col6">100.0</td>
+<td class="data row4 col7" id="T_0d05b_row4_col7">100.0</td>
+<td class="data row4 col8" id="T_0d05b_row4_col8">100.0</td>
 </tr>
 </tbody>
 </table>
@@ -11834,7 +12248,7 @@ Running benchmark: Claude Sonnet 4.6 | run 20/20
 <td>Claude Sonnet 4.6</td>
 <td>Generali</td>
 <td>financial_strength_ratings</td>
-<td>2</td>
+<td>1</td>
 </tr>
 <tr>
 <th>8</th>
@@ -11876,7 +12290,7 @@ Running benchmark: Claude Sonnet 4.6 | run 20/20
 <td>GPT-4.1</td>
 <td>AXA</td>
 <td>financial_strength_ratings</td>
-<td>2</td>
+<td>1</td>
 </tr>
 <tr>
 <th>14</th>
@@ -11918,7 +12332,7 @@ Running benchmark: Claude Sonnet 4.6 | run 20/20
 <td>GPT-4.1</td>
 <td>Zurich</td>
 <td>financial_strength_ratings</td>
-<td>1</td>
+<td>2</td>
 </tr>
 <tr>
 <th>20</th>
@@ -11960,7 +12374,7 @@ Running benchmark: Claude Sonnet 4.6 | run 20/20
 <td>GPT-4.1 mini</td>
 <td>Generali</td>
 <td>financial_strength_ratings</td>
-<td>2</td>
+<td>1</td>
 </tr>
 <tr>
 <th>26</th>
@@ -12065,7 +12479,7 @@ Running benchmark: Claude Sonnet 4.6 | run 20/20
 <td>GPT-5.4 mini</td>
 <td>AXA</td>
 <td>financial_strength_ratings</td>
-<td>6</td>
+<td>4</td>
 </tr>
 <tr>
 <th>41</th>
@@ -12123,7 +12537,7 @@ Running benchmark: Claude Sonnet 4.6 | run 20/20
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<p>Across 900 individual extractions (5 models × 3 aspects × 3 companies × 20 runs), GPT-4.1 and GPT-5.4 achieve perfect pass rates across all nine company–aspect combinations. Claude Sonnet 4.6 reaches near-perfect accuracy (98.3% on financial strength ratings). GPT-5.4 mini scores 91.7% on ratings, and GPT-4.1 mini is the weakest on that aspect at 66.7%. Solvency ratios and discount rates are fully reliable across all five models. The residual errors are generation-stage failures on the ratings aspect, where entity-level ambiguity (holding company vs. insurance subsidiaries) is resolved inconsistently by the smaller models — a pattern that typically disappears when a more capable generation model is used.</p>
+<p>Across 900 individual extractions (5 models × 3 aspects × 3 companies × 20 runs), GPT-4.1, GPT-5.4, and Claude Sonnet 4.6 achieve perfect pass rates across all nine company–aspect combinations. The two smaller models are weaker only on financial strength ratings, where GPT-5.4 mini scores 71.7% and GPT-4.1 mini 66.7%. Solvency ratios and discount rates are fully reliable across all five models — including under the exact-match criterion; the discount-rate pass rates are moreover identical under a relaxed ±0.05 percentage-point tolerance, confirming they do not depend on the matching threshold. The residual errors are generation-stage failures on the ratings aspect, concentrated on AXA, where entity-level ambiguity (holding company vs. insurance subsidiaries) is resolved inconsistently by the smaller models — a pattern that typically disappears when a more capable generation model is used.</p>
 </div>
 </div>
 </div>
