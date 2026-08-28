@@ -1,0 +1,9 @@
+pandas==3.0.3
+numpy==2.2.6
+openpyxl==3.1.5
+python-docx==1.2.0
+matplotlib==3.10.9
+openai==2.38.0
+transformers==4.46.0
+torch==2.8.0
+sentencepiece==0.2.0
