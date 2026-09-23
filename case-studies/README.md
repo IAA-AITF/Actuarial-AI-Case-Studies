@@ -28,6 +28,286 @@ A curated and continuously growing collection of AI case studies relevant to act
 ## 2026
 <br>
 
+### Multi-view ensemble learning for predictive analytics of telematics data using Bayesian model averaging
+- **Author:** Hyukjun Gweon, Shu Li
+- **Date:** 2026-09-22
+- **Resources:** [Article (ASTIN Bulletin, open access)](https://doi.org/10.1017/asb.2026.10116)
+- **Type:** Case Study
+- **Level:** 🟨🟨⬜ Advanced
+- **Field:** P&C
+- **Market/Geography:** Canada (synthetic telematics data based on a Canadian insurer)
+- **Primary Topics:** `Telematics`, `Ensemble Learning`, `Bayesian Model Averaging`, `Motor Insurance`
+- **Secondary Topics:** `Random Forest`, `Claim Frequency`, `Claim Severity`, `Usage-Based Insurance`, `Missing Data`
+- **Language(s):** English
+- **Programming Language(s):** –
+- **Methods and/or Models:** Multi-view ensemble for portfolios in which telematics features exist only for a subset of policyholders: view-specific models are trained on traditional-only and telematics-augmented feature sets (random-forest base learners) and combined by Bayesian model averaging, with an EM algorithm estimating data-adaptive view weights. Evaluated on the public synthetic telematics dataset of So, Boucher and Valdez (2021; 100,000 policies, 51 features) for claim frequency and severity under random and informative selection of telematics participants.
+- **Notes:** Peer-reviewed (ASTIN Bulletin, open access) on a public dataset; no code found. Fills a catalog gap: no existing entry covers telematics or usage-based insurance data.
+- **Abstract/Summary (AI generated):**
+    Telematics data can sharpen auto-insurance predictions, but usually only a small share of policyholders provides them, leaving most of the portfolio with traditional rating variables only. The authors propose a multi-view ensemble that trains separate models on the different data views and combines them through Bayesian model averaging, with the weights learned from the data. On a public synthetic telematics dataset, the method adapts the weight given to the telematics model to how policyholders select into telematics programmes and delivers robust claim frequency and severity predictions that improve on either single view across a range of practical settings.
+<br>
+
+### A Practical Guide on Graphical Model Validation
+- **Author:** Mario V. Wüthrich
+- **Date:** 2026-09-22
+- **Resources:** [Article (arXiv)](https://arxiv.org/abs/2609.26445)
+- **Type:** Tutorial
+- **Level:** 🟨🟨⬜ Advanced
+- **Field:** P&C
+- **Primary Topics:** `Model Validation & Calibration`, `Murphy Decomposition`, `Gini`, `Lift`
+- **Secondary Topics:** `Calibration Plots`, `Actual vs Expected`, `Strictly Consistent Loss / Deviance`, `Exposure Weighting`, `Machine Learning`
+- **Language(s):** English
+- **Programming Language(s):** –
+- **Methods and/or Models:** Formalizes the graphical validation tools used in general-insurance pricing (calibration plots, actual-vs-expected plots, lift charts, Murphy diagrams) together with statistical tools (Bregman and deviance losses, elementary losses, Murphy's score decomposition, Gini scores), with particular emphasis on assessing calibration and discrimination under a policy-weighted versus an exposure-weighted population measure.
+- **Notes:** Practitioner-oriented reference for validating GLM and machine-learning pricing models by an author of the catalog's AI Tools for Actuaries and SHAP for Actuaries entries; highlights an often-missed pitfall (calibrating premiums on the wrong weighting scale). arXiv manuscript, not peer-reviewed; no code.
+- **Abstract/Summary (AI generated):**
+    This guide formalizes the model-validation toolkit that general-insurance actuaries use to check pricing models, including machine-learning models: graphical diagnostics such as calibration plots, actual-versus-expected plots, lift charts and Murphy diagrams, alongside statistical tools such as Bregman and deviance losses, elementary losses, Murphy's score decomposition and Gini scores. A central theme is whether calibration and discrimination are assessed on a policy-weighted or an exposure-weighted population, a distinction the author shows is crucial for making sure premium schemes are calibrated on the correct scale.
+<br>
+
+### Tree-like pairwise interaction networks
+- **Author:** Ronald Richman, Salvatore Scognamiglio, Mario V. Wüthrich
+- **Date:** 2026-09-18
+- **Resources:** [Article (Annals of Actuarial Science)](https://doi.org/10.1017/S1748499526100402), [Article (arXiv)](https://arxiv.org/abs/2508.15678), [Code (GitHub)](https://github.com/wueth/Tree-Like-PIN), [Website (interactive companion)](https://ronrichman.github.io/pin-showcase/)
+- **Type:** Case Study
+- **Level:** 🟥🟥🟥 Expert
+- **Field:** P&C
+- **Market/Geography:** France, Belgium (MTPL benchmark data)
+- **Primary Topics:** `Neural Networks`, `Interpretable Deep Learning`, `Insurance Pricing`, `Interaction Detection`
+- **Secondary Topics:** `SHAP`, `Claim Frequency`, `MTPL`, `GAM`, `Gradient Boosting`, `Explainable AI`
+- **Language(s):** English
+- **Programming Language(s):** R
+- **Methods and/or Models:** Tree-like Pairwise Interaction Network (PIN): one shared feed-forward sub-network, structured to mimic decision-tree splits, is applied to every pair of features, so the prediction is a sum of explicit pairwise interaction terms. This makes the model interpretable by design and gives cheap, exact SHAP decompositions; the paper relates PIN to GA²Ms, gradient boosting machines and graph neural networks and benchmarks it on French (and, per the companion, Belgian) motor third-party liability claim-frequency data against classical and neural benchmarks. The authors' repository ships R/Keras scripts (network fitting; SHAP on pre-fitted networks), fitted networks and data.
+- **Notes:** Peer-reviewed (Annals of Actuarial Science, open access) and reproducible: public R code, fitted networks and data, plus a new interactive web companion by R. Richman (released 2026-09-21) that reproduces the published French and Belgian benchmark tables. Complements the catalog's interpretable pricing networks (Actuarial NAM, transformer and LocalGLMnet-style entries) by modelling explicit pairwise interactions. First circulated as arXiv 2508.15678 (2025-08-21), about 13 months before the journal publication.
+- **Abstract/Summary (AI generated):**
+    The authors propose the tree-like pairwise interaction network (PIN), a neural network for tabular insurance data that models every pair of features through a shared sub-network built to mimic decision-tree splits. Because the prediction is a sum of explicit pairwise interaction effects, the model can be inspected directly and its SHAP values are cheap to compute exactly. On the French motor third-party liability benchmark, PIN beats both traditional and modern neural network benchmarks in predictive accuracy while showing how rating factors interact and contribute to the prediction. The paper also positions PIN relative to GA²Ms, gradient boosting machines and graph neural networks.
+<br>
+
+### InsurTech Innovation Using Natural Language Processing
+- **Author:** Panyi Dong, Zhiyu Quan
+- **Date:** 2026-09-18
+- **Resources:** [Article (North American Actuarial Journal)](https://doi.org/10.1080/10920277.2026.2722245), [Article (arXiv)](https://arxiv.org/abs/2507.21112)
+- **Type:** Case Study
+- **Level:** 🟨🟨⬜ Advanced
+- **Field:** P&C
+- **Primary Topics:** `Natural Language Processing`, `Feature Engineering`, `Insurance Pricing`, `Text Embeddings`
+- **Secondary Topics:** `Alternative Data`, `Feature Debiasing`, `Dimension Reduction`, `Industry Classification`, `Commercial Insurance`
+- **Language(s):** English
+- **Programming Language(s):** –
+- **Methods and/or Models:** Conceptual overview of NLP for insurance plus case studies on real alternative text data supplied by an InsurTech partner: text-derived variables are used to demonstrate feature debiasing, feature compression and a new text-based industry classification in commercial insurance, supplementing and refining traditional rating factors for pricing and risk assessment.
+- **Notes:** Peer-reviewed (NAAJ, open access). Extends the catalog's NLP/LLM feature-engineering entries (workers' comp, property claims) to commercial-lines rating and industry classification. The partner data are proprietary and no code was found, so results cannot be reproduced as published. First circulated as arXiv 2507.21112 (2025-07-12).
+- **Abstract/Summary (AI generated):**
+    This open-access paper gives actuaries both a conceptual introduction to natural language processing and practical case studies of its use in insurance operations. Using real alternative data from an InsurTech partner that enriches traditional commercial-insurance data, the authors show how NLP turns unstructured text into structured variables for actuarial analysis, demonstrating feature debiasing, feature compression and a new approach to industry classification. The text-derived variables add to and refine conventional rating factors for commercial insurance pricing and offer new ways to assess underlying risk. The authors argue that NLP is a foundational part of modern insurance analytics rather than an optional add-on.
+<br>
+
+### Joint calibration of multiple Renshaw and Haberman models using neural networks
+- **Author:** Francesca Perla, Salvatore Scognamiglio
+- **Date:** 2026-09-15
+- **Resources:** [Article (Scandinavian Actuarial Journal, open access)](https://doi.org/10.1080/03461238.2026.2732060)
+- **Type:** Case Study
+- **Level:** 🟥🟥🟥 Expert
+- **Field:** Life
+- **Market/Geography:** Global (Human Mortality Database, 80 populations)
+- **Primary Topics:** `Mortality Forecasting`, `Neural Networks`, `Multi-Population Models`, `Renshaw-Haberman`
+- **Secondary Topics:** `Lee-Carter`, `Cohort Effects`, `Quantile Regression`, `Longevity Risk`
+- **Language(s):** English
+- **Programming Language(s):** –
+- **Methods and/or Models:** Recasts the calibration of many population-specific Renshaw–Haberman (age–period–cohort) mortality models as one neural-network optimization problem that still returns population-specific parameters; applied to 80 Human Mortality Database populations and benchmarked against separate fits with the R package StMoMo; extends to alternative loss functions (least squares, least absolute deviations) and to quantile/expectile estimation of future mortality.
+- **Notes:** Peer-reviewed (Scandinavian Actuarial Journal, open access) on public HMD data; no code found. Complements the catalog's deep-learning mortality entries by using neural networks to calibrate a classical cohort model jointly across populations rather than to replace it.
+- **Abstract/Summary (AI generated):**
+    Age–period–cohort mortality models such as Renshaw–Haberman are normally fitted separately for each population, which can be numerically unstable and ignores information shared across populations. The authors recast the calibration of many Renshaw–Haberman models as a single neural-network optimization problem that still delivers population-specific parameters. Applied to 80 populations from the Human Mortality Database and compared with standard separate fits, the joint approach converges more reliably, gives more stable parameters and forecasts mortality more accurately out of sample. The framework also accommodates alternative loss functions and quantile or expectile estimation of future mortality.
+<br>
+
+### Supervising the Chain Ladder
+- **Author:** Stephan Marais, James Grove
+- **Date:** 2026-09-15
+- **Resources:** [Article (arXiv)](https://arxiv.org/abs/2609.16552)
+- **Type:** Case Study
+- **Level:** 🟨🟨⬜ Advanced
+- **Field:** P&C (Reserving)
+- **Market/Geography:** United States (NAIC Schedule P)
+- **Primary Topics:** `Chain Ladder`, `Claims Reserving`, `Hyperparameter Tuning`, `Machine Learning`
+- **Secondary Topics:** `Loss Function Design`, `Whittaker-Henderson Smoothing`, `Model Validation & Calibration`, `Actuarial Judgement`
+- **Language(s):** English
+- **Programming Language(s):** –
+- **Methods and/or Models:** Treats chain-ladder development-pattern selection as supervised learning: the loss minimised by the volume-weighted chain ladder is generalised with recency-decay and volume-power data weights, a reference penalty that shapes the pattern toward a benchmark, and Whittaker–Henderson smoothing, giving a strictly convex objective solved by a single linear system. Judgemental adjustments become interpretable hyperparameters (experience vs prospective); experience adjustments are tuned by a training loop with a reserve validation score on held-out calendar diagonals, and further differentiable penalties re-time or reshape the pattern. Worked example: one real Schedule P triangle through an incurred and then a paid training stage.
+- **Notes:** Makes reserving judgement explicit and auditable using ML concepts (loss, hyperparameters, held-out validation) — complementary to the catalog's ML reserving entries, which replace rather than formalize the chain ladder. Presented at the CAS Casualty Loss Reserve Seminar 2026 (session AR-4). Companion paper by the same authors on the same day: "A Multiplicative Loss Function for Chain Ladder" (arXiv 2609.16561). No code; arXiv preprint.
+- **Abstract/Summary (AI generated):**
+    Practitioners rarely book the plain volume-weighted chain-ladder pattern; they adjust it by judgement and record the adjusted factors. This paper turns that pattern selection into a supervised-learning problem, in which judgemental adjustments become explicit penalties and hyperparameters on the chain ladder's loss function: recency and volume weighting, shaping toward a benchmark pattern, and Whittaker–Henderson smoothing, combined into a strictly convex objective solved by one linear system. Experience-based adjustments can be set more objectively through a training loop scored on held-out calendar diagonals, while prospective adjustments remain declared judgements. A worked example takes one real Schedule P triangle through incurred and paid training stages.
+<br>
+
+### Towards foundation models for insurance risk modelling
+- **Author:** Christopher Blier-Wong
+- **Date:** 2026-09-13
+- **Resources:** [Article (arXiv)](https://arxiv.org/abs/2609.14576)
+- **Type:** Educational
+- **Level:** 🟨🟨⬜ Advanced
+- **Field:** General
+- **Primary Topics:** `Foundation Models`, `Large Language Models`, `Computer Vision`, `Model Governance`
+- **Secondary Topics:** `Tabular Foundation Models`, `Geospatial Feature Engineering`, `Time Series`, `Climate Risk`, `Claims Reserving`, `Insurance Regulation`
+- **Language(s):** English
+- **Programming Language(s):** –
+- **Methods and/or Models:** Review of language, vision, geospatial, time-series, tabular and scientific (weather/climate) foundation models, with existing insurance applications and potential future uses (e.g. flagging a worsening injury in a claim note before payments reveal it). Proposes a process for connecting foundation-model outputs to actuarial calculations and for assessing their predictive contribution, stability and compliance with rules on information use; discusses evaluation difficulties (long claim-development delays, rare large losses, poor transfer across portfolios) and wider risks (privacy, finer risk classification affecting access to cover, dependence on shared model providers).
+- **Notes:** Fills a gap: the catalog has single-technique entries (TabPFN, LLM feature extraction, vision LLMs) but no cross-modal overview of foundation models for insurance risk modelling. Conceptual review without code or data. arXiv preprint, not peer-reviewed.
+- **Abstract/Summary (AI generated):**
+    This review explains how foundation models — large models pre-trained on broad data and then adapted to specific tasks — could let insurers use claim narratives, images, sensor data and other high-dimensional information that classical actuarial models struggle to exploit. It surveys language, vision, geospatial, time-series, tabular and scientific models, describing current insurance applications and plausible future ones, such as a language model detecting a deteriorating injury in a claim note so that a reserving model reacts before payments do. The author proposes a process for linking these models' outputs to actuarial calculations and for testing their predictive value, stability and compliance with information-use rules. The paper also highlights practical and societal risks, from long-delayed claim outcomes and rare large losses to privacy, access to insurance and reliance on shared model providers.
+<br>
+
+### Scaling Laws, Tabular Data and Actuarial Ratemaking Models
+- **Author:** Ronald Richman
+- **Date:** 2026-09-02
+- **Resources:** [Article (arXiv)](https://arxiv.org/abs/2609.03106), [Article (SSRN)](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6073948), [Code (GitHub)](https://github.com/RonRichman/frmtpl-scaling-laws)
+- **Type:** Case Study
+- **Level:** 🟥🟥🟥 Expert
+- **Field:** P&C
+- **Primary Topics:** `Deep Learning`, `Transformers`, `Tabular Data`, `Insurance Pricing`
+- **Secondary Topics:** `Scaling Laws`, `TabM`, `Self-Supervised Learning`, `Claim Frequency`, `GLM Benchmark`
+- **Language(s):** English
+- **Programming Language(s):** Python, R
+- **Methods and/or Models:** Model families (GLM, feed-forward networks, supervised and self-supervised tabular Transformers, TabM) are trained on increasing fractions of a large real-world motor portfolio over multiple random seeds; out-of-sample Poisson deviance is used to estimate data- and parameter-scaling exponents per family. The public companion repository re-runs the workflow on the public freMTPL2 frequency data (GLM, FFN, MultiCLS Transformer, swap-SSL Transformer, TabM-mini) in Colab, including business-facing GLM vs TabM-mini diagnostics.
+- **Notes:** First posted on SSRN in January 2026 (DOI registered 2026-01-24); the arXiv version followed on 2026-09-02. The main experiment uses a proprietary multi-million-row portfolio, but the public GitHub companion reproduces the workflow on freMTPL2. Complements the TabPFN entry with guidance on when deep tabular architectures pay off by data regime. Preprint, not peer-reviewed.
+- **Abstract/Summary (AI generated):**
+    This paper asks whether the scaling laws of modern deep learning — steady power-law gains in held-out loss as data and model size grow — also appear in actuarial ratemaking, where data are tabular, heterogeneous and noisy and GLMs remain strong baselines. Training several model families on growing fractions of a real motor portfolio, the author finds that all of them improve with more data but at very different rates: TabM scales markedly better than purely supervised tabular Transformers and plain MLPs, while making Transformers bigger helps little unless extra inductive biases such as TabM-style adaptation or self-supervision are added. The results give pricing teams quantitative guidance on model choice by data regime, and a public companion repository reproduces the workflow on the freMTPL2 dataset.
+<br>
+
+### Fairness-aware insurance pricing: A multi-objective optimization approach
+- **Author:** Tim J. Boonen, Xinyue Fan, Zixiao Quan
+- **Date:** 2026-09-02
+- **Resources:** [Article (Journal of Risk and Insurance)](https://doi.org/10.1111/jori.70078), [Article (arXiv)](https://arxiv.org/abs/2512.24747)
+- **Type:** Case Study
+- **Level:** 🟥🟥🟥 Expert
+- **Field:** P&C
+- **Primary Topics:** `Fairness`, `Discrimination-Free Pricing`, `Insurance Pricing`, `XGBoost`
+- **Secondary Topics:** `Multi-Objective Optimization`, `NSGA-II`, `TOPSIS`, `Counterfactual Fairness`, `GLM`, `Motor Insurance`
+- **Language(s):** English
+- **Programming Language(s):** R
+- **Methods and/or Models:** Combines several fairness-aware base pricing models and uses the Non-dominated Sorting Genetic Algorithm II (NSGA-II) to approximate the Pareto front over four objectives — predictive accuracy, group fairness, individual fairness and counterfactual fairness — then selects a compromise solution with TOPSIS; GLM and XGBoost pricing models are compared on two public motor datasets from the CASdatasets R package (pg15training, fremotor1prem0304a).
+- **Notes:** Peer-reviewed (Journal of Risk and Insurance, open access) and based on public CASdatasets data, though no code was found. Complements the catalog's discrimination-free-pricing and fairness entries by trading off several fairness notions at once instead of targeting one. First circulated as arXiv 2512.24747 (2025-12-31).
+- **Abstract/Summary (AI generated):**
+    Machine-learning pricing models can predict well but may widen disparities between protected groups, and existing fairness-aware methods usually target one fairness notion at a time. This paper proposes a multi-objective framework that combines several fairness-aware base models and uses the NSGA-II genetic algorithm to trace the Pareto front across predictive accuracy, group fairness, individual fairness and counterfactual fairness, before choosing a compromise with TOPSIS. On two motor insurance datasets, XGBoost improves accuracy over a GLM but can worsen some fairness metrics, while the proposed ensemble gives a balanced accuracy–fairness compromise overall.
+<br>
+
+### CADA-Flow: A Context-Aware Dependence-Attention Flow Framework for Modeling Cyber Data Breach Risk
+- **Author:** Changqun Long, Yijia Li, Maochao Xu, Peng Zhao
+- **Date:** 2026-09-02
+- **Resources:** [Article (North American Actuarial Journal)](https://doi.org/10.1080/10920277.2026.2717121)
+- **Type:** Case Study
+- **Level:** 🟥🟥🟥 Expert
+- **Field:** P&C
+- **Primary Topics:** `Cyber Risk`, `Deep Learning`, `Normalizing Flows`, `Attention Mechanism`
+- **Secondary Topics:** `Recurrent Neural Networks`, `Tail Risk`, `Claim Frequency`, `Claim Severity`, `Premium Calculation`
+- **Language(s):** English
+- **Programming Language(s):** –
+- **Methods and/or Models:** Two-part deep-learning model for cyber data-breach risk: a shared attention-based recurrent encoder captures dependence over time and context and feeds one decoder for breach-occurrence probability and a conditional normalizing-flow decoder that forecasts the full loss-severity distribution, including its tail; fitted distributions are translated into portfolio risk measures and premium indications and compared with classical statistical and deep-learning baselines.
+- **Notes:** Peer-reviewed (NAAJ; not open access). Adds quantitative cyber-breach frequency/severity modelling to the catalog (existing cyber content is LLM-based news summarization and report extraction). The abstract does not name the empirical dataset, and no code was found.
+- **Abstract/Summary (AI generated):**
+    Cyber data-breach risk is hard to model because breaches are sparse and their dependence patterns shift over time and across contexts. CADA-Flow is a deep-learning framework in which an attention-based recurrent encoder feeds two decoders: one predicts whether a breach occurs, the other uses a conditional normalizing flow to forecast the whole loss-severity distribution, including the tail. In the authors' empirical study it outperforms classical statistical models and standard deep-learning baselines on distributional accuracy, and the fitted distributions are turned into portfolio risk measures and premium indications.
+<br>
+
+### Text Data Analysis and Classification Methods - Insights from Customer Letters in Life Insurance
+- **Author:** Andreas Groll, Marie Punsmann, Leonid Zeldin
+- **Date:** 2026-08-30
+- **Resources:** [Article (arXiv)](https://arxiv.org/abs/2608.29699)
+- **Type:** Case Study
+- **Level:** 🟨🟨⬜ Advanced
+- **Field:** Life
+- **Primary Topics:** `Text Mining`, `Natural Language Processing`, `Classification`, `Life Insurance`
+- **Secondary Topics:** `Customer Retention`, `Lapse Analysis`, `Multiclass Classification`, `OCR`
+- **Language(s):** English
+- **Programming Language(s):** Python
+- **Methods and/or Models:** End-to-end pipeline that classifies incoming customer letters to a life insurer as cancellations and identifies the stated cancellation reason: data acquisition and text extraction from scanned PDF documents (OCR tooling such as pytesseract, pdf2image, pikepdf), text preparation, and supervised text-classification models; the paper compares alternatives and explains the choices made.
+- **Notes:** New use case for the catalog: NLP on inbound customer correspondence for lapse/cancellation analysis in life insurance (existing NLP entries focus on claims texts). Proprietary letters and no public code, so not reproducible. arXiv preprint, not peer-reviewed.
+- **Abstract/Summary (AI generated):**
+    Life insurers hold large amounts of customer information that is rarely analysed, including the letters customers send. This paper builds an approach for automatically classifying incoming letters as cancellations and, where stated, identifying the reason for cancelling. The authors walk through data acquisition and preparation — including turning scanned documents into text — present alternative modelling options and explain why they chose their approach. Such a tool can help insurers understand cancellation behaviour and target retention actions, and it transfers to other business transactions and reasons.
+<br>
+
+### INS-ActBench: A Comprehensive Benchmark for Assessing Professional Actuarial Capability of Large Language Models
+- **Author:** Changyu Chen, Chenwei Lin, Xian Xu
+- **Date:** 2026-07-27
+- **Resources:** [Article (arXiv)](https://arxiv.org/abs/2607.24273), [Code (GitHub)](https://github.com/FDU-INS/INS-ActBench)
+- **Type:** Case Study
+- **Level:** 🟨🟨⬜ Advanced
+- **Field:** General
+- **Primary Topics:** `Large Language Models`, `LLM Evaluation`, `Benchmarking`
+- **Secondary Topics:** `Long-Context Reasoning`, `Tool Use`, `Actuarial Exams`, `Human Expert Baseline`
+- **Language(s):** English
+- **Programming Language(s):** Python
+- **Methods and/or Models:** Benchmark of 12,050 question–answer items built from public exams and sample questions released by 16 actuarial associations, split into INS-Act-Know (standardized actuarial knowledge), INS-Act-Case (long-context insurance case reasoning) and INS-Act-Practice (spreadsheet and R-code tasks with verifiable numerical outputs). Nine representative LLMs are evaluated and compared with human actuarial experts (repository results: best models about 73% overall, e.g. GPT-5.5 at 72.9%, versus 83.0% for human experts; on case reasoning GPT-5.5 reaches 56.3% versus 79.6% for experts); the Python benchmark runner uses Docker environments with LibreOffice and R for the tool-based tasks.
+- **Notes:** Fills a catalog gap: no existing entry measures how well LLMs perform actuarial work itself. The benchmark runner is public (Python, Docker), but the README does not link a download of the task set. arXiv preprint, not peer-reviewed.
+- **Abstract/Summary (AI generated):**
+    INS-ActBench is a benchmark for testing whether large language models can do professional actuarial work rather than just answer finance trivia. It collects 12,050 items from public exams and sample questions of 16 actuarial associations and organizes them into three parts: standardized actuarial knowledge, long-context insurance case analysis, and hands-on spreadsheet and R-code tasks whose numerical answers can be checked automatically. Comparing nine LLMs with human actuarial experts, the authors find a clear capability boundary — frontier models do well on exam-style knowledge but remain much weaker at case reasoning, tool-based workflows and jurisdiction-specific practice. The code is released as a foundation for building more reliable actuarial AI assistants.
+<br>
+
+### Multi-objective reinsurance optimization under Solvency II: an inverse design approach via deep learning
+- **Author:** Matteo Crisafulli
+- **Date:** 2026-07-18
+- **Resources:** [Article (European Actuarial Journal)](https://doi.org/10.1007/s13385-026-00463-w)
+- **Type:** Case Study
+- **Level:** 🟥🟥🟥 Expert
+- **Field:** P&C
+- **Market/Geography:** Italy (multi-line non-life insurer calibrated to public market data)
+- **Primary Topics:** `Reinsurance Optimization`, `Deep Learning`, `Solvency II`, `Multi-Objective Optimization`
+- **Secondary Topics:** `Inverse Design`, `Gumbel-Softmax`, `Active Learning`, `NSGA-II`, `Solvency Capital Requirement (SCR)`
+- **Language(s):** English
+- **Programming Language(s):** –
+- **Methods and/or Models:** Inverse-design approach to reinsurance programme selection for a multi-line non-life insurer under Solvency II: a differentiable proxy network learns how treaty structures affect profitability and capital, and a generator network maps target outcomes directly to treaty parameters, using Gumbel-Softmax relaxation for discrete treaty features and a deep active-learning loop near the Pareto-optimal region; return on equity and solvency ratio are optimized jointly and results are benchmarked against the NSGA-II evolutionary algorithm.
+- **Notes:** Peer-reviewed (European Actuarial Journal; not open access). New topic for the catalog: reinsurance programme optimization with deep learning. Calibrated to public Italian market data according to the article; no code found.
+- **Abstract/Summary (AI generated):**
+    Choosing a reinsurance programme under Solvency II means trading off profitability against capital across many possible treaty structures. This paper turns the problem around with an inverse-design deep-learning architecture: a differentiable proxy network learns how treaty choices affect profitability and capital, and a generator network maps desired targets directly to treaty parameters, with Gumbel-Softmax relaxation keeping discrete treaty features trainable and active learning refining the Pareto-optimal region. Calibrated to a multi-line Italian non-life insurer, the approach matches the solution quality of the NSGA-II evolutionary benchmark while cutting the computational budget by about 75%, and the trained generator exposes interpretable sensitivities between financial targets and treaty terms.
+<br>
+
+### DELUGE: Towards Continental-Scale Daily Pluvial Flood Damage Prediction via Interpretable Conditioning on Foundation Model Embeddings
+- **Author:** Yuya Kawakami, Daniel Cayan, Dongyu Liu, Kwan-Liu Ma, Tom Corringham
+- **Date:** 2026-07-17
+- **Resources:** [Article (arXiv)](https://arxiv.org/abs/2607.16050)
+- **Type:** Case Study
+- **Level:** 🟥🟥🟥 Expert
+- **Field:** P&C
+- **Market/Geography:** United States (NFIP flood claims)
+- **Primary Topics:** `Deep Learning`, `Natural Catastrophe Insurance`, `NFIP`, `Interpretable Deep Learning`
+- **Secondary Topics:** `Spatial Embeddings`, `Climate Risk`, `XGBoost Benchmark`, `Random Forest`
+- **Language(s):** English
+- **Programming Language(s):** –
+- **Methods and/or Models:** Multimodal deep-learning framework for daily pluvial flood-damage prediction at ~1 km resolution, trained on spatially and temporally corrected NFIP claims (2017–2022) and structured around hazard, exposure and vulnerability; models the 100 highest-claim 75 km cells (~81% of pluvial claims). A hydrometeorology branch uses Value and Temporal Modulators conditioned on terrain descriptors and AlphaEarth foundation-model embeddings, exposing inspectable hydrological response parameters. Beats tuned random forest, XGBoost and LightGBM by 9–30% on dollar-weighted PR-AUC under a spatial block holdout.
+- **Notes:** Complements the catalog's NFIP flood-ratemaking entry (spatial embeddings) with daily, claims-trained flood-damage prediction. Catastrophe-modelling rather than core pricing/reserving, so actuarial use is indirect. No code link found. arXiv preprint.
+- **Abstract/Summary (AI generated):**
+    Rainfall-driven (pluvial) flooding causes almost half of US National Flood Insurance Program claims yet is hard to predict at useful scale. DELUGE is a deep-learning model that predicts daily pluvial flood damage at roughly 1 km resolution across the US, trained on corrected NFIP claims for 2017–2022 and organized around hazard, exposure and vulnerability. Its hydrometeorology branch conditions interpretable response parameters on terrain and foundation-model geospatial embeddings, so the learned behaviour can be inspected. Under a spatial holdout it outperforms tuned random forest, XGBoost and LightGBM baselines by 9–30% on a dollar-weighted precision-recall metric that emphasizes rare, costly claims.
+<br>
+
+### Explainable boosting machine for predicting claim severity and frequency in car insurance
+- **Author:** Markéta Krúpová, Nabil Rachdi, Quentin Guibert
+- **Date:** 2026-07-16
+- **Resources:** [Article (European Actuarial Journal)](https://doi.org/10.1007/s13385-026-00461-y), [Article (arXiv)](https://arxiv.org/abs/2503.21321), [Notebook (GitHub, rendered HTML)](https://github.com/MarketaKrupova/EBM-Car-Insurance)
+- **Type:** Case Study
+- **Level:** 🟨🟨⬜ Advanced
+- **Field:** P&C
+- **Market/Geography:** France
+- **Primary Topics:** `Explainable AI`, `Gradient Boosting`, `GAM`, `Claim Frequency`, `Claim Severity`
+- **Secondary Topics:** `Explainable Boosting Machine`, `SHAP`, `Murphy Decomposition`, `Model Validation & Calibration`, `Motor Insurance`
+- **Language(s):** English
+- **Programming Language(s):** Python, R
+- **Methods and/or Models:** Explainable Boosting Machines (InterpretML) — glass-box models combining the additive structure of GAMs with cyclic gradient boosting, including pairwise interaction terms — for claim frequency and severity, compared with modern benchmark models used in non-life pricing. Out-of-sample accuracy is assessed with Murphy diagrams and Bregman dominance tests, calibration with T-reliability diagrams and Murphy's score decomposition; predictions are decomposed exactly into main and pairwise effects and linked to Shapley values. Data: proprietary French car-insurance claims (accidental damage, 2012–2021; 10% random subsample).
+- **Notes:** Peer-reviewed (European Actuarial Journal, open access). Adds a glass-box boosting approach to the catalog's mostly post-hoc XAI entries (SHAP, PDP/ICE). The data are proprietary and the GitHub repository holds a rendered notebook (HTML) rather than runnable code files. First circulated as arXiv 2503.21321 (2025-03-27; v2 2026-06-22).
+- **Abstract/Summary (AI generated):**
+    Actuaries face a persistent trade-off between the predictive accuracy of modern machine learning and the interpretability that pricing requires. This paper gives a comprehensive applied assessment of Explainable Boosting Machines — models that combine the additive structure of GAMs with cyclic gradient boosting, so that every prediction is interpretable by design — for car-insurance claim frequency and severity. Using real French motor data, the authors compare EBMs with modern benchmark pricing models on out-of-sample accuracy (Murphy diagrams, Bregman dominance tests) and calibration (T-reliability diagrams, Murphy's score decomposition). They also show how EBM predictions decompose exactly into main and pairwise interaction effects, linking them to Shapley values for actionable insight beyond predictive performance.
+<br>
+
+### Hyperparameters over Architecture: A Controlled Comparison of Neural Networks for Aggregate Loss Reserving
+- **Author:** Qiheng Guo
+- **Date:** 2026-07-14
+- **Resources:** [Article (Risks)](https://doi.org/10.3390/risks14070162), [Code (GitHub)](https://github.com/Steve4three/deeptriangle-v2)
+- **Type:** Case Study
+- **Level:** 🟨🟨⬜ Advanced
+- **Field:** P&C (Reserving)
+- **Market/Geography:** United States (NAIC Schedule P)
+- **Primary Topics:** `Claims Reserving`, `Recurrent Neural Networks`, `Attention Mechanism`, `Hyperparameter Tuning`
+- **Secondary Topics:** `Chain Ladder`, `Workers’ Compensation`, `Random Forest`, `Model Tuning`
+- **Language(s):** English
+- **Programming Language(s):** Python
+- **Methods and/or Models:** Controlled comparison of a DeepTriangle-style GRU baseline with two attention-augmented variants (masked and unmasked) for aggregate triangle reserving under matched data, training and evaluation over hundreds of seeded runs, on NAIC Schedule P triangles for workers' compensation and private passenger auto; a random-forest decomposition attributes accuracy mainly to hyperparameters (learning rate ≈46% of impurity-based importance); benchmark against chain ladder. Python/PyTorch code with one-command replication on the public CAS loss reserving data.
+- **Notes:** Peer-reviewed (MDPI Risks, open access) with public Python/PyTorch code. The main experiments use a proprietary S&P/NAIC Schedule P compilation (435 companies), but the repository replicates the pipeline on the public CAS loss reserving database. Adds aggregate-triangle neural reserving (DeepTriangle family) and a cautionary "attention collapse" finding to the catalog's mostly individual-claims reserving entries.
+- **Abstract/Summary (AI generated):**
+    The author runs a controlled comparison of neural networks for aggregate loss-triangle reserving, separating the effect of architecture from that of hyperparameter settings across hundreds of training runs. On NAIC Schedule P triangles for workers' compensation and private passenger auto, the DeepTriangle GRU baseline is compared with two attention-augmented variants. Attention does not improve accuracy on these short triangles and suffers a bimodal training failure the author calls attention collapse, in which many seeds degenerate to a naive mean predictor. Hyperparameters — above all the learning rate — matter far more than architecture, and a tuned GRU baseline beats chain ladder by more than any architectural change, making it the recommended starting point.
+<br>
+
 ### Agentic AI and Retrieval-Augmented Models in Straight-Through Underwriting
 - **Author:** Robert Richardson, Josh Meyers, Brian Hartman, David Sandberg
 - **Date:** 2026-07-08
@@ -243,7 +523,7 @@ A curated and continuously growing collection of AI case studies relevant to act
 ### Actuarial Legacy Code Migration with a Multi-Agent System
 - **Author:** Simon Hatzesberger, Iris Nonneman
 - **Date:** 2026-04-15
-- **Resources:** [Notebook](https://github.com/IAA-AITF/Actuarial-AI-Case-Studies/tree/main/case-studies/2026/actuarial_legacy_code_migration_multi-agent_system)
+- **Resources:** [Article (European Actuarial Journal)](https://doi.org/10.1007/s13385-026-00464-9), [Notebook](https://github.com/IAA-AITF/Actuarial-AI-Case-Studies/tree/main/case-studies/2026/actuarial_legacy_code_migration_multi-agent_system)
 - **Type:** Case Study
 - **Level:** 🟨🟨⬜ Advanced
 - **Primary Topics:** `Multi-Agent Systems`, `Code Migration`
@@ -434,7 +714,7 @@ A curated and continuously growing collection of AI case studies relevant to act
 ### Car Damage Classification and Localization with Fine-Tuned Vision-Enabled LLMs  
 - **Author:** Simon Hatzesberger, Iris Nonneman  
 - **Date:** 2025-06-22  
-- **Resources:** [Article](https://arxiv.org/abs/2506.18942), [Notebook](https://github.com/IAA-AITF/Actuarial-AI-Case-Studies/tree/main/case-studies/2025/car_damage_classification_and_localization)  
+- **Resources:** [Article](https://arxiv.org/abs/2506.18942), [Article (European Actuarial Journal)](https://doi.org/10.1007/s13385-026-00464-9), [Notebook](https://github.com/IAA-AITF/Actuarial-AI-Case-Studies/tree/main/case-studies/2025/car_damage_classification_and_localization)  
 - **Type:** Case Study  
 - **Level:** 🟨🟨⬜ Advanced  
 - **Primary Topics:** `Large Language Models`, `Fine-Tuning`  
@@ -450,7 +730,7 @@ A curated and continuously growing collection of AI case studies relevant to act
 ### GenAI-Driven Market Comparison  
 - **Author:** Simon Hatzesberger, Iris Nonneman  
 - **Date:** 2025-06-22  
-- **Resources:** [Article](https://arxiv.org/abs/2506.18942), [Notebook](https://github.com/IAA-AITF/Actuarial-AI-Case-Studies/tree/main/case-studies/2025/GenAI-driven_market_comparison)  
+- **Resources:** [Article](https://arxiv.org/abs/2506.18942), [Article (European Actuarial Journal)](https://doi.org/10.1007/s13385-026-00464-9), [Notebook](https://github.com/IAA-AITF/Actuarial-AI-Case-Studies/tree/main/case-studies/2025/GenAI-driven_market_comparison)  
 - **Type:** Case Study  
 - **Level:** 🟨🟨⬜ Advanced  
 - **Primary Topics:** `Retrieval-Augmented Generation (RAG)`, `Structured Outputs`  
@@ -466,7 +746,7 @@ A curated and continuously growing collection of AI case studies relevant to act
 ### Improving Claim Cost Prediction with LLM-Extracted Features from Unstructured Data  
 - **Author:** Simon Hatzesberger, Iris Nonneman  
 - **Date:** 2025-06-22  
-- **Resources:** [Article](https://arxiv.org/abs/2506.18942), [Notebook](https://github.com/IAA-AITF/Actuarial-AI-Case-Studies/tree/main/case-studies/2025/claim_cost_prediction_with_LLM-extracted_features), [Dataset (Kaggle Competition)](https://www.kaggle.com/competitions/actuarial-loss-estimation)  
+- **Resources:** [Article](https://arxiv.org/abs/2506.18942), [Article (European Actuarial Journal)](https://doi.org/10.1007/s13385-026-00464-9), [Notebook](https://github.com/IAA-AITF/Actuarial-AI-Case-Studies/tree/main/case-studies/2025/claim_cost_prediction_with_LLM-extracted_features), [Dataset (Kaggle Competition)](https://www.kaggle.com/competitions/actuarial-loss-estimation)  
 - **Type:** Case Study  
 - **Level:** 🟨🟨⬜ Advanced  
 - **Primary Topics:** `Large Language Models`, `Feature Engineering`, `Claims Severity`  
