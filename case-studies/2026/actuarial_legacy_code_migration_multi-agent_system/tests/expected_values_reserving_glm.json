@@ -1,0 +1,46 @@
+{
+  "triangle_dim": [15, 15],
+  "triangle_columns": [
+    "dev_1", "dev_2", "dev_3", "dev_4", "dev_5", "dev_6", "dev_7", "dev_8",
+    "dev_9", "dev_10", "dev_11", "dev_12", "dev_13", "dev_14", "dev_15"
+  ],
+  "first_origin_year": 2005,
+  "last_origin_year": 2019,
+  "glm_rows": 120,
+  "glm_cols": 5,
+  "phi": 0.0112893817203417,
+  "predictions_rows": 105,
+  "predictions_cols": 5,
+  "total_reserve": 55030.6350062748,
+  "reserves_by_origin": {
+    "2": 23.5522222222,
+    "3": 61.4118412542,
+    "4": 122.4521251655,
+    "5": 218.8528328978,
+    "6": 367.6992631421,
+    "7": 597.6037372099,
+    "8": 943.3550425942,
+    "9": 1487.9557738646,
+    "10": 2327.8985109763,
+    "11": 3588.6777154994,
+    "12": 5485.6840281978,
+    "13": 8223.7167870047,
+    "14": 12440.7785391858,
+    "15": 19140.9965870603
+  },
+  "n_policies": 500,
+  "n_claims": 1948,
+  "premium_by_year_rows": 15,
+  "premium_by_year_cols": 4,
+  "first_year_earned": 851670.23,
+  "boot_length": 1000,
+  "required_module_functions": [
+    "load_claims_triangle",
+    "load_policy_data",
+    "prepare_glm_data",
+    "fit_odp_glm",
+    "predict_reserves",
+    "bootstrap_reserves",
+    "run_analysis"
+  ]
+}
