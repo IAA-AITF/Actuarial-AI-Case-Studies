@@ -24,6 +24,7 @@ A curated and continuously growing collection of AI case studies relevant to act
 </details>
 
 ---
+<br>
 
 ## 2026
 <br>
@@ -812,6 +813,7 @@ A curated and continuously growing collection of AI case studies relevant to act
 <br>
 
 ---
+<br>
 
 ## 2024
 <br>
@@ -980,6 +982,7 @@ The book distinguishes between models and data to enhance our comprehension of w
 <br>
 
 ---
+<br>
 
 ## 2023
 <br>
@@ -1033,6 +1036,7 @@ The book distinguishes between models and data to enhance our comprehension of w
 <br>
 
 ---
+<br>
 
 ## 2022
 <br>
@@ -1071,6 +1075,7 @@ The book distinguishes between models and data to enhance our comprehension of w
 <br>
 
 ---
+<br>
 
 ## 2021 and earlier
 <br>
