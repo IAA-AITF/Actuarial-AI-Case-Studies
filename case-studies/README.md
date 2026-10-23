@@ -27,6 +27,26 @@ A curated and continuously growing collection of AI case studies relevant to act
 <br>
 
 ## 2026
+
+### Case Study: Local LLM-Based Actuarial Report Generation
+- **Author:** Jasper Lok, Thu Hoang
+- **Date:** 2026-08-28
+- **Resources:** [Notebook](https://github.com/IAA-AITF/Actuarial-AI-Case-Studies/tree/main/case-studies/2026/case_study_local_llm_based_ctuarial_report_generation)
+- **Type:** Case Study
+- **Level:** 🟨🟨⬜ Advanced
+- **Field:** Life, P&C
+- **Primary Topics:** `Report Generation`
+- **Secondary Topics:** `Actuarial Reporting`
+- **Language(s):** English
+- **Programming Language(s):** Python
+- **Methods and/or Models:** Deterministic Python pipeline for MAS G1 actuarial report preparation, with separate data-cleaning and report-generation notebooks; MAS form workbooks are cleaned into a structured Excel dataset, then Python validates inputs, calculates year-on-year KPI movements, prepares factual prompts, generates charts, and assembles the Word management report. To make the case study CPU-friendly, a smaller local Hugging Face instruction model (Qwen/Qwen2.5-3B-Instruct by default) is used only for narrative drafting from controlled actuarial facts, with generated commentary, prompts, model metadata, review points, and monitoring points retained in an audit JSON file for actuarial review and governance.
+- **Notes:** The original datasets used in this case study can be found on [Monetary Authority of Singapore website](https://www.mas.gov.sg/statistics/insurance-statistics/insurance-company-returns).
+- **Abstract/Summary (AI generated):**
+    This project demonstrates how a local large language model can support recurring actuarial management reporting by turning validated structured facts into concise narrative commentary. The central governance pattern is to separate calculation from narration: Python reads and validates MAS G1 insurance company return data, calculates year-on-year KPI movements, and generates the chart, while the local LLM drafts management commentary only from those controlled inputs. A companion data-cleaning notebook prepares the MAS G1 workbook from raw MAS form files, and the main Hugging Face workflow produces a Word management report, chart, and audit JSON file for review.
+
+<br>
+
+
 <br>
 
 ### Multi-view ensemble learning for predictive analytics of telematics data using Bayesian model averaging
