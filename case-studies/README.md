@@ -29,6 +29,163 @@ A curated and continuously growing collection of AI case studies relevant to act
 ## 2026
 <br>
 
+### Artificial Intelligence and Individual Life Insurance Challenge
+- **Author:** Mike McPhee Anderson, Yi-Wen Chang, Huang Chiao-Ching, Xiong Chong-An, Yung-Hsin Chuang, Lalith Devireddy, John Koestner, Ho Yin (Johnny) Lee, Horace Pak Hai Lok, Pramod Misra, Yu-Shan Peng, Wen Ruei-Ling, Victoria Zhang
+- **Date:** 2026-10-29
+- **Resources:** [Report (SOA)](https://www.soa.org/resources/research-reports/2026/ai-life-insurance-challenge/), [Code (GitHub)](https://github.com/Society-of-actuaries-research-institute/ML281-AI-and-Individual-Life-Insurance-Challenge)
+- **Type:** Case Study
+- **Level:** 🟨🟨⬜ Advanced
+- **Field:** Life
+- **Market/Geography:** United States (SOA ILEC 2012–2019 experience data)
+- **Primary Topics:** `Agentic AI`, `Life Insurance Mortality`, `Neural Networks`, `Large Language Models`
+- **Secondary Topics:** `Poisson GLM`, `SHAP`, `Model Context Protocol`, `Human-in-the-Loop`, `Model Governance`
+- **Language(s):** English
+- **Programming Language(s):** Python, R
+- **Methods and/or Models:** Collection of eight SOA challenge submissions on using AI for individual-life mortality experience analysis and assumption setting on the SOA ILEC 2012–2019 data. Examples: an MCP-based agentic web app driving R Poisson-GLM and decision-tree tools over a DuckDB copy of ILEC with a full audit log and export to R/Excel (first place); a PyTorch neural-network mortality model with actual-to-expected analysis, SHAP and overfitting checks (second place); governed, explainable frameworks for mortality experience analysis and for mortality surveillance from detection to attribution; plus submissions on LLM-based analysis, machine-learning risk-factor identification and human–AI actuarial workflows.
+- **Notes:** Professional-body research report with public code (GPL-3.0) on public SOA ILEC data (downloaded separately). Strongest new practical evidence in the catalog on agentic AI for assumption setting; the landing page stresses that tool design, hallucination management, audit logs and human review remain essential. Code folders exist for only some of the submissions.
+- **Abstract/Summary (AI generated):**
+    The SOA Research Institute invited actuaries to show how artificial intelligence can support individual-life mortality experience studies and assumption setting using the public ILEC data, and publishes eight resulting papers. The winning entry builds an agent that drives GLM and decision-tree tools through the Model Context Protocol with a complete audit trail, the runner-up fits a neural-network mortality model with actual-to-expected and SHAP diagnostics, and other entries design governed, explainable pipelines for experience analysis and mortality surveillance. Together they show that AI agents can produce smoothed, A/E-based mortality assumptions with GLMs, but that results depend heavily on the tools and information given to the agent and still require human review.
+<br>
+
+### From Explaining to Enabling: Actionable Transparency in Algorithmic Insurance Pricing
+- **Author:** Agathe Fernandes Machado, Fei Huang
+- **Date:** 2026-10-25
+- **Resources:** [Article (arXiv)](https://arxiv.org/abs/2610.34459), [Code (GitHub)](https://github.com/fer-agathe/counterfactuals_insurance)
+- **Type:** Case Study
+- **Level:** 🟥🟥🟥 Expert
+- **Field:** P&C
+- **Market/Geography:** United States (Florida flood-insurance claims) and synthetic telematics data
+- **Primary Topics:** `Explainable AI`, `Counterfactual Explanations`, `Insurance Pricing`, `Algorithmic Fairness`
+- **Secondary Topics:** `Conformal Prediction`, `Accountability`, `Flood Insurance Pricing`, `Telematics`, `Transparency`
+- **Language(s):** English
+- **Programming Language(s):** R
+- **Methods and/or Models:** Formalizes three axioms for policyholder-facing premium explanations — valid (the recommendation lowers the model premium), actionable (only controllable characteristics change) and reliable (enforced through a conformal-prediction constraint that screens out recommendations in regions where the model is uncertain) — and adapts four counterfactual-explanation techniques to insurance; applied to 57,832 real Florida flood-insurance claims (OpenFEMA) and 98,058 synthetic driver-telematics policies.
+- **Notes:** Shifts the catalog's explainability entries (SHAP, EBM, pairwise interactions) from explaining the model to telling an individual policyholder what they can change, with reliability guarantees. Public code (MIT) and public/synthetic data. arXiv preprint, not peer-reviewed.
+- **Abstract/Summary (AI generated):**
+    Research on machine-learning insurance pricing has asked how pricing models can be made accountable, but not how an individual's algorithmic premium should be explained to that person. The authors argue such explanations must be valid, actionable and reliable, formalize these as axioms, and build a method that turns a model premium into recommendations meeting all three, using a conformal-prediction constraint to screen out recommendations the model is too uncertain about. Applying four counterfactual-explanation techniques to real Florida flood-insurance claims and synthetic telematics policies, they find the constrained recommendations for high-risk policyholders are both more reliable and linked to larger predicted risk reductions. The paper draws implications for insurers and regulators on algorithmic accountability.
+<br>
+
+### Automating Insight: A Case-Based Exploration of AI in Insurance Reporting Workflows
+- **Author:** Kailan Shang
+- **Date:** 2026-10-22
+- **Resources:** [Report (SOA)](https://www.soa.org/resources/research-reports/2026/ai-insurance-reporting-workflows/), [Code (GitHub)](https://github.com/Society-of-actuaries-research-institute/AIT175-AI-in-Insurance-Reporting-Workflows)
+- **Type:** Case Study
+- **Level:** 🟨🟨⬜ Advanced
+- **Field:** Life
+- **Primary Topics:** `Reporting`, `Gradient Boosting`, `Large Language Models`, `Retrieval-Augmented Generation`
+- **Secondary Topics:** `Time Series`, `Anomaly Detection`, `Explainable AI (SHAP)`, `Synthetic Data`, `IFRS 17`, `Human-in-the-Loop`
+- **Language(s):** English
+- **Programming Language(s):** Python
+- **Methods and/or Models:** Literature review, end-to-end case study and implementation playbook. A governed, staged Python workflow generates synthetic life-insurance data (policies, claims, reserve and CSM movements, assets, capital measures, with injected data-quality issues), validates it and detects anomalies, then forecasts claims, premium, reserve movement, CSM movement and a capital ratio with rolling backtests comparing a baseline actuarial method, time-series models and gradient boosting; adds SHAP/LIME/PDP/ICE explanations, LLM narrative generation with citations, and a RAG/tool-calling chatbot with LLM evaluation and an analyst review queue (mock LLM by default, OpenAI or Gemini optional).
+- **Notes:** Professional-body report with a public, runnable code package (GPL-3.0) and synthetic data generator. Adds actuarial/finance management reporting (reserves, CSM, capital) to the catalog, complementing the GenAI market-comparison entry. The LLM component runs in a simple mock mode by default, so its outputs are not representative of stronger models.
+- **Abstract/Summary (AI generated):**
+    This SOA report explores how AI can support insurance management reporting, from data checks to forecasts to written commentary. Its central case study is a governed, step-by-step Python workflow on synthetic life-insurance data that validates inputs and flags anomalies, forecasts claims, premiums, reserve and CSM movements and capital ratios with traditional, time-series and gradient-boosting methods, explains the forecasts, and drafts narrative and chatbot answers with citations for analyst review. The report closes with a literature review and a practical playbook for implementing such workflows, and the full code package is published.
+<br>
+
+### From Filings to Foresight: Transforming Public Rate Filings into Actuarial Competitive Intelligence
+- **Author:** Pramod Misra
+- **Date:** 2026-10-19
+- **Resources:** [Code (GitHub)](https://github.com/casact/rate-filing-competitive-intelligence)
+- **Type:** Case Study
+- **Level:** 🟨🟨⬜ Advanced
+- **Field:** P&C
+- **Market/Geography:** United States (California private passenger auto rate filings)
+- **Primary Topics:** `Large Language Models`, `Information Extraction`, `Ratemaking`, `Competitive Analysis`
+- **Secondary Topics:** `Gradient Boosting`, `SHAP`, `Loss Trend`, `Human-in-the-Loop`
+- **Language(s):** English
+- **Programming Language(s):** Python
+- **Methods and/or Models:** Staged LLM pipeline (classify, segment, extract, validate) that reads the actuarial justification in public rate-filing PDFs into structured records with page-level provenance, running on a hosted or local open-weights model and scored against the regulator's published approved values and hand-coded worksheets; extracted California rate actions are joined to realized loss ratios, with an out-of-time LightGBM (GLM baseline, SHAP) and a loss-trend engine for trend selection and deductible-relativity comparison. Code, prompts and frozen extraction data are released.
+- **Notes:** Written for the CAS 2026 Ratemaking Call Paper Program and submitted to the CAS Forum; the paper itself is not public yet, but the CAS-hosted repository documents the method and results in detail. The author concludes the workflow supports a controlled pilot with actuarial review, not autonomous pricing. Complements the catalog's GenAI market-comparison entry (annual reports) with rate filings.
+- **Abstract/Summary (AI generated):**
+    Public rate filings hold competitive intelligence that pricing actuaries rarely use because assembling a comparable cross-carrier view is so laborious. This project builds and measures an LLM document-extraction workflow that turns the actuarial justification in each filing into a structured record with page references, checks it against regulator-published values, and links the extracted rate actions to realized loss ratios for trend selection and relativity comparisons. Code, prompts and the frozen dataset are released through the CAS GitHub organization.
+<br>
+
+### An Interpretable Neural Generalized Linear Model for Insurance Pricing
+- **Author:** Banghee So, Na Zhang
+- **Date:** 2026-10-15
+- **Resources:** [Article (North American Actuarial Journal)](https://doi.org/10.1080/10920277.2026.2738565)
+- **Type:** Case Study
+- **Level:** 🟥🟥🟥 Expert
+- **Field:** P&C
+- **Primary Topics:** `Neural Networks`, `GLM`, `Hybrid GLM ML`, `Insurance Pricing`
+- **Secondary Topics:** `Interpretable Deep Learning`, `Claim Frequency`, `Poisson GLM`, `Model Specification`
+- **Language(s):** English
+- **Programming Language(s):** –
+- **Methods and/or Models:** Actuarial Neural Generalized Linear Model (AN–GLM) combining a knowledge-based GLM component with a data-driven deep-neural-network component so that expert structure and data patterns jointly determine Poisson claim frequency and a well-performing specification is discovered automatically; theoretical conditions for statistical soundness; evaluation through simulation experiments and a real policy-level insurance application.
+- **Notes:** Peer-reviewed (NAAJ; not open access). Related in spirit to the catalog's GLM–neural hybrids (CANN, LocalGLMnet, Actuarial NAM) but adds theoretical guarantees and automatic specification search. No code found.
+- **Abstract/Summary (AI generated):**
+    Many insurers still price with relatively simple GLMs whose accuracy is limited, while deep neural networks are more flexible but harder to interpret. This paper proposes the Actuarial Neural Generalized Linear Model, which joins a knowledge-based GLM component with a data-driven neural component so that both expert-specified structure and patterns learned from data shape the predicted claim frequency, and a good model specification is found automatically without giving up interpretability. The authors establish conditions under which the architecture is statistically sound and test it through extensive simulations and a real policy-level insurance application, positioning it as a practical, interpretable alternative for modern pricing.
+<br>
+
+### ARIA: AI for Reserving, Indications, and Analysis
+- **Author:** Hugo Latendresse, Sabrina Tan
+- **Date:** 2026-10-13
+- **Resources:** [Article (CAS Forum)](https://forum.casact.org/article/172476-aria-ai-for-reserving-indications-and-analysis), [Code (GitHub)](https://github.com/hugolatendresse/aria)
+- **Type:** Case Study
+- **Level:** 🟨🟨⬜ Advanced
+- **Field:** P&C
+- **Primary Topics:** `Agentic AI`, `Large Language Models`, `Claims Reserving`, `Ratemaking`
+- **Secondary Topics:** `Retrieval-Augmented Generation`, `Prompt Engineering`, `LLM Evaluation`, `Chain Ladder`
+- **Language(s):** English
+- **Programming Language(s):** TypeScript, Python
+- **Methods and/or Models:** Actuarial coding agent built as a fork of the open-source Cline VS Code agent and specialized at run time (no fine-tuning) with an actuarial system prompt, method-specific "capability cards" (procedures, formulas and code patterns, e.g. using chainladder-python) and optional retrieval over actuarial exam source texts; evaluated with an automated suite of 61 unit tests and 8 end-to-end integration tests derived from textbook reserving and ratemaking case studies. Unit pass rates rise from 64% out of the box to 95% with capability cards; integration reliability improves but remains limited, with substantial run-to-run variance.
+- **Notes:** CAS Forum paper with open-source code (Apache-2.0); the agent itself was released before the paper. Concrete, evaluated agent for core P&C reserving and indication work with an honest reliability gap analysis — complements INS-ActBench (LLM knowledge benchmark) and the catalog's multi-agent entries. Scope is textbook-level methods.
+- **Abstract/Summary (AI generated):**
+    This paper designs and tests an AI assistant that carries out end-to-end P&C ratemaking and reserving workflows inside the VS Code editor. Rather than fine-tuning a model, the authors specialize an open-source coding agent with an actuarial system prompt, method-specific capability cards and optional retrieval from actuarial study texts, and measure it against automated tests built from textbook case studies. Domain guidance lifts step-level accuracy from 64% to 95%, but complete workflows still succeed only part of the time and vary between runs, so actuarial review remains necessary. The agent is released as open source.
+<br>
+
+### Underwriting Rating Model – Machine Learning Case Study
+- **Author:** YongweonHeo (GitHub)
+- **Date:** 2026-10-12
+- **Resources:** [Notebook](https://github.com/IAA-AITF/Actuarial-AI-Case-Studies/tree/main/case-studies/2026/Machine_%20Learning_%20CS), [Executive Brief (PDF)](https://github.com/IAA-AITF/Actuarial-AI-Case-Studies/blob/main/case-studies/2026/Machine_%20Learning_%20CS/UW_Rating_Model_Executive_Brief_Readable_EN.pdf)
+- **Type:** Case Study
+- **Level:** 🟨🟨⬜ Advanced
+- **Field:** Health
+- **Market/Geography:** South Korea (KCD-9 disease codes; synthetic data)
+- **Primary Topics:** `Underwriting Automation`, `Classification`, `Random Forest`, `Gradient Boosting`
+- **Secondary Topics:** `Health Insurance Claims`, `Feature Engineering`, `Logistic Regression`, `Model Validation & Calibration`, `Imbalanced Data`, `SHAP`
+- **Language(s):** English
+- **Programming Language(s):** Python
+- **Methods and/or Models:** Synthetic in-force/exposure and claim data mapped to KCD-9 (Korean ICD) chapters; a fixed 5-year disease-history window and 3-, 4- and 5-year follow-up cohorts (about 13,300–13,800 eligible insureds) predict future circulatory-disease claims (hypertension, ischemic heart disease, pulmonary circulation disease, arrhythmia, heart failure). A single-variable logistic benchmark on respiratory history is compared on the same train/test split with multivariate logistic regression, random forest, histogram gradient boosting and optional XGBoost, using ROC-AUC, PR-AUC, Brier score, calibration plots, model-based relative risk, and frameworks for SHAP and out-of-time validation.
+- **Notes:** Hosted case study contributed to this repository (merged in PR #19 on 2026-10-12, moved into its folder in PR #20 on 2026-10-18). Fully runnable locally with the bundled synthetic data; no LLM API needed. Adds health-insurance underwriting with disease-code features, complementing the catalog's life-underwriting entries.
+- **Abstract/Summary (AI generated):**
+    This hosted case study asks whether an insured's disease history — starting with respiratory claims — helps predict future circulatory-disease claims and can support underwriting risk segmentation. Using synthetic claim and exposure data coded with the Korean KCD-9 classification, it builds 5-year history and 3-to-5-year follow-up cohorts and starts from a simple, interpretable logistic-regression benchmark before comparing multivariate and machine-learning models on the same split. Respiratory history alone discriminates poorly, but adding broader morbidity, claim-frequency, recency and healthcare-utilization features improves performance materially for targets such as hypertension and ischemic heart disease (ROC-AUC up to about 0.86). The notebook, executive brief and data are provided so the full workflow can be rerun locally.
+<br>
+
+### InsClaimBench: Benchmarking Insurance Claim Adjudication Across the Decision Chain
+- **Author:** Linqi Zhang, Chong Qi, Yan Cheng, Wanqing Cao, Yu Liu, Chenwei Lin, Xian Xu
+- **Date:** 2026-10-07
+- **Resources:** [Article (arXiv)](https://arxiv.org/abs/2610.09671)
+- **Type:** Case Study
+- **Level:** 🟨🟨⬜ Advanced
+- **Field:** General
+- **Primary Topics:** `Large Language Models`, `LLM Evaluation`, `Benchmarking`, `Claims Triage`
+- **Secondary Topics:** `Health Insurance Claims`, `Property Insurance`, `Motor Insurance`, `Information Extraction`
+- **Language(s):** English
+- **Programming Language(s):** –
+- **Methods and/or Models:** End-to-end benchmark of 3,780 cases in 375 case families across auto, property and health insurance (86,656 atomic rule judgments), grounded in real claim materials and structured insurance rules; each claim is evaluated from atomic rules through adjudication modules to payout decisions and amounts, with controlled factual variants that test whether changes propagate correctly. Six LLMs evaluated: payout-decision accuracy 74.2–80.2%, joint decision-and-amount accuracy 47.5–73.2%, atomic-rule accuracy up to 95.5% but rule-vector exact match at most 36.9%.
+- **Notes:** Complements INS-ActBench (same research group; actuarial exam-style tasks) with claims adjudication, a core claims-operations task. No public code or data link found in the paper. arXiv preprint, not peer-reviewed.
+- **Abstract/Summary (AI generated):**
+    InsClaimBench tests whether large language models can adjudicate insurance claims reliably from start to finish. Built from real claim materials and structured insurance rules, it covers 3,780 auto, property and health cases and evaluates each claim from individual rule checks through intermediate adjudication modules to the final payout decision and amount, including controlled variants where a fact changes. Across six LLMs, reliability erodes along the decision chain: models get most individual rule judgments right, yet decision-plus-amount accuracy falls to as low as about 48%, and correct payouts can hide wrong intermediate reasoning. The authors conclude that dependable automated adjudication needs consistent composition across the whole decision chain.
+<br>
+
+### Governing the Edge: Automating Commercial Property and Casualty Insurance Underwriting via a Hybrid Local-Cloud Multi-Agent Framework
+- **Author:** Vivek Kumar Singh, Gautam Bhowmick
+- **Date:** 2026-09-26
+- **Resources:** [Article (arXiv)](https://arxiv.org/abs/2609.37454), [Code (GitHub)](https://github.com/vsingh45/governing-the-edge)
+- **Type:** Case Study
+- **Level:** 🟨🟨⬜ Advanced
+- **Field:** P&C
+- **Primary Topics:** `Multi-Agent Systems`, `Underwriting Automation`, `Agentic AI`, `LangGraph`
+- **Secondary Topics:** `Human-in-the-Loop`, `Privacy Preserving ML`, `AI Governance`, `Synthetic Data`
+- **Language(s):** English
+- **Programming Language(s):** Python
+- **Methods and/or Models:** 13-node LangGraph workflow (eleven agents, two deterministic control nodes including a human-escalation interrupt) across two tiers: agents touching raw submissions run locally on Gemma 2 behind logged tool interfaces (synthetic stubs in the prototype), and only anonymized scores and non-identifying fields reach Claude Sonnet in the cloud; compliance rules are encoded as graph-edge conditions so non-compliant submissions never reach pricing. Evaluated on a 20-scenario benchmark: deterministic hard-stop rules enforced correctly, 70% overall compliance accuracy, minutes instead of about 40 minutes per submission.
+- **Notes:** Adds a data-residency (local vs cloud) design to the catalog's agentic underwriting entry (straight-through BOP underwriting with agentic RAG). Code, compliance rules, tool stubs and synthetic data released (MIT). Short workshop paper (accepted at AIxB 2026); prototype with stubbed tools.
+- **Abstract/Summary (AI generated):**
+    Commercial P&C underwriters spend much of their time on administration, and submission data often may not leave the insurer's perimeter. This paper presents a multi-agent framework in which agents handling sensitive submission data run on a local model while only anonymized information is passed to a cloud model, with compliance rules hard-wired into the workflow graph so that non-compliant submissions never reach pricing. A fully traced commercial-auto example and a 20-scenario benchmark show deterministic rules enforced reliably, about 70% overall compliance accuracy with errors concentrated in judgment-based checks, and processing in minutes on one edge device with a complete audit trail.
+<br>
+
 ### Multi-view ensemble learning for predictive analytics of telematics data using Bayesian model averaging
 - **Author:** Hyukjun Gweon, Shu Li
 - **Date:** 2026-09-22
